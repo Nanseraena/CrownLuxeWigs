@@ -279,24 +279,44 @@ export default function ProductDetailPage() {
             </p>
             <div className="bg-neutral-50 rounded-2xl p-4 border border-neutral-200 space-y-2 text-xs">
               <div className="flex justify-between py-1 border-b border-neutral-200/60">
+                <span className="text-neutral-500">Confirmed Hair Origin</span>
+                <span className="font-semibold text-brand-700 capitalize">
+                  {product.hair_origin && product.hair_origin !== "unspecified"
+                    ? `${product.hair_origin} Virgin Donor Hair`
+                    : "Unspecified Origin"}
+                </span>
+              </div>
+              <div className="flex justify-between py-1 border-b border-neutral-200/60">
                 <span className="text-neutral-500">Hair Material</span>
-                <span className="font-semibold text-neutral-900">100% Virgin Human Hair</span>
+                <span className="font-semibold text-neutral-900">
+                  {product.hair_type === "human"
+                    ? "100% Virgin Human Hair"
+                    : product.hair_type === "synthetic"
+                    ? "Synthetic Fiber"
+                    : "Human Hair Blend"}
+                </span>
+              </div>
+              <div className="flex justify-between py-1 border-b border-neutral-200/60">
+                <span className="text-neutral-500">Hair Texture</span>
+                <span className="font-semibold text-neutral-900">{product.texture || "Bone Straight"}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-neutral-200/60">
                 <span className="text-neutral-500">Lace Type</span>
-                <span className="font-semibold text-neutral-900">{product.default_lace_type || "Ultra-thin HD Swiss Lace"}</span>
+                <span className="font-semibold text-neutral-900">
+                  {selectedVariant?.lace_type || product.default_lace_type || "Ultra-thin HD Swiss Lace"}
+                </span>
               </div>
               <div className="flex justify-between py-1 border-b border-neutral-200/60">
                 <span className="text-neutral-500">Hair Density</span>
-                <span className="font-semibold text-neutral-900">180% Full Natural Density</span>
-              </div>
-              <div className="flex justify-between py-1 border-b border-neutral-200/60">
-                <span className="text-neutral-500">Knots</span>
-                <span className="font-semibold text-neutral-900">Pre-Bleached & Pre-Plucked Hairline</span>
+                <span className="font-semibold text-neutral-900">
+                  {selectedVariant?.density || "180% Full Natural Density"}
+                </span>
               </div>
               <div className="flex justify-between py-1">
                 <span className="text-neutral-500">Cap Size</span>
-                <span className="font-semibold text-neutral-900">Medium 22.5" with Adjustable Straps</span>
+                <span className="font-semibold text-neutral-900">
+                  {selectedVariant?.cap_size || 'Medium 22.5" with Adjustable Straps'}
+                </span>
               </div>
             </div>
           </div>

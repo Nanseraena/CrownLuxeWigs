@@ -17,7 +17,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [adding, setAdding] = useState(false);
 
   const discountPercent = calculateDiscountPercent(product.compare_at_price, product.min_price);
-  const imageUrl = product.primary_image?.image_url || "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=600&q=80";
+  const imageUrl = product.primary_image?.image_url || "/images/categories/bone-straight.jpg";
 
   const handleQuickAdd = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -66,6 +66,11 @@ export default function ProductCard({ product }: ProductCardProps) {
               New In
             </span>
           )}
+          {product.hair_origin && product.hair_origin !== "unspecified" && (
+            <span className="bg-neutral-900/80 backdrop-blur-md text-white text-[9px] font-semibold uppercase px-2 py-0.5 rounded-full shadow-sm">
+              {product.hair_origin}
+            </span>
+          )}
         </div>
 
         {/* Wishlist Heart Icon */}
@@ -97,9 +102,13 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* Content */}
       <div className="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
         <div>
-          {/* Hair Type & Texture Subtitle */}
+          {/* Hair Origin & Texture Subtitle */}
           <div className="flex items-center justify-between text-[11px] text-neutral-500 mb-1">
-            <span className="capitalize font-medium text-brand-600">{product.hair_type} Hair</span>
+            <span className="capitalize font-medium text-brand-600">
+              {product.hair_origin && product.hair_origin !== "unspecified"
+                ? `${product.hair_origin} Virgin`
+                : `${product.hair_type} Hair`}
+            </span>
             {product.texture && <span className="text-neutral-400">• {product.texture}</span>}
           </div>
 
@@ -110,13 +119,19 @@ export default function ProductCard({ product }: ProductCardProps) {
             </h3>
           </Link>
 
-          {/* Ratings */}
-          <div className="flex items-center gap-1.5 mt-1.5">
-            <div className="flex items-center text-amber-400">
+          {/* Available Colors & Ratings */}
+          <div className="flex items-center justify-between gap-2 mt-2">
+            <div className="flex items-center gap-1 text-amber-400">
               <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+              <span className="text-[11px] font-bold text-neutral-800">{product.average_rating || "5.0"}</span>
+              <span className="text-[10px] text-neutral-400">({product.review_count || 12})</span>
             </div>
-            <span className="text-[11px] font-bold text-neutral-800">{product.average_rating || "5.0"}</span>
-            <span className="text-[11px] text-neutral-400">({product.review_count || 12})</span>
+
+            {product.available_colors && product.available_colors.length > 1 && (
+              <span className="text-[10px] bg-neutral-100 text-neutral-600 font-semibold px-1.5 py-0.5 rounded-md">
+                {product.available_colors.length} Colors
+              </span>
+            )}
           </div>
         </div>
 

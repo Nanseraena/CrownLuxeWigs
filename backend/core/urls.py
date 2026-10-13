@@ -7,7 +7,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from catalog.views import CategoryViewSet, ProductViewSet
+from catalog.views import CategoryViewSet, CollectionViewSet, ProductViewSet
 from cart.views import (
     CartView, CartItemView, CartItemDetailView, CartClearView,
     MergeCartView, WishlistView, WishlistItemView
@@ -25,6 +25,7 @@ from users.views import RegisterView, MeView, AddressViewSet
 
 router = DefaultRouter()
 router.register("categories", CategoryViewSet, basename="category")
+router.register("collections", CollectionViewSet, basename="collection")
 router.register("products", ProductViewSet, basename="product")
 router.register("orders", OrderViewSet, basename="order")
 router.register("delivery-methods", DeliveryMethodViewSet, basename="delivery-method")

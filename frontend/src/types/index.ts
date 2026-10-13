@@ -1,4 +1,25 @@
+export interface Subcategory {
+  id: number;
+  name: string;
+  slug: string;
+  description: string;
+  image_url?: string;
+  sort_order: number;
+}
+
 export interface Category {
+  id: number;
+  name: string;
+  slug: string;
+  description: string;
+  image_url?: string;
+  sort_order: number;
+  parent?: number | null;
+  parent_slug?: string | null;
+  subcategories?: Subcategory[];
+}
+
+export interface Collection {
   id: number;
   name: string;
   slug: string;
@@ -41,13 +62,27 @@ export interface Review {
   created_at: string;
 }
 
+export type HairOrigin =
+  | "brazilian"
+  | "peruvian"
+  | "malaysian"
+  | "indian"
+  | "vietnamese"
+  | "cambodian"
+  | "other"
+  | "unspecified";
+
 export interface Product {
   id: number;
   name: string;
   slug: string;
+  sku?: string;
   description: string;
   category: Category;
+  subcategory?: Subcategory | null;
+  collections?: Collection[];
   hair_type: "human" | "synthetic" | "blend";
+  hair_origin: HairOrigin;
   texture: string;
   default_length_inches: number | null;
   default_color: string;
@@ -57,6 +92,10 @@ export interface Product {
   primary_image: ProductImage | null;
   average_rating: number;
   review_count: number;
+  available_colors?: string[];
+  available_lengths?: number[];
+  available_densities?: string[];
+  available_lace_types?: string[];
   is_featured: boolean;
   is_new_arrival: boolean;
   is_best_seller: boolean;
@@ -64,6 +103,19 @@ export interface Product {
   images?: ProductImage[];
   variants?: ProductVariant[];
   reviews?: Review[];
+}
+
+export interface FilterOptions {
+  colors: string[];
+  lengths: number[];
+  hair_origins: string[];
+  hair_materials: string[];
+  textures: string[];
+  densities: string[];
+  price_range: {
+    min: string | number;
+    max: string | number;
+  };
 }
 
 export interface CartItem {

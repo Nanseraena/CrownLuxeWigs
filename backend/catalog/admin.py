@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, ProductVariant, ProductImage, Review
+from .models import Category, Collection, Product, ProductVariant, ProductImage, Review
 
 class ProductVariantInline(admin.TabularInline):
     model = ProductVariant
@@ -11,6 +11,13 @@ class ProductImageInline(admin.TabularInline):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    list_display = ("name", "slug", "parent", "is_active", "sort_order")
+    list_filter = ("is_active", "parent")
+    search_fields = ("name",)
+    prepopulated_fields = {"slug": ("name",)}
+
+@admin.register(Collection)
+class CollectionAdmin(admin.ModelAdmin):
     list_display = ("name", "slug", "is_active", "sort_order")
     list_filter = ("is_active",)
     search_fields = ("name",)
@@ -18,12 +25,13 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("name", "category", "hair_type", "is_published", "is_featured", "is_new_arrival", "is_best_seller", "created_at")
-    list_filter = ("category", "hair_type", "is_published", "is_featured", "is_new_arrival", "is_best_seller")
+    list_display = ("name", "category", "hair_origin", "hair_type", "is_published", "is_featured", "is_new_arrival", "is_best_seller", "created_at")
+    list_filter = ("category", "hair_origin", "hair_type", "is_published", "is_featured", "is_new_arrival", "is_best_seller")
     search_fields = ("name", "description", "sku")
     prepopulated_fields = {"slug": ("name",)}
+    filter_horizontal = ("collections",)
     inlines = [ProductVariantInline, ProductImageInline]
-    list_select_related = ("category",)
+    list_select_related = ("category", "subcategory")
 
 @admin.register(ProductVariant)
 class ProductVariantAdmin(admin.ModelAdmin):

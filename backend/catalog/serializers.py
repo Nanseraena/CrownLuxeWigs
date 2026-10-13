@@ -1,9 +1,22 @@
 from rest_framework import serializers
-from .models import Category, Product, ProductVariant, ProductImage, Review
+from .models import Category, Collection, Product, ProductVariant, ProductImage, Review
 
-class CategorySerializer(serializers.ModelSerializer):
+class SubcategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
+        fields = ["id", "name", "slug", "description", "image_url", "sort_order"]
+
+class CategorySerializer(serializers.ModelSerializer):
+    subcategories = SubcategorySerializer(many=True, read_only=True)
+    parent_slug = serializers.CharField(source="parent.slug", read_only=True, allow_null=True)
+
+    class Meta:
+        model = Category
+        fields = ["id", "name", "slug", "description", "image_url", "sort_order", "parent", "parent_slug", "subcategories"]
+
+class CollectionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Collection
         fields = ["id", "name", "slug", "description", "image_url", "sort_order"]
 
 class ProductImageSerializer(serializers.ModelSerializer):
@@ -25,19 +38,27 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 class ProductListSerializer(serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
+    subcategory = SubcategorySerializer(read_only=True)
+    collections = CollectionSerializer(many=True, read_only=True)
     min_price = serializers.DecimalField(max_digits=12, decimal_places=2, read_only=True, allow_null=True)
     compare_at_price = serializers.DecimalField(max_digits=12, decimal_places=2, read_only=True, allow_null=True)
     primary_image = serializers.SerializerMethodField()
     average_rating = serializers.FloatField(read_only=True)
     review_count = serializers.IntegerField(read_only=True)
+    available_colors = serializers.ReadOnlyField()
+    available_lengths = serializers.ReadOnlyField()
+    available_densities = serializers.ReadOnlyField()
+    available_lace_types = serializers.ReadOnlyField()
 
     class Meta:
         model = Product
         fields = [
-            "id", "name", "slug", "description", "category", "hair_type", "texture",
-            "default_length_inches", "default_color", "default_lace_type", "min_price",
-            "compare_at_price", "primary_image", "average_rating", "review_count",
-            "is_featured", "is_new_arrival", "is_best_seller", "created_at"
+            "id", "name", "slug", "sku", "description", "category", "subcategory", "collections",
+            "hair_type", "hair_origin", "texture", "default_length_inches", "default_color",
+            "default_lace_type", "min_price", "compare_at_price", "primary_image",
+            "average_rating", "review_count", "available_colors", "available_lengths",
+            "available_densities", "available_lace_types", "is_featured", "is_new_arrival",
+            "is_best_seller", "created_at"
         ]
 
     def get_primary_image(self, obj):
@@ -57,5 +78,6 @@ class ProductDetailSerializer(ProductListSerializer):
         return ProductVariantSerializer(variants, many=True).data
 
     def get_reviews(self, obj):
-        approved = obj.reviews.filter(is_approved=True)[:10]
+        approved = obj.reviews.filter(is_approved=True)[:15]
         return ReviewSerializer(approved, many=True).data
+
