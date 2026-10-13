@@ -9,6 +9,17 @@ import { fetchApi } from "@/lib/api";
 import ProductCard from "@/components/catalog/ProductCard";
 import FilterSidebar from "@/components/catalog/FilterSidebar";
 
+const DEFAULT_CATEGORIES: Category[] = [
+  { id: 1, name: "Bone Straight Wigs", slug: "bone-straight-wigs", image_url: "/images/categories/bone-straight.jpg", description: "Silky, mirror-shine bone straight human hair that stays sleek.", sort_order: 1 },
+  { id: 2, name: "HD Lace Front Wigs", slug: "hd-lace-front-wigs", image_url: "/images/categories/hd-lace-front.jpg", description: "Ultra-thin melted invisible HD swiss lace for imperceptible blend.", sort_order: 2 },
+  { id: 3, name: "Glueless & Wear-Go Wigs", slug: "glueless-wear-go-wigs", image_url: "/images/categories/glueless-wigs.jpg", description: "Pre-cut lace, pre-plucked, zero adhesive needed in 30 seconds.", sort_order: 3 },
+  { id: 4, name: "Deep Wave & Curly Wigs", slug: "deep-wave-curly-wigs", image_url: "/images/categories/deep-wave.jpg", description: "Lush bouncy defined curls with high volume and luscious texture.", sort_order: 4 },
+  { id: 5, name: "Bob Wigs", slug: "bob-wigs", image_url: "/images/categories/bob-wigs.jpg", description: "Chic blunt cut, asymmetrical, and timeless bob styles for everyday glam.", sort_order: 5 },
+  { id: 6, name: "Colored & Highlight Wigs", slug: "colored-highlight-wigs", image_url: "/images/categories/colored-highlights.jpg", description: "Trendy piano highlights, 613 platinum blonde, and 99J burgundy.", sort_order: 6 },
+  { id: 7, name: "Human Hair Wigs", slug: "human-hair-wigs", image_url: "/images/categories/human-hair.jpg", description: "100% Virgin unprocessed human hair wigs with natural hairline.", sort_order: 7 },
+  { id: 8, name: "Hair Extensions & Bundles", slug: "hair-extensions-bundles", image_url: "/images/categories/hair-bundles.jpg", description: "Raw donor virgin hair bundles, closures, and frontals.", sort_order: 8 },
+];
+
 function ShopContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -46,7 +57,9 @@ function ShopContent() {
     queryFn: () => fetchApi("/categories/"),
   });
 
-  const categories = categoriesData?.results || [];
+  const categories = (categoriesData?.results && categoriesData.results.length > 0)
+    ? categoriesData.results
+    : DEFAULT_CATEGORIES;
   const products = productsData?.results || [];
   const totalCount = productsData?.count || 0;
 

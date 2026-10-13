@@ -8,6 +8,17 @@ import { Product, Category, Coupon } from "@/types";
 import { fetchApi } from "@/lib/api";
 import ProductCard from "@/components/catalog/ProductCard";
 
+const DEFAULT_CATEGORIES: Category[] = [
+  { id: 1, name: "Bone Straight Wigs", slug: "bone-straight-wigs", image_url: "/images/categories/bone-straight.jpg", description: "Silky, mirror-shine bone straight human hair that stays sleek.", sort_order: 1 },
+  { id: 2, name: "HD Lace Front Wigs", slug: "hd-lace-front-wigs", image_url: "/images/categories/hd-lace-front.jpg", description: "Ultra-thin melted invisible HD swiss lace for imperceptible blend.", sort_order: 2 },
+  { id: 3, name: "Glueless & Wear-Go Wigs", slug: "glueless-wear-go-wigs", image_url: "/images/categories/glueless-wigs.jpg", description: "Pre-cut lace, pre-plucked, zero adhesive needed in 30 seconds.", sort_order: 3 },
+  { id: 4, name: "Deep Wave & Curly Wigs", slug: "deep-wave-curly-wigs", image_url: "/images/categories/deep-wave.jpg", description: "Lush bouncy defined curls with high volume and luscious texture.", sort_order: 4 },
+  { id: 5, name: "Bob Wigs", slug: "bob-wigs", image_url: "/images/categories/bob-wigs.jpg", description: "Chic blunt cut, asymmetrical, and timeless bob styles for everyday glam.", sort_order: 5 },
+  { id: 6, name: "Colored & Highlight Wigs", slug: "colored-highlight-wigs", image_url: "/images/categories/colored-highlights.jpg", description: "Trendy piano highlights, 613 platinum blonde, and 99J burgundy.", sort_order: 6 },
+  { id: 7, name: "Human Hair Wigs", slug: "human-hair-wigs", image_url: "/images/categories/human-hair.jpg", description: "100% Virgin unprocessed human hair wigs with natural hairline.", sort_order: 7 },
+  { id: 8, name: "Hair Extensions & Bundles", slug: "hair-extensions-bundles", image_url: "/images/categories/hair-bundles.jpg", description: "Raw donor virgin hair bundles, closures, and frontals.", sort_order: 8 },
+];
+
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<"best_seller" | "new_arrival">("best_seller");
 
@@ -35,7 +46,9 @@ export default function HomePage() {
     queryFn: () => fetchApi("/promotions/active/"),
   });
 
-  const categories = categoriesData?.results || [];
+  const categories = (categoriesData?.results && categoriesData.results.length > 0)
+    ? categoriesData.results
+    : DEFAULT_CATEGORIES;
   const products = productsData?.results || [];
   const trendingWigs = trendingData?.results || [];
 
@@ -125,7 +138,7 @@ export default function HomePage() {
             >
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border-2 border-brand-200 group-hover:border-brand-600 transition-all duration-300 overflow-hidden shadow-sm">
                 <img
-                  src={cat.image_url || "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=300&q=80"}
+                  src={cat.image_url || "/images/categories/bone-straight.jpg"}
                   alt={cat.name}
                   className="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500"
                 />

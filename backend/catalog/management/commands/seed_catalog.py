@@ -76,14 +76,14 @@ class Command(BaseCommand):
 
         # 4. Categories
         categories_data = [
-            ("Human Hair Wigs", "100% Virgin unprocessed human hair wigs with natural hairline.", "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=600&q=80", 1),
-            ("HD Lace Front Wigs", "Ultra-thin melted invisible HD swiss lace for imperceptible blend.", "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80", 2),
-            ("Glueless & Wear-Go Wigs", "Pre-cut lace, pre-plucked, zero adhesive needed in 30 seconds.", "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80", 3),
-            ("Bone Straight Wigs", "Silky, mirror-shine bone straight human hair that stays sleek.", "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=600&q=80", 4),
-            ("Deep Wave & Curly Wigs", "Lush bouncy defined curls with high volume and luscious texture.", "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=600&q=80", 5),
-            ("Bob Wigs", "Chic blunt cut, asymmetrical, and timeless bob styles for everyday glam.", "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=600&q=80", 6),
-            ("Colored & Highlight Wigs", "Trendy piano highlights, 613 platinum blonde, and 99J burgundy.", "https://images.unsplash.com/photo-1562004760-aceed7bb0fe3?auto=format&fit=crop&w=600&q=80", 7),
-            ("Hair Extensions & Bundles", "Raw donor virgin hair bundles, closures, and frontals.", "https://images.unsplash.com/photo-1516914943479-89db7d9ae7f2?auto=format&fit=crop&w=600&q=80", 8),
+            ("Bone Straight Wigs", "Silky, mirror-shine bone straight human hair that stays sleek.", "/images/categories/bone-straight.jpg", 1),
+            ("HD Lace Front Wigs", "Ultra-thin melted invisible HD swiss lace for imperceptible blend.", "/images/categories/hd-lace-front.jpg", 2),
+            ("Glueless & Wear-Go Wigs", "Pre-cut lace, pre-plucked, zero adhesive needed in 30 seconds.", "/images/categories/glueless-wigs.jpg", 3),
+            ("Deep Wave & Curly Wigs", "Lush bouncy defined curls with high volume and luscious texture.", "/images/categories/deep-wave.jpg", 4),
+            ("Bob Wigs", "Chic blunt cut, asymmetrical, and timeless bob styles for everyday glam.", "/images/categories/bob-wigs.jpg", 5),
+            ("Colored & Highlight Wigs", "Trendy piano highlights, 613 platinum blonde, and 99J burgundy.", "/images/categories/colored-highlights.jpg", 6),
+            ("Human Hair Wigs", "100% Virgin unprocessed human hair wigs with natural hairline.", "/images/categories/human-hair.jpg", 7),
+            ("Hair Extensions & Bundles", "Raw donor virgin hair bundles, closures, and frontals.", "/images/categories/hair-bundles.jpg", 8),
         ]
         cat_map = {}
         for name, desc, img, order in categories_data:
