@@ -1,0 +1,30 @@
+
+# Frontend dependencies and build output
+frontend/node_modules/
+node_modules/
+.next/
+out/
+dist/
+
+# Python virtual environments
+.venv/
+venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Local database and generated files
+db.sqlite3
+media/
+staticfiles/
+.pytest_cache/
+.coverage
+
+# Logs
+*.log

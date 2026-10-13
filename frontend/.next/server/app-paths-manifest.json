@@ -1,0 +1,8 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/shop/page": "app/shop/page.js",
+  "/wishlist/page": "app/wishlist/page.js",
+  "/account/login/page": "app/account/login/page.js",
+  "/account/register/page": "app/account/register/page.js",
+  "/admin-portal/page": "app/admin-portal/page.js"
+}
