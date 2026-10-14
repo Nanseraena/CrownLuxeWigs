@@ -74,17 +74,17 @@ class Command(BaseCommand):
 
         # 4. Curated Collections
         collections_data = [
-            ("New Arrivals", "new-arrivals", "Fresh luxury additions straight from our master wig makers.", "/images/categories/hd-lace-front.jpg", 1),
-            ("Best Sellers", "best-sellers", "Uganda's most-loved virgin hair crowns and viral favorites.", "/images/categories/bone-straight.jpg", 2),
-            ("Trending Now", "trending-now", "Pinterest-viral styles, honey blonde balayage, and glass hair.", "/images/categories/colored-highlights.jpg", 3),
-            ("Premium Collection", "premium-collection", "Raw cuticle-aligned unprocessed hair with undetectable 0.05mm HD film lace.", "/images/categories/hd-lace-front.jpg", 4),
-            ("Everyday Wigs", "everyday-wigs", "Effortless, low maintenance styles made for effortless daily wear.", "/images/categories/glueless-wigs.jpg", 5),
-            ("Work & Office Looks", "work-and-office-looks", "Chic blunt bobs and neat sleek silhouettes crafted for business glam.", "/images/categories/bob-wigs.jpg", 6),
-            ("Wedding & Special Occasion", "wedding-and-special-occasion", "Showstopping Hollywood waves and ultra-long 30\" frontal crowns.", "/images/categories/deep-wave.jpg", 7),
-            ("Beginner-Friendly Wigs", "beginner-friendly-wigs", "Zero glue, zero salon installation needed — slip on in 30 seconds.", "/images/categories/glueless-wigs.jpg", 8),
-            ("Affordable Finds", "affordable-finds", "High-style luxury crowns designed for smart, budget-conscious queens.", "/images/categories/bob-wigs.jpg", 9),
-            ("Long Hair Collection", "long-hair-collection", "Extra length 24\" to 32\" flowing human hair wigs for maximum drama.", "/images/categories/bone-straight.jpg", 10),
-            ("Short Hair Collection", "short-hair-collection", "10\" to 14\" precision bobs, pixies, and breezy short glam.", "/images/categories/bob-wigs.jpg", 11),
+            ("New Arrivals", "new-arrivals", "Fresh luxury additions straight from our master wig makers.", "/images/wigs/collections/new-arrivals.webp", 1),
+            ("Best Sellers", "best-sellers", "Uganda's most-loved virgin hair crowns and viral favorites.", "/images/wigs/collections/best-sellers.webp", 2),
+            ("Trending Now", "trending-now", "Pinterest-viral styles, honey blonde balayage, and glass hair.", "/images/wigs/collections/trending-now.webp", 3),
+            ("Premium Collection", "premium-collection", "Raw cuticle-aligned unprocessed hair with undetectable 0.05mm HD film lace.", "/images/wigs/collections/premium-collection.webp", 4),
+            ("Everyday Wigs", "everyday-wigs", "Effortless, low maintenance styles made for effortless daily wear.", "/images/wigs/collections/everyday-wigs.webp", 5),
+            ("Work & Office Looks", "work-and-office-looks", "Chic blunt bobs and neat sleek silhouettes crafted for business glam.", "/images/wigs/collections/work-office-looks.webp", 6),
+            ("Wedding & Special Occasion", "wedding-and-special-occasion", "Showstopping Hollywood waves and ultra-long 30\" frontal crowns.", "/images/wigs/collections/wedding-occasion.webp", 7),
+            ("Beginner-Friendly Wigs", "beginner-friendly-wigs", "Zero glue, zero salon installation needed — slip on in 30 seconds.", "/images/wigs/collections/beginner-friendly.webp", 8),
+            ("Affordable Finds", "affordable-finds", "High-style luxury crowns designed for smart, budget-conscious queens.", "/images/wigs/collections/affordable-finds.webp", 9),
+            ("Long Hair Collection", "long-hair-collection", "Extra length 24\" to 32\" flowing human hair wigs for maximum drama.", "/images/wigs/collections/long-hair.webp", 10),
+            ("Short Hair Collection", "short-hair-collection", "10\" to 14\" precision bobs, pixies, and breezy short glam.", "/images/wigs/collections/short-hair.webp", 11),
         ]
         collection_map = {}
         for cname, cslug, cdesc, cimg, corder in collections_data:
@@ -97,31 +97,31 @@ class Command(BaseCommand):
 
         # 5. Main Categories & Subcategories
         main_categories = [
-            ("Lace Front Wigs", "lace-front-wigs", "Ultra-thin ear-to-ear HD and transparent lace frontals for imperceptible hairline blends.", "/images/categories/hd-lace-front.jpg", 1, [
+            ("Lace Front Wigs", "lace-front-wigs", "Ultra-thin ear-to-ear HD and transparent lace frontals for imperceptible hairline blends.", "/images/wigs/categories/lace-front-wigs.webp", 1, [
                 ("13x4 Lace Front", "13x4-lace-front"),
                 ("13x6 Lace Front", "13x6-lace-front"),
                 ("HD Lace Front", "hd-lace-front"),
                 ("Transparent Lace Front", "transparent-lace-front"),
                 ("Pre-plucked Lace Front", "pre-plucked-lace-front"),
             ]),
-            ("Closure Wigs", "closure-wigs", "Low-maintenance HD and Swiss lace closures with realistic natural parting.", "/images/categories/glueless-wigs.jpg", 2, [
+            ("Closure Wigs", "closure-wigs", "Low-maintenance HD and Swiss lace closures with realistic natural parting.", "/images/wigs/categories/closure-wigs.webp", 2, [
                 ("4x4 Closure", "4x4-closure"),
                 ("5x5 Closure", "5x5-closure"),
                 ("2x6 Closure", "2x6-closure"),
                 ("2x4 Closure", "2x4-closure"),
             ]),
-            ("Glueless Wigs", "glueless-wigs", "Ready-to-wear 3D dome caps with pre-cut lace and silicone security bands. Zero adhesive needed.", "/images/categories/glueless-wigs.jpg", 3, [
+            ("Glueless Wigs", "glueless-wigs", "Ready-to-wear 3D dome caps with pre-cut lace and silicone security bands. Zero adhesive needed.", "/images/wigs/categories/glueless-wigs.webp", 3, [
                 ("Glueless Lace Front", "glueless-lace-front"),
                 ("Wear-and-Go Wigs", "wear-and-go-wigs"),
                 ("Beginner-Friendly Wigs", "beginner-friendly-category"),
             ]),
-            ("Bob Wigs", "bob-wigs", "Chic blunt cut, asymmetrical, and timeless bob styles for everyday glam.", "/images/categories/bob-wigs.jpg", 4, [
+            ("Bob Wigs", "bob-wigs", "Chic blunt cut, asymmetrical, and timeless bob styles for everyday glam.", "/images/wigs/categories/bob-wigs.webp", 4, [
                 ("Straight Bob", "straight-bob"),
                 ("Curly Bob", "curly-bob"),
                 ("Wavy Bob", "wavy-bob"),
                 ("Layered Bob", "layered-bob"),
             ]),
-            ("Curly and Wavy Wigs", "curly-and-wavy-wigs", "Lush bouncy curls, deep waves, water waves, and juicy defined textures.", "/images/categories/deep-wave.jpg", 5, [
+            ("Curly and Wavy Wigs", "curly-and-wavy-wigs", "Lush bouncy curls, deep waves, water waves, and juicy defined textures.", "/images/wigs/categories/curly-wavy-wigs.webp", 5, [
                 ("Deep Wave", "deep-wave-sub"),
                 ("Water Wave", "water-wave-sub"),
                 ("Body Wave", "body-wave-sub"),
@@ -130,13 +130,13 @@ class Command(BaseCommand):
                 ("Kinky Curly", "kinky-curly-sub"),
                 ("Loose Curly", "loose-curly-sub"),
             ]),
-            ("Straight Wigs", "straight-wigs", "Silky, mirror-shine bone straight, yaki, and kinky straight human hair wigs.", "/images/categories/bone-straight.jpg", 6, [
+            ("Straight Wigs", "straight-wigs", "Silky, mirror-shine bone straight, yaki, and kinky straight human hair wigs.", "/images/wigs/categories/straight-wigs.webp", 6, [
                 ("Bone Straight", "bone-straight-sub"),
                 ("Silky Straight", "silky-straight-sub"),
                 ("Yaki Straight", "yaki-straight-sub"),
                 ("Kinky Straight", "kinky-straight-sub"),
             ]),
-            ("Colored Wigs", "colored-wigs", "Balayage piano highlights, #613 platinum blonde, #99J burgundy wine, and spiced ginger.", "/images/categories/colored-highlights.jpg", 7, [
+            ("Colored Wigs", "colored-wigs", "Balayage piano highlights, #613 platinum blonde, #99J burgundy wine, and spiced ginger.", "/images/wigs/categories/colored-wigs.webp", 7, [
                 ("Blonde", "blonde-sub"),
                 ("Burgundy", "burgundy-sub"),
                 ("Ginger", "ginger-sub"),
@@ -147,14 +147,14 @@ class Command(BaseCommand):
                 ("Ombre", "ombre-sub"),
                 ("Balayage", "balayage-sub"),
             ]),
-            ("Specialty Wigs", "specialty-wigs", "Headband slip-on wigs, 360 high-ponytail lace, pixie cuts, and fringe bang styles.", "/images/categories/human-hair.jpg", 8, [
+            ("Specialty Wigs", "specialty-wigs", "Headband slip-on wigs, 360 high-ponytail lace, pixie cuts, and fringe bang styles.", "/images/wigs/categories/specialty-wigs.webp", 8, [
                 ("Headband Wigs", "headband-wigs-sub"),
                 ("Full Lace Wigs", "full-lace-wigs-sub"),
                 ("360 Lace Wigs", "360-lace-wigs-sub"),
                 ("Pixie Wigs", "pixie-wigs-sub"),
                 ("Bangs and Fringe Wigs", "bangs-and-fringe-wigs-sub"),
             ]),
-            ("Hair Extensions", "hair-extensions", "Raw donor virgin human hair bundles, closures, and frontal pieces.", "/images/categories/hair-bundles.jpg", 9, [
+            ("Hair Extensions", "hair-extensions", "Raw donor virgin human hair bundles, closures, and frontal pieces.", "/images/wigs/categories/hair-extensions.webp", 9, [
                 ("Bundles & Closures", "bundles-and-closures"),
                 ("Frontal Pieces", "frontal-pieces"),
             ]),
@@ -196,7 +196,10 @@ class Command(BaseCommand):
                 "description": "Our signature luxury virgin human hair wig. Featuring ultra-thin transparent HD lace that melts seamlessly into all melanin skin tones. 100% Brazilian virgin hair that flat irons to needle-sleek bone straight with intense natural luster.",
                 "is_featured": True, "is_best_seller": True, "is_new_arrival": False,
                 "collections": ["best-sellers", "premium-collection", "long-hair-collection"],
-                "images": ["/images/categories/bone-straight.jpg"],
+                "images": [
+                    "/images/wigs/lace-front/13x4-bone-straight-black.webp",
+                    "/images/wigs/details/hd-lace-hairline-detail.webp"
+                ],
                 "variants": [
                     {"sku": "CL-BS-18", "length": 18, "color": "Natural Black", "density": "180%", "price": Decimal("520000.00"), "compare_at": Decimal("620000.00"), "stock": 14},
                     {"sku": "CL-BS-22", "length": 22, "color": "Natural Black", "density": "180%", "price": Decimal("650000.00"), "compare_at": Decimal("780000.00"), "stock": 18},
@@ -216,7 +219,10 @@ class Command(BaseCommand):
                 "description": "Lush, bouncy, hydrated deep wave curls with deep 6-inch parting versatility. Allows half-up half-down and high ponytail styling with baby hairs.",
                 "is_featured": True, "is_best_seller": True, "is_new_arrival": False,
                 "collections": ["best-sellers", "wedding-and-special-occasion", "long-hair-collection"],
-                "images": ["/images/categories/deep-wave.jpg"],
+                "images": [
+                    "/images/wigs/lace-front/deep-wave-13x6-black.webp",
+                    "/images/wigs/details/hair-texture-deep-wave.webp"
+                ],
                 "variants": [
                     {"sku": "CL-DW-20", "length": 20, "color": "Natural Black", "density": "180%", "price": Decimal("610000.00"), "compare_at": Decimal("720000.00"), "stock": 10},
                     {"sku": "CL-DW-24", "length": 24, "color": "Natural Black", "density": "200%", "price": Decimal("760000.00"), "compare_at": Decimal("890000.00"), "stock": 15},
@@ -234,7 +240,10 @@ class Command(BaseCommand):
                 "description": "Hollywood glam body wave wig with pre-customized single-knot hairline and delicate temple baby hairs. Melts into any undertone effortlessly.",
                 "is_featured": True, "is_best_seller": False, "is_new_arrival": True,
                 "collections": ["new-arrivals", "premium-collection", "wedding-and-special-occasion"],
-                "images": ["/images/categories/hd-lace-front.jpg"],
+                "images": [
+                    "/images/wigs/lace-front/pre-plucked-body-wave.webp",
+                    "/images/wigs/details/hd-lace-hairline-detail.webp"
+                ],
                 "variants": [
                     {"sku": "CL-BW-22", "length": 22, "color": "Natural Black", "density": "180%", "price": Decimal("680000.00"), "compare_at": Decimal("800000.00"), "stock": 8},
                     {"sku": "CL-BW-28", "length": 28, "color": "Natural Black", "density": "200%", "price": Decimal("890000.00"), "compare_at": Decimal("1050000.00"), "stock": 12},
@@ -252,7 +261,10 @@ class Command(BaseCommand):
                 "description": "Mimics a fresh silk press on coarse 4C natural hair. Full-bodied volume with a natural textured look that blends invisibly with natural edges.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": True,
                 "collections": ["new-arrivals", "everyday-wigs"],
-                "images": ["/images/categories/bone-straight.jpg"],
+                "images": [
+                    "/images/wigs/lace-front/kinky-straight-transparent.webp",
+                    "/images/wigs/details/hair-texture-bone-straight.webp"
+                ],
                 "variants": [
                     {"sku": "CL-KS-18", "length": 18, "color": "Natural Black", "density": "180%", "price": Decimal("560000.00"), "compare_at": Decimal("680000.00"), "stock": 10},
                     {"sku": "CL-KS-22", "length": 22, "color": "Natural Black", "density": "200%", "price": Decimal("690000.00"), "compare_at": Decimal("820000.00"), "stock": 7},
@@ -271,7 +283,10 @@ class Command(BaseCommand):
                 "description": "Effortless, low maintenance 5x5 HD closure with wet-and-wavy high elasticity coils. Clean free-parting space with zero glue needed on the sides.",
                 "is_featured": False, "is_best_seller": True, "is_new_arrival": False,
                 "collections": ["best-sellers", "everyday-wigs", "beginner-friendly-wigs"],
-                "images": ["/images/categories/deep-wave.jpg"],
+                "images": [
+                    "/images/wigs/closure/5x5-water-wave-black.webp",
+                    "/images/wigs/details/hd-lace-hairline-detail.webp"
+                ],
                 "variants": [
                     {"sku": "CL-WW-18", "length": 18, "color": "Natural Black", "density": "180%", "price": Decimal("490000.00"), "compare_at": Decimal("590000.00"), "stock": 16},
                     {"sku": "CL-WW-22", "length": 22, "color": "Natural Black", "density": "180%", "price": Decimal("620000.00"), "compare_at": Decimal("740000.00"), "stock": 11},
@@ -289,7 +304,10 @@ class Command(BaseCommand):
                 "description": "Perfect beginner closure wig. 100% Indian virgin temple hair with natural softness and mirror luster. Pre-plucked with pre-cut lace.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": False,
                 "collections": ["affordable-finds", "beginner-friendly-wigs", "work-and-office-looks"],
-                "images": ["/images/categories/bone-straight.jpg"],
+                "images": [
+                    "/images/wigs/closure/4x4-silky-straight-black.webp",
+                    "/images/wigs/details/cap-construction.webp"
+                ],
                 "variants": [
                     {"sku": "CL-SS-14", "length": 14, "color": "Natural Black", "density": "150%", "price": Decimal("390000.00"), "compare_at": Decimal("480000.00"), "stock": 14},
                     {"sku": "CL-SS-18", "length": 18, "color": "Natural Black", "density": "180%", "price": Decimal("490000.00"), "compare_at": Decimal("590000.00"), "stock": 9},
@@ -306,7 +324,10 @@ class Command(BaseCommand):
                 "description": "Viral 2x6 'Kim K' deep parting closure unit. Provides an ultra-deep 6-inch natural middle scalp part with zero temple lace to cut or melt.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": True,
                 "collections": ["new-arrivals", "everyday-wigs"],
-                "images": ["/images/categories/bone-straight.jpg"],
+                "images": [
+                    "/images/wigs/closure/2x6-bone-straight-black.webp",
+                    "/images/wigs/details/hd-lace-hairline-detail.webp"
+                ],
                 "variants": [
                     {"sku": "CL-2X6-20", "length": 20, "color": "Natural Black", "density": "180%", "price": Decimal("550000.00"), "compare_at": Decimal("660000.00"), "stock": 8},
                     {"sku": "CL-2X6-24", "length": 24, "color": "Natural Black", "density": "200%", "price": Decimal("680000.00"), "compare_at": Decimal("810000.00"), "stock": 6},
@@ -325,7 +346,10 @@ class Command(BaseCommand):
                 "description": "Slip on in 30 seconds. Features pre-cut zig-zag scalloped lace, pre-bleached invisible knots, and an anti-slip silicone elastic band. Zero adhesive needed.",
                 "is_featured": True, "is_best_seller": True, "is_new_arrival": False,
                 "collections": ["best-sellers", "beginner-friendly-wigs", "everyday-wigs"],
-                "images": ["/images/categories/glueless-wigs.jpg"],
+                "images": [
+                    "/images/wigs/glueless/wear-and-go-body-wave.webp",
+                    "/images/wigs/details/cap-construction.webp"
+                ],
                 "variants": [
                     {"sku": "CL-WG-16", "length": 16, "color": "Natural Black", "density": "180%", "price": Decimal("460000.00"), "compare_at": Decimal("560000.00"), "stock": 15},
                     {"sku": "CL-WG-20", "length": 20, "color": "Natural Black", "density": "180%", "price": Decimal("590000.00"), "compare_at": Decimal("710000.00"), "stock": 20},
@@ -343,7 +367,10 @@ class Command(BaseCommand):
                 "description": "Zero gel, zero glue, zero bleached knot irritation. High density bone straight virgin hair with snug, comfortable cap grip.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": True,
                 "collections": ["new-arrivals", "beginner-friendly-wigs"],
-                "images": ["/images/categories/glueless-wigs.jpg"],
+                "images": [
+                    "/images/wigs/glueless/bye-bye-knots-straight.webp",
+                    "/images/wigs/details/glueless-elastic-band-detail.webp"
+                ],
                 "variants": [
                     {"sku": "CL-BBK-18", "length": 18, "color": "Natural Black", "density": "180%", "price": Decimal("530000.00"), "compare_at": Decimal("640000.00"), "stock": 11},
                     {"sku": "CL-BBK-22", "length": 22, "color": "Natural Black", "density": "200%", "price": Decimal("670000.00"), "compare_at": Decimal("800000.00"), "stock": 8},
@@ -360,7 +387,10 @@ class Command(BaseCommand):
                 "description": "The easiest wig you will ever own. A chic 12-inch bob cut with pre-customized hairline. Just shake, slip on, and go.",
                 "is_featured": False, "is_best_seller": True, "is_new_arrival": False,
                 "collections": ["best-sellers", "beginner-friendly-wigs", "short-hair-collection", "work-and-office-looks"],
-                "images": ["/images/categories/bob-wigs.jpg"],
+                "images": [
+                    "/images/wigs/glueless/30-second-throw-on-bob.webp",
+                    "/images/wigs/details/cap-construction.webp"
+                ],
                 "variants": [
                     {"sku": "CL-BOB-10-GL", "length": 10, "color": "Natural Black", "density": "150%", "price": Decimal("380000.00"), "compare_at": Decimal("470000.00"), "stock": 12},
                     {"sku": "CL-BOB-12-GL", "length": 12, "color": "Natural Black", "density": "180%", "price": Decimal("440000.00"), "compare_at": Decimal("530000.00"), "stock": 18},
@@ -379,7 +409,10 @@ class Command(BaseCommand):
                 "description": "Razor-sharp blunt cut precision bob in rich chocolate espresso tone. Lightweight, breezy around the neck, with razor-sharp ends.",
                 "is_featured": True, "is_best_seller": True, "is_new_arrival": False,
                 "collections": ["best-sellers", "work-and-office-looks", "short-hair-collection"],
-                "images": ["/images/categories/bob-wigs.jpg"],
+                "images": [
+                    "/images/wigs/bob/blunt-cut-sleek-bob-black.webp",
+                    "/images/wigs/details/hair-texture-bone-straight.webp"
+                ],
                 "variants": [
                     {"sku": "CL-BLUNT-10-BR", "length": 10, "color": "Natural Brown", "density": "150%", "price": Decimal("410000.00"), "compare_at": Decimal("500000.00"), "stock": 10},
                     {"sku": "CL-BLUNT-10-BK", "length": 10, "color": "Natural Black", "density": "150%", "price": Decimal("410000.00"), "compare_at": Decimal("500000.00"), "stock": 14},
@@ -397,7 +430,10 @@ class Command(BaseCommand):
                 "description": "Dramatic high-fashion asymmetrical cut with longer sleek face-framing front and tapered back neck profile.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": True,
                 "collections": ["new-arrivals", "work-and-office-looks", "short-hair-collection"],
-                "images": ["/images/categories/bob-wigs.jpg"],
+                "images": [
+                    "/images/wigs/bob/asymmetrical-bob-black.webp",
+                    "/images/wigs/details/hair-texture-bone-straight.webp"
+                ],
                 "variants": [
                     {"sku": "CL-ASYM-12", "length": 12, "color": "Natural Black", "density": "180%", "price": Decimal("480000.00"), "compare_at": Decimal("580000.00"), "stock": 8},
                     {"sku": "CL-ASYM-14", "length": 14, "color": "Natural Black", "density": "180%", "price": Decimal("530000.00"), "compare_at": Decimal("630000.00"), "stock": 6},
@@ -414,7 +450,10 @@ class Command(BaseCommand):
                 "description": "Bouncy voluminous curls framed with cute wispy fringe bangs. No lace installation needed whatsoever.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": False,
                 "collections": ["everyday-wigs", "short-hair-collection", "affordable-finds"],
-                "images": ["/images/categories/deep-wave.jpg"],
+                "images": [
+                    "/images/wigs/bob/deep-wave-curly-bob-bangs.webp",
+                    "/images/wigs/details/hair-texture-deep-wave.webp"
+                ],
                 "variants": [
                     {"sku": "CL-CBOB-12", "length": 12, "color": "Natural Black", "density": "180%", "price": Decimal("420000.00"), "compare_at": Decimal("510000.00"), "stock": 10},
                     {"sku": "CL-CBOB-14", "length": 14, "color": "Natural Black", "density": "180%", "price": Decimal("470000.00"), "compare_at": Decimal("570000.00"), "stock": 7},
@@ -431,7 +470,10 @@ class Command(BaseCommand):
                 "description": "Rich mocha #4 chocolate brown with soft feather layers that swoop elegantly behind the ears.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": True,
                 "collections": ["new-arrivals", "work-and-office-looks", "short-hair-collection"],
-                "images": ["/images/categories/bob-wigs.jpg"],
+                "images": [
+                    "/images/wigs/bob/layered-chocolate-bob.webp",
+                    "/images/wigs/details/hd-lace-hairline-detail.webp"
+                ],
                 "variants": [
                     {"sku": "CL-LBOB-10", "length": 10, "color": "Chocolate Brown", "density": "150%", "price": Decimal("440000.00"), "compare_at": Decimal("530000.00"), "stock": 9},
                 ],
@@ -449,7 +491,10 @@ class Command(BaseCommand):
                 "description": "Ultra-long mermaid coils with glistening water ripples. 200% density providing dramatic, full-bodied volume from roots to tips.",
                 "is_featured": True, "is_best_seller": False, "is_new_arrival": True,
                 "collections": ["new-arrivals", "long-hair-collection", "wedding-and-special-occasion"],
-                "images": ["/images/categories/deep-wave.jpg"],
+                "images": [
+                    "/images/wigs/curly-wavy/water-wave-long.webp",
+                    "/images/wigs/details/hair-texture-deep-wave.webp"
+                ],
                 "variants": [
                     {"sku": "CL-WW28-24", "length": 24, "color": "Natural Black", "density": "200%", "price": Decimal("770000.00"), "compare_at": Decimal("910000.00"), "stock": 10},
                     {"sku": "CL-WW28-28", "length": 28, "color": "Natural Black", "density": "200%", "price": Decimal("920000.00"), "compare_at": Decimal("1080000.00"), "stock": 8},
@@ -467,7 +512,10 @@ class Command(BaseCommand):
                 "description": "Large, cascading S-pattern waves that hold their shape for days. Silky soft virgin Indian hair with high elasticity.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": False,
                 "collections": ["everyday-wigs", "long-hair-collection"],
-                "images": ["/images/categories/hd-lace-front.jpg"],
+                "images": [
+                    "/images/wigs/curly-wavy/loose-wave-mermaid.webp",
+                    "/images/wigs/details/hd-lace-hairline-detail.webp"
+                ],
                 "variants": [
                     {"sku": "CL-LW-20", "length": 20, "color": "Natural Black", "density": "180%", "price": Decimal("580000.00"), "compare_at": Decimal("690000.00"), "stock": 11},
                     {"sku": "CL-LW-24", "length": 24, "color": "Natural Black", "density": "200%", "price": Decimal("730000.00"), "compare_at": Decimal("860000.00"), "stock": 7},
@@ -484,7 +532,10 @@ class Command(BaseCommand):
                 "description": "Celebrates natural afro textures. Dense, corkscrew micro-curls that mimic healthy 4B/4C coils with realistic scalp emergence.",
                 "is_featured": False, "is_best_seller": True, "is_new_arrival": False,
                 "collections": ["best-sellers", "everyday-wigs"],
-                "images": ["/images/categories/deep-wave.jpg"],
+                "images": [
+                    "/images/wigs/curly-wavy/kinky-curly-natural.webp",
+                    "/images/wigs/details/hair-texture-kinky-curly.webp"
+                ],
                 "variants": [
                     {"sku": "CL-KC-16", "length": 16, "color": "Natural Black", "density": "200%", "price": Decimal("520000.00"), "compare_at": Decimal("620000.00"), "stock": 12},
                     {"sku": "CL-KC-22", "length": 22, "color": "Natural Black", "density": "200%", "price": Decimal("690000.00"), "compare_at": Decimal("820000.00"), "stock": 9},
@@ -501,7 +552,10 @@ class Command(BaseCommand):
                 "description": "Raw donor Cambodian hair. Coarser strands with thick cuticle layers that create monumental volume and defined curls.",
                 "is_featured": True, "is_best_seller": False, "is_new_arrival": True,
                 "collections": ["new-arrivals", "premium-collection", "long-hair-collection"],
-                "images": ["/images/categories/deep-wave.jpg"],
+                "images": [
+                    "/images/wigs/curly-wavy/raw-cambodian-deep-curly.webp",
+                    "/images/wigs/details/hair-texture-deep-wave.webp"
+                ],
                 "variants": [
                     {"sku": "CL-CAM-22", "length": 22, "color": "Natural Black", "density": "200%", "price": Decimal("760000.00"), "compare_at": Decimal("900000.00"), "stock": 6},
                     {"sku": "CL-CAM-26", "length": 26, "color": "Natural Black", "density": "250%", "price": Decimal("940000.00"), "compare_at": Decimal("1110000.00"), "stock": 4},
@@ -520,7 +574,10 @@ class Command(BaseCommand):
                 "description": "The viral Pinterest 'Glass Hair'. Straight down to the tailbone with needle-sharp blunt ends and liquid mirror shine.",
                 "is_featured": True, "is_best_seller": True, "is_new_arrival": False,
                 "collections": ["best-sellers", "premium-collection", "long-hair-collection"],
-                "images": ["/images/categories/bone-straight.jpg"],
+                "images": [
+                    "/images/wigs/straight/bone-straight-glass-finish.webp",
+                    "/images/wigs/details/hair-texture-bone-straight.webp"
+                ],
                 "variants": [
                     {"sku": "CL-GLASS-26", "length": 26, "color": "Natural Black", "density": "200%", "price": Decimal("840000.00"), "compare_at": Decimal("980000.00"), "stock": 10},
                     {"sku": "CL-GLASS-30", "length": 30, "color": "Natural Black", "density": "250%", "price": Decimal("1020000.00"), "compare_at": Decimal("1200000.00"), "stock": 6},
@@ -538,7 +595,10 @@ class Command(BaseCommand):
                 "description": "The look of freshly blown-out relaxed hair. Has micro-crimps that give tremendous body and hold curls much longer than silky hair.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": False,
                 "collections": ["everyday-wigs", "long-hair-collection"],
-                "images": ["/images/categories/bone-straight.jpg"],
+                "images": [
+                    "/images/wigs/straight/yaki-straight-blowout.webp",
+                    "/images/wigs/details/hair-texture-bone-straight.webp"
+                ],
                 "variants": [
                     {"sku": "CL-YAKI-22", "length": 22, "color": "Natural Black", "density": "180%", "price": Decimal("640000.00"), "compare_at": Decimal("760000.00"), "stock": 8},
                     {"sku": "CL-YAKI-28", "length": 28, "color": "Natural Black", "density": "200%", "price": Decimal("830000.00"), "compare_at": Decimal("980000.00"), "stock": 6},
@@ -555,7 +615,10 @@ class Command(BaseCommand):
                 "description": "Raw donor Burmese human hair with natural warm undertones. Thick cuticle alignment that bleaches to 613 blonde easily.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": True,
                 "collections": ["new-arrivals", "premium-collection"],
-                "images": ["/images/categories/human-hair.jpg"],
+                "images": [
+                    "/images/wigs/straight/silky-straight-burmese.webp",
+                    "/images/wigs/details/hair-texture-bone-straight.webp"
+                ],
                 "variants": [
                     {"sku": "CL-BURM-20", "length": 20, "color": "Natural Brown", "density": "180%", "price": Decimal("660000.00"), "compare_at": Decimal("780000.00"), "stock": 7},
                     {"sku": "CL-BURM-24", "length": 24, "color": "Natural Brown", "density": "200%", "price": Decimal("810000.00"), "compare_at": Decimal("950000.00"), "stock": 5},
@@ -574,7 +637,10 @@ class Command(BaseCommand):
                 "description": "The viral Pinterest honey blonde piano highlight trend. Alternating caramel honey blonde ribbons and dark chocolate brown streaks.",
                 "is_featured": True, "is_best_seller": True, "is_new_arrival": False,
                 "collections": ["trending-now", "best-sellers", "wedding-and-special-occasion", "long-hair-collection"],
-                "images": ["/images/categories/colored-highlights.jpg"],
+                "images": [
+                    "/images/wigs/colored/piano-honey-blonde-balayage.webp",
+                    "/images/wigs/details/hd-lace-hairline-detail.webp"
+                ],
                 "variants": [
                     {"sku": "CL-P427-20", "length": 20, "color": "Piano Highlights", "density": "180%", "price": Decimal("690000.00"), "compare_at": Decimal("820000.00"), "stock": 14},
                     {"sku": "CL-P427-24", "length": 24, "color": "Piano Highlights", "density": "200%", "price": Decimal("840000.00"), "compare_at": Decimal("990000.00"), "stock": 12},
@@ -592,7 +658,10 @@ class Command(BaseCommand):
                 "description": "Warm cinnamon spice and vibrant copper ginger tones that give an intoxicating sunlit glow. Pre-toned and deeply conditioned.",
                 "is_featured": True, "is_best_seller": False, "is_new_arrival": True,
                 "collections": ["trending-now", "new-arrivals", "wedding-and-special-occasion"],
-                "images": ["/images/categories/colored-highlights.jpg"],
+                "images": [
+                    "/images/wigs/colored/ginger-copper-loose-wave.webp",
+                    "/images/wigs/details/hd-lace-hairline-detail.webp"
+                ],
                 "variants": [
                     {"sku": "CL-GIN-18", "length": 18, "color": "Ginger", "density": "180%", "price": Decimal("620000.00"), "compare_at": Decimal("740000.00"), "stock": 9},
                     {"sku": "CL-GIN-22", "length": 22, "color": "Ginger", "density": "200%", "price": Decimal("780000.00"), "compare_at": Decimal("920000.00"), "stock": 8},
@@ -610,7 +679,10 @@ class Command(BaseCommand):
                 "description": "Vampy, luxurious 99J deep cherry wine that shimmers with dark burgundy red undertones in direct sunlight.",
                 "is_featured": False, "is_best_seller": True, "is_new_arrival": False,
                 "collections": ["trending-now", "best-sellers", "long-hair-collection"],
-                "images": ["/images/categories/colored-highlights.jpg"],
+                "images": [
+                    "/images/wigs/colored/burgundy-99j-bone-straight.webp",
+                    "/images/wigs/details/hair-texture-bone-straight.webp"
+                ],
                 "variants": [
                     {"sku": "CL-99J-20", "length": 20, "color": "Burgundy", "density": "180%", "price": Decimal("660000.00"), "compare_at": Decimal("780000.00"), "stock": 10},
                     {"sku": "CL-99J-24", "length": 24, "color": "Burgundy", "density": "200%", "price": Decimal("820000.00"), "compare_at": Decimal("970000.00"), "stock": 7},
@@ -627,7 +699,10 @@ class Command(BaseCommand):
                 "description": "Bleached to lightest #613 ice blonde from raw virgin donor hair. Soft, silky, and ready to wear or dye into custom pastels.",
                 "is_featured": True, "is_best_seller": False, "is_new_arrival": True,
                 "collections": ["trending-now", "new-arrivals", "premium-collection"],
-                "images": ["/images/categories/colored-highlights.jpg"],
+                "images": [
+                    "/images/wigs/colored/613-platinum-blonde.webp",
+                    "/images/wigs/details/hd-lace-hairline-detail.webp"
+                ],
                 "variants": [
                     {"sku": "CL-613-22", "length": 22, "color": "Platinum Blonde", "density": "180%", "price": Decimal("790000.00"), "compare_at": Decimal("940000.00"), "stock": 6},
                     {"sku": "CL-613-26", "length": 26, "color": "Platinum Blonde", "density": "200%", "price": Decimal("960000.00"), "compare_at": Decimal("1140000.00"), "stock": 4},
@@ -644,7 +719,10 @@ class Command(BaseCommand):
                 "description": "Seamless transition from natural dark roots to warm golden caramel and honey blonde tips.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": False,
                 "collections": ["trending-now", "everyday-wigs"],
-                "images": ["/images/categories/colored-highlights.jpg"],
+                "images": [
+                    "/images/wigs/colored/ombre-caramel-honey.webp",
+                    "/images/wigs/details/hd-lace-hairline-detail.webp"
+                ],
                 "variants": [
                     {"sku": "CL-OMB-18", "length": 18, "color": "Ombre", "density": "180%", "price": Decimal("580000.00"), "compare_at": Decimal("690000.00"), "stock": 8},
                     {"sku": "CL-OMB-22", "length": 22, "color": "Ombre", "density": "200%", "price": Decimal("720000.00"), "compare_at": Decimal("850000.00"), "stock": 6},
@@ -661,7 +739,10 @@ class Command(BaseCommand):
                 "description": "Solid warm chocolate brown #4 with caramel glints. Flattering, soft alternative to jet black hair.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": True,
                 "collections": ["new-arrivals", "work-and-office-looks", "long-hair-collection"],
-                "images": ["/images/categories/colored-highlights.jpg"],
+                "images": [
+                    "/images/wigs/colored/chocolate-brown-silky.webp",
+                    "/images/wigs/details/hair-texture-bone-straight.webp"
+                ],
                 "variants": [
                     {"sku": "CL-CHOC-20", "length": 20, "color": "Chocolate Brown", "density": "180%", "price": Decimal("620000.00"), "compare_at": Decimal("730000.00"), "stock": 9},
                     {"sku": "CL-CHOC-24", "length": 24, "color": "Chocolate Brown", "density": "200%", "price": Decimal("770000.00"), "compare_at": Decimal("910000.00"), "stock": 6},
@@ -680,7 +761,10 @@ class Command(BaseCommand):
                 "description": "Lace wraps entirely around your hairline and nape. Allows sky-high ponytails, top knots, and braided updos.",
                 "is_featured": True, "is_best_seller": False, "is_new_arrival": False,
                 "collections": ["wedding-and-special-occasion", "premium-collection", "long-hair-collection"],
-                "images": ["/images/categories/hd-lace-front.jpg"],
+                "images": [
+                    "/images/wigs/specialty/360-full-lace-body-wave.webp",
+                    "/images/wigs/details/cap-construction.webp"
+                ],
                 "variants": [
                     {"sku": "CL-360-22", "length": 22, "color": "Natural Black", "density": "200%", "price": Decimal("790000.00"), "compare_at": Decimal("940000.00"), "stock": 7},
                     {"sku": "CL-360-26", "length": 26, "color": "Natural Black", "density": "250%", "price": Decimal("980000.00"), "compare_at": Decimal("1160000.00"), "stock": 5},
@@ -697,7 +781,10 @@ class Command(BaseCommand):
                 "description": "The ultimate travel companion. Zero lace cutting or glue. Slip on, secure with velcro strap, and add your favorite decorative headband.",
                 "is_featured": False, "is_best_seller": True, "is_new_arrival": False,
                 "collections": ["affordable-finds", "everyday-wigs", "beginner-friendly-wigs"],
-                "images": ["/images/categories/deep-wave.jpg"],
+                "images": [
+                    "/images/wigs/specialty/headband-deep-wave.webp",
+                    "/images/wigs/details/hair-texture-deep-wave.webp"
+                ],
                 "variants": [
                     {"sku": "CL-HB-16", "length": 16, "color": "Natural Black", "density": "150%", "price": Decimal("350000.00"), "compare_at": Decimal("430000.00"), "stock": 20},
                     {"sku": "CL-HB-20", "length": 20, "color": "Natural Black", "density": "180%", "price": Decimal("430000.00"), "compare_at": Decimal("520000.00"), "stock": 14},
@@ -714,7 +801,10 @@ class Command(BaseCommand):
                 "description": "Sophisticated short cropped pixie cut with feathered crown layers and tapered neck edge. Chic statement style.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": True,
                 "collections": ["short-hair-collection", "affordable-finds", "work-and-office-looks"],
-                "images": ["/images/categories/bob-wigs.jpg"],
+                "images": [
+                    "/images/wigs/specialty/pixie-cut-jet-black.webp",
+                    "/images/wigs/details/hair-texture-bone-straight.webp"
+                ],
                 "variants": [
                     {"sku": "CL-PIX-10", "length": 10, "color": "Jet Black", "density": "150%", "price": Decimal("320000.00"), "compare_at": Decimal("390000.00"), "stock": 12},
                 ],
@@ -730,7 +820,10 @@ class Command(BaseCommand):
                 "description": "Edgy, high-fashion full French fringe bangs with sleek bone straight length. No lace blending required.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": False,
                 "collections": ["everyday-wigs", "long-hair-collection"],
-                "images": ["/images/categories/bone-straight.jpg"],
+                "images": [
+                    "/images/wigs/specialty/french-bangs-bone-straight.webp",
+                    "/images/wigs/details/hair-texture-bone-straight.webp"
+                ],
                 "variants": [
                     {"sku": "CL-BANG-20", "length": 20, "color": "Natural Black", "density": "180%", "price": Decimal("520000.00"), "compare_at": Decimal("630000.00"), "stock": 9},
                     {"sku": "CL-BANG-24", "length": 24, "color": "Natural Black", "density": "200%", "price": Decimal("670000.00"), "compare_at": Decimal("790000.00"), "stock": 7},
@@ -749,7 +842,10 @@ class Command(BaseCommand):
                 "description": "Triple machine-wefted virgin bundles (3 bundles: 20\", 22\", 24\") paired with matching 5x5 HD Swiss lace closure. Cuticle-aligned to prevent tangling.",
                 "is_featured": True, "is_best_seller": True, "is_new_arrival": False,
                 "collections": ["best-sellers", "premium-collection"],
-                "images": ["/images/categories/hair-bundles.jpg"],
+                "images": [
+                    "/images/wigs/extensions/bundles-body-wave-closure.webp",
+                    "/images/wigs/extensions/closure-piece-hd.webp"
+                ],
                 "variants": [
                     {"sku": "CL-BDL-18", "length": 18, "color": "Natural Black", "density": "200%", "price": Decimal("580000.00"), "compare_at": Decimal("690000.00"), "stock": 14},
                     {"sku": "CL-BDL-24", "length": 24, "color": "Natural Black", "density": "200%", "price": Decimal("750000.00"), "compare_at": Decimal("890000.00"), "stock": 10},
@@ -767,7 +863,10 @@ class Command(BaseCommand):
                 "description": "100% Raw unprocessed Peruvian virgin straight hair bundles. Full wefts from top to bottom that flat iron to needle-sharp sleekness.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": True,
                 "collections": ["new-arrivals", "long-hair-collection"],
-                "images": ["/images/categories/hair-bundles.jpg"],
+                "images": [
+                    "/images/wigs/extensions/bundles-bone-straight.webp",
+                    "/images/wigs/details/hair-texture-bone-straight.webp"
+                ],
                 "variants": [
                     {"sku": "CL-SBDL-22", "length": 22, "color": "Natural Black", "density": "200%", "price": Decimal("680000.00"), "compare_at": Decimal("800000.00"), "stock": 8},
                     {"sku": "CL-SBDL-26", "length": 26, "color": "Natural Black", "density": "200%", "price": Decimal("840000.00"), "compare_at": Decimal("990000.00"), "stock": 7},
@@ -784,7 +883,10 @@ class Command(BaseCommand):
                 "description": "Replacement HD frontal piece for custom wig builds or salon sew-ins. Pre-plucked natural hairline with single micro knots.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": False,
                 "collections": ["affordable-finds"],
-                "images": ["/images/categories/hd-lace-front.jpg"],
+                "images": [
+                    "/images/wigs/extensions/frontal-piece-hd-lace.webp",
+                    "/images/wigs/details/hd-lace-hairline-detail.webp"
+                ],
                 "variants": [
                     {"sku": "CL-SOLO-16", "length": 16, "color": "Natural Black", "density": "150%", "price": Decimal("310000.00"), "compare_at": Decimal("380000.00"), "stock": 15},
                     {"sku": "CL-SOLO-18", "length": 18, "color": "Natural Black", "density": "150%", "price": Decimal("360000.00"), "compare_at": Decimal("440000.00"), "stock": 10},

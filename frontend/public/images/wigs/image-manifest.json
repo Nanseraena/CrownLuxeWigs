@@ -1,0 +1,1630 @@
+{
+  "title": "CrownLuxe Wigs Image Library Manifest",
+  "total_required": 81,
+  "total_complete": 81,
+  "total_missing": 0,
+  "total_invalid": 0,
+  "images": [
+    {
+      "id": "cat-lace-front",
+      "category_or_slug": "lace-front-wigs",
+      "filename": "lace-front-wigs.webp",
+      "description": "Lace Front Wigs category tile \u2014 HD lace melted hairline on canvas mannequin head",
+      "rel_path": "/images/wigs/categories/lace-front-wigs.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/categories/lace-front-wigs.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 236226,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Category:lace-front-wigs"
+      ],
+      "error": null
+    },
+    {
+      "id": "cat-closure",
+      "category_or_slug": "closure-wigs",
+      "filename": "closure-wigs.webp",
+      "description": "Closure Wigs category tile \u2014 Neat 5x5 natural middle part closure",
+      "rel_path": "/images/wigs/categories/closure-wigs.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/categories/closure-wigs.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 178628,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Category:closure-wigs"
+      ],
+      "error": null
+    },
+    {
+      "id": "cat-glueless",
+      "category_or_slug": "glueless-wigs",
+      "filename": "glueless-wigs.webp",
+      "description": "Glueless Wigs category tile \u2014 Ready-to-wear 3D dome cap pre-cut lace unit",
+      "rel_path": "/images/wigs/categories/glueless-wigs.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/categories/glueless-wigs.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 233082,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Category:glueless-wigs"
+      ],
+      "error": null
+    },
+    {
+      "id": "cat-bob",
+      "category_or_slug": "bob-wigs",
+      "filename": "bob-wigs.webp",
+      "description": "Bob Wigs category tile \u2014 Sleek 10-inch blunt cut bob with sharp perimeter",
+      "rel_path": "/images/wigs/categories/bob-wigs.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/categories/bob-wigs.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 174818,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Category:bob-wigs"
+      ],
+      "error": null
+    },
+    {
+      "id": "cat-curly-wavy",
+      "category_or_slug": "curly-and-wavy-wigs",
+      "filename": "curly-wavy-wigs.webp",
+      "description": "Curly & Wavy Wigs category tile \u2014 Defined spiral deep wave locks",
+      "rel_path": "/images/wigs/categories/curly-wavy-wigs.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/categories/curly-wavy-wigs.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 200008,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Category:curly-and-wavy-wigs"
+      ],
+      "error": null
+    },
+    {
+      "id": "cat-straight",
+      "category_or_slug": "straight-wigs",
+      "filename": "straight-wigs.webp",
+      "description": "Straight Wigs category tile \u2014 Mirror shine bone straight raw virgin hair",
+      "rel_path": "/images/wigs/categories/straight-wigs.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/categories/straight-wigs.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 192892,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Category:straight-wigs"
+      ],
+      "error": null
+    },
+    {
+      "id": "cat-colored",
+      "category_or_slug": "colored-wigs",
+      "filename": "colored-wigs.webp",
+      "description": "Colored Wigs category tile \u2014 Sun-kissed honey blonde balayage ribbons",
+      "rel_path": "/images/wigs/categories/colored-wigs.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/categories/colored-wigs.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 134128,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Category:colored-wigs"
+      ],
+      "error": null
+    },
+    {
+      "id": "cat-specialty",
+      "category_or_slug": "specialty-wigs",
+      "filename": "specialty-wigs.webp",
+      "description": "Specialty Wigs category tile \u2014 Headband slip-on and 360 high ponytail unit",
+      "rel_path": "/images/wigs/categories/specialty-wigs.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/categories/specialty-wigs.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 194416,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Category:specialty-wigs"
+      ],
+      "error": null
+    },
+    {
+      "id": "cat-extensions",
+      "category_or_slug": "hair-extensions",
+      "filename": "hair-extensions.webp",
+      "description": "Hair Extensions category tile \u2014 Cuticle-aligned raw donor virgin bundles",
+      "rel_path": "/images/wigs/categories/hair-extensions.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/categories/hair-extensions.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 213806,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Category:hair-extensions"
+      ],
+      "error": null
+    },
+    {
+      "id": "col-new-arrivals",
+      "category_or_slug": "new-arrivals",
+      "filename": "new-arrivals.webp",
+      "description": "New Arrivals editorial banner",
+      "rel_path": "/images/wigs/collections/new-arrivals.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/collections/new-arrivals.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1400,
+        "height": 800,
+        "size_bytes": 67536,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Collection:new-arrivals"
+      ],
+      "error": null
+    },
+    {
+      "id": "col-best-sellers",
+      "category_or_slug": "best-sellers",
+      "filename": "best-sellers.webp",
+      "description": "Best Sellers editorial banner",
+      "rel_path": "/images/wigs/collections/best-sellers.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/collections/best-sellers.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1400,
+        "height": 800,
+        "size_bytes": 175128,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Collection:best-sellers"
+      ],
+      "error": null
+    },
+    {
+      "id": "col-trending-now",
+      "category_or_slug": "trending-now",
+      "filename": "trending-now.webp",
+      "description": "Trending Now editorial banner",
+      "rel_path": "/images/wigs/collections/trending-now.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/collections/trending-now.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1400,
+        "height": 800,
+        "size_bytes": 156920,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Collection:trending-now"
+      ],
+      "error": null
+    },
+    {
+      "id": "col-premium-collection",
+      "category_or_slug": "premium-collection",
+      "filename": "premium-collection.webp",
+      "description": "Premium Collection raw virgin hair banner",
+      "rel_path": "/images/wigs/collections/premium-collection.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/collections/premium-collection.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1400,
+        "height": 800,
+        "size_bytes": 233704,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Collection:premium-collection"
+      ],
+      "error": null
+    },
+    {
+      "id": "col-everyday-wigs",
+      "category_or_slug": "everyday-wigs",
+      "filename": "everyday-wigs.webp",
+      "description": "Everyday low maintenance wigs banner",
+      "rel_path": "/images/wigs/collections/everyday-wigs.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/collections/everyday-wigs.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1400,
+        "height": 800,
+        "size_bytes": 231414,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Collection:everyday-wigs"
+      ],
+      "error": null
+    },
+    {
+      "id": "col-work-office",
+      "category_or_slug": "work-and-office-looks",
+      "filename": "work-office-looks.webp",
+      "description": "Work and Office chic bob banner",
+      "rel_path": "/images/wigs/collections/work-office-looks.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/collections/work-office-looks.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1400,
+        "height": 800,
+        "size_bytes": 171896,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Collection:work-and-office-looks"
+      ],
+      "error": null
+    },
+    {
+      "id": "col-wedding-occasion",
+      "category_or_slug": "wedding-and-special-occasion",
+      "filename": "wedding-occasion.webp",
+      "description": "Wedding and Special Occasion Hollywood glam waves banner",
+      "rel_path": "/images/wigs/collections/wedding-occasion.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/collections/wedding-occasion.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1400,
+        "height": 800,
+        "size_bytes": 177696,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Collection:wedding-and-special-occasion"
+      ],
+      "error": null
+    },
+    {
+      "id": "col-beginner-friendly",
+      "category_or_slug": "beginner-friendly-wigs",
+      "filename": "beginner-friendly.webp",
+      "description": "Beginner-Friendly zero glue wigs banner",
+      "rel_path": "/images/wigs/collections/beginner-friendly.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/collections/beginner-friendly.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1400,
+        "height": 800,
+        "size_bytes": 231414,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Collection:beginner-friendly-wigs"
+      ],
+      "error": null
+    },
+    {
+      "id": "col-affordable-finds",
+      "category_or_slug": "affordable-finds",
+      "filename": "affordable-finds.webp",
+      "description": "Affordable Finds smart luxury wigs banner",
+      "rel_path": "/images/wigs/collections/affordable-finds.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/collections/affordable-finds.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1400,
+        "height": 800,
+        "size_bytes": 171896,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Collection:affordable-finds"
+      ],
+      "error": null
+    },
+    {
+      "id": "col-long-hair",
+      "category_or_slug": "long-hair-collection",
+      "filename": "long-hair.webp",
+      "description": "Long Hair 26-32 inch flowing hair banner",
+      "rel_path": "/images/wigs/collections/long-hair.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/collections/long-hair.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1400,
+        "height": 800,
+        "size_bytes": 178184,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Collection:long-hair-collection"
+      ],
+      "error": null
+    },
+    {
+      "id": "col-short-hair",
+      "category_or_slug": "short-hair-collection",
+      "filename": "short-hair.webp",
+      "description": "Short Hair 10-14 inch chic bobs banner",
+      "rel_path": "/images/wigs/collections/short-hair.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/collections/short-hair.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1400,
+        "height": 800,
+        "size_bytes": 156920,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Collection:short-hair-collection"
+      ],
+      "error": null
+    },
+    {
+      "id": "exp-hero",
+      "category_or_slug": "hd-lace-front",
+      "filename": "hd-lace-hero.webp",
+      "description": "Full-width HD Lace Experience campaign hero",
+      "rel_path": "/images/wigs/lace-experience/hd-lace-hero.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/lace-experience/hd-lace-hero.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1600,
+        "height": 900,
+        "size_bytes": 267336,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Homepage:HD-Lace-Experience"
+      ],
+      "error": null
+    },
+    {
+      "id": "exp-melt",
+      "category_or_slug": "hd-lace-front",
+      "filename": "hd-lace-melt-portrait.webp",
+      "description": "Scalp melt close-up with bleached knots",
+      "rel_path": "/images/wigs/lace-experience/hd-lace-melt-portrait.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/lace-experience/hd-lace-melt-portrait.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1200,
+        "size_bytes": 78156,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Homepage:HD-Lace-Experience"
+      ],
+      "error": null
+    },
+    {
+      "id": "exp-macro",
+      "category_or_slug": "hd-lace-front",
+      "filename": "lace-mesh-macro.webp",
+      "description": "Macro 0.05mm Swiss film lace mesh",
+      "rel_path": "/images/wigs/lace-experience/lace-mesh-macro.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/lace-experience/lace-mesh-macro.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1200,
+        "height": 800,
+        "size_bytes": 182628,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Homepage:HD-Lace-Experience"
+      ],
+      "error": null
+    },
+    {
+      "id": "exp-comparison",
+      "category_or_slug": "hd-lace-front",
+      "filename": "pre-plucked-comparison.webp",
+      "description": "13x4 vs 13x6 frontal comparison",
+      "rel_path": "/images/wigs/lace-experience/pre-plucked-comparison.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/lace-experience/pre-plucked-comparison.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1400,
+        "height": 900,
+        "size_bytes": 263528,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Homepage:HD-Lace-Experience"
+      ],
+      "error": null
+    },
+    {
+      "id": "exp-texture",
+      "category_or_slug": "hd-lace-front",
+      "filename": "lace-texture-closeup.webp",
+      "description": "Breathable diamond knot lace weave",
+      "rel_path": "/images/wigs/lace-experience/lace-texture-closeup.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/lace-experience/lace-texture-closeup.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1000,
+        "height": 800,
+        "size_bytes": 133250,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Homepage:HD-Lace-Experience"
+      ],
+      "error": null
+    },
+    {
+      "id": "det-hairline",
+      "category_or_slug": "details",
+      "filename": "hd-lace-hairline-detail.webp",
+      "description": "Macro photograph of ultra-thin HD lace hairline and single knots",
+      "rel_path": "/images/wigs/details/hd-lace-hairline-detail.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/details/hd-lace-hairline-detail.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1000,
+        "height": 800,
+        "size_bytes": 165880,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "ProductGallery:Various"
+      ],
+      "error": null
+    },
+    {
+      "id": "det-cap-const",
+      "category_or_slug": "details",
+      "filename": "cap-construction.webp",
+      "description": "Flat-lay photograph of ventilated 3D dome cap and combs",
+      "rel_path": "/images/wigs/details/cap-construction.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/details/cap-construction.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1000,
+        "height": 800,
+        "size_bytes": 188942,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "ProductGallery:Glueless"
+      ],
+      "error": null
+    },
+    {
+      "id": "det-elastic",
+      "category_or_slug": "details",
+      "filename": "glueless-elastic-band-detail.webp",
+      "description": "Macro of adjustable silicone-grip elastic band",
+      "rel_path": "/images/wigs/details/glueless-elastic-band-detail.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/details/glueless-elastic-band-detail.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1000,
+        "height": 800,
+        "size_bytes": 199996,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "ProductGallery:Glueless"
+      ],
+      "error": null
+    },
+    {
+      "id": "det-tex-straight",
+      "category_or_slug": "details",
+      "filename": "hair-texture-bone-straight.webp",
+      "description": "Macro strands of sleek bone straight virgin hair",
+      "rel_path": "/images/wigs/details/hair-texture-bone-straight.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/details/hair-texture-bone-straight.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1000,
+        "height": 800,
+        "size_bytes": 146898,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "ProductGallery:Straight"
+      ],
+      "error": null
+    },
+    {
+      "id": "det-tex-deep-wave",
+      "category_or_slug": "details",
+      "filename": "hair-texture-deep-wave.webp",
+      "description": "Macro strands of defined deep wave curls",
+      "rel_path": "/images/wigs/details/hair-texture-deep-wave.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/details/hair-texture-deep-wave.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1000,
+        "height": 800,
+        "size_bytes": 157728,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "ProductGallery:Curly"
+      ],
+      "error": null
+    },
+    {
+      "id": "det-tex-kinky",
+      "category_or_slug": "details",
+      "filename": "hair-texture-kinky-curly.webp",
+      "description": "Macro definition of 4C kinky curly hair coils",
+      "rel_path": "/images/wigs/details/hair-texture-kinky-curly.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/details/hair-texture-kinky-curly.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 1000,
+        "height": 800,
+        "size_bytes": 154820,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "ProductGallery:Curly"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-13x4-bone-straight",
+      "category_or_slug": "crownluxe-13x4-hd-bone-straight-frontal-wig",
+      "filename": "13x4-bone-straight-black.webp",
+      "description": "13x4 lace-front bone-straight natural-black wig on faceless mannequin",
+      "rel_path": "/images/wigs/lace-front/13x4-bone-straight-black.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/lace-front/13x4-bone-straight-black.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 192892,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-13x4-hd-bone-straight-frontal-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-13x6-body-wave",
+      "category_or_slug": "crownluxe-13x4-ear-to-ear-hd-frontal-piece-solo",
+      "filename": "13x6-body-wave-black.webp",
+      "description": "13x6 HD lace body-wave wig with 6-inch deep parting versatility",
+      "rel_path": "/images/wigs/lace-front/13x6-body-wave-black.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/lace-front/13x6-body-wave-black.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 236226,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-13x4-ear-to-ear-hd-frontal-piece-solo"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-deep-wave-13x6",
+      "category_or_slug": "luxe-deep-wave-13x6-melted-frontal-wig",
+      "filename": "deep-wave-13x6-black.webp",
+      "description": "Luxe Deep Wave 13x6 Melted Frontal Wig on studio mannequin",
+      "rel_path": "/images/wigs/lace-front/deep-wave-13x6-black.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/lace-front/deep-wave-13x6-black.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 200008,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:luxe-deep-wave-13x6-melted-frontal-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-pre-plucked-body-wave",
+      "category_or_slug": "crownluxe-pre-plucked-body-wave-invisible-swiss-lace-frontal",
+      "filename": "pre-plucked-body-wave.webp",
+      "description": "Pre-plucked body wave invisible Swiss lace frontal with natural baby hairs",
+      "rel_path": "/images/wigs/lace-front/pre-plucked-body-wave.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/lace-front/pre-plucked-body-wave.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 233082,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-pre-plucked-body-wave-invisible-swiss-lace-frontal"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-kinky-straight-transp",
+      "category_or_slug": "crownluxe-transparent-13x4-kinky-straight-frontal-wig",
+      "filename": "kinky-straight-transparent.webp",
+      "description": "13x4 transparent lace kinky straight blowout frontal wig",
+      "rel_path": "/images/wigs/lace-front/kinky-straight-transparent.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/lace-front/kinky-straight-transparent.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 192892,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-transparent-13x4-kinky-straight-frontal-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-loose-wave-frontal",
+      "category_or_slug": "lace-front-wigs",
+      "filename": "loose-wave-lace-front.webp",
+      "description": "Long loose-wave lace-front wig with flowing luster",
+      "rel_path": "/images/wigs/lace-front/loose-wave-lace-front.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/lace-front/loose-wave-lace-front.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 236226,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Subcategory:13x6-lace-front"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-5x5-water-wave",
+      "category_or_slug": "crownluxe-5x5-hd-closure-water-wave-wig",
+      "filename": "5x5-water-wave-black.webp",
+      "description": "5x5 HD closure water wave wig with distinct juicy texture",
+      "rel_path": "/images/wigs/closure/5x5-water-wave-black.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/closure/5x5-water-wave-black.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 178628,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-5x5-hd-closure-water-wave-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-4x4-silky-straight",
+      "category_or_slug": "crownluxe-4x4-pre-cut-glueless-silky-straight-closure-wig",
+      "filename": "4x4-silky-straight-black.webp",
+      "description": "4x4 pre-cut glueless silky straight closure wig",
+      "rel_path": "/images/wigs/closure/4x4-silky-straight-black.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/closure/4x4-silky-straight-black.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 192892,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-4x4-pre-cut-glueless-silky-straight-closure-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-2x6-middle-part",
+      "category_or_slug": "crownluxe-2x6-deep-middle-part-closure-wig",
+      "filename": "2x6-bone-straight-black.webp",
+      "description": "2x6 deep middle part bone straight closure wig",
+      "rel_path": "/images/wigs/closure/2x6-bone-straight-black.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/closure/2x6-bone-straight-black.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 192892,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-2x6-deep-middle-part-closure-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-deep-wave-closure",
+      "category_or_slug": "closure-wigs",
+      "filename": "deep-wave-closure.webp",
+      "description": "Natural black deep wave 4x4 closure wig",
+      "rel_path": "/images/wigs/closure/deep-wave-closure.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/closure/deep-wave-closure.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 200008,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Subcategory:4x4-closure"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-wear-go-body-wave",
+      "category_or_slug": "crownluxe-3d-dome-cap-wear-go-body-wave-wig",
+      "filename": "wear-and-go-body-wave.webp",
+      "description": "Wear and go 3D dome cap body wave glueless wig",
+      "rel_path": "/images/wigs/glueless/wear-and-go-body-wave.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/glueless/wear-and-go-body-wave.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 233082,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-3d-dome-cap-wear-go-body-wave-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-bye-bye-knots",
+      "category_or_slug": "crownluxe-bye-bye-knots-glueless-straight-wig",
+      "filename": "bye-bye-knots-straight.webp",
+      "description": "Bye bye knots glueless straight wig on mannequin head",
+      "rel_path": "/images/wigs/glueless/bye-bye-knots-straight.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/glueless/bye-bye-knots-straight.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 192892,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-bye-bye-knots-glueless-straight-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-30s-throw-on-bob",
+      "category_or_slug": "crownluxe-beginner-friendly-30-second-throw-on-bob",
+      "filename": "30-second-throw-on-bob.webp",
+      "description": "Beginner-friendly 30-second throw-on glueless bob wig",
+      "rel_path": "/images/wigs/glueless/30-second-throw-on-bob.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/glueless/30-second-throw-on-bob.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 165540,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-beginner-friendly-30-second-throw-on-bob"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-glueless-curly",
+      "category_or_slug": "glueless-wigs",
+      "filename": "glueless-curly-wear-go.webp",
+      "description": "Glueless curly wear and go wig with pre-cut lace",
+      "rel_path": "/images/wigs/glueless/glueless-curly-wear-go.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/glueless/glueless-curly-wear-go.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 200008,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Subcategory:wear-and-go-wigs"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-10-blunt-bob",
+      "category_or_slug": "crownluxe-10-precision-blunt-cut-sleek-bob",
+      "filename": "blunt-cut-sleek-bob-black.webp",
+      "description": "10-inch precision blunt cut sleek straight bob wig in natural black",
+      "rel_path": "/images/wigs/bob/blunt-cut-sleek-bob-black.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/bob/blunt-cut-sleek-bob-black.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 165540,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-10-precision-blunt-cut-sleek-bob"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-12-asymmetric-bob",
+      "category_or_slug": "crownluxe-12-asymmetrical-chic-bone-straight-bob",
+      "filename": "asymmetrical-bob-black.webp",
+      "description": "12-inch asymmetrical chic bone straight bob wig",
+      "rel_path": "/images/wigs/bob/asymmetrical-bob-black.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/bob/asymmetrical-bob-black.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 174818,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-12-asymmetrical-chic-bone-straight-bob"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-14-curly-bob-bangs",
+      "category_or_slug": "crownluxe-14-deep-wave-curly-bob-with-fringe-bangs",
+      "filename": "deep-wave-curly-bob-bangs.webp",
+      "description": "14-inch deep wave curly bob with face-framing fringe bangs",
+      "rel_path": "/images/wigs/bob/deep-wave-curly-bob-bangs.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/bob/deep-wave-curly-bob-bangs.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 200008,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-14-deep-wave-curly-bob-with-fringe-bangs"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-layered-chocolate-bob",
+      "category_or_slug": "crownluxe-10-layered-side-part-bob-in-chocolate-brown",
+      "filename": "layered-chocolate-bob.webp",
+      "description": "10-inch layered side-part bob wig in rich chocolate brown",
+      "rel_path": "/images/wigs/bob/layered-chocolate-bob.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/bob/layered-chocolate-bob.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 178690,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-10-layered-side-part-bob-in-chocolate-brown"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-wavy-bob-black",
+      "category_or_slug": "bob-wigs",
+      "filename": "wavy-bob-black.webp",
+      "description": "Tousled wavy texture black bob on mannequin head",
+      "rel_path": "/images/wigs/bob/wavy-bob-black.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/bob/wavy-bob-black.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 78292,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Subcategory:wavy-bob"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-burgundy-bob-bangs",
+      "category_or_slug": "bob-wigs",
+      "filename": "burgundy-bob-bangs.webp",
+      "description": "99J deep wine burgundy bob with bangs",
+      "rel_path": "/images/wigs/bob/burgundy-bob-bangs.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/bob/burgundy-bob-bangs.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 134128,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Subcategory:straight-bob"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-28-water-wave",
+      "category_or_slug": "crownluxe-28-water-wave-high-definition-curls",
+      "filename": "water-wave-long.webp",
+      "description": "28-inch water wave high definition curls wig",
+      "rel_path": "/images/wigs/curly-wavy/water-wave-long.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/curly-wavy/water-wave-long.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 178628,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-28-water-wave-high-definition-curls"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-24-loose-wave-mermaid",
+      "category_or_slug": "crownluxe-24-loose-wave-mermaid-luster-wig",
+      "filename": "loose-wave-mermaid.webp",
+      "description": "24-inch loose wave mermaid luster human hair wig",
+      "rel_path": "/images/wigs/curly-wavy/loose-wave-mermaid.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/curly-wavy/loose-wave-mermaid.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 236226,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-24-loose-wave-mermaid-luster-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-22-kinky-curly-4c",
+      "category_or_slug": "crownluxe-22-kinky-curly-4c-scalp-blended-natural-wig",
+      "filename": "kinky-curly-natural.webp",
+      "description": "22-inch kinky curly 4C scalp-blended natural hairline wig",
+      "rel_path": "/images/wigs/curly-wavy/kinky-curly-natural.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/curly-wavy/kinky-curly-natural.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 200008,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-22-kinky-curly-4c-scalp-blended-natural-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-26-cambodian-curly",
+      "category_or_slug": "crownluxe-26-raw-cambodian-deep-curly-wig",
+      "filename": "raw-cambodian-deep-curly.webp",
+      "description": "26-inch raw Cambodian deep curly virgin hair wig",
+      "rel_path": "/images/wigs/curly-wavy/raw-cambodian-deep-curly.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/curly-wavy/raw-cambodian-deep-curly.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 178628,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-26-raw-cambodian-deep-curly-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-body-wave-long",
+      "category_or_slug": "curly-and-wavy-wigs",
+      "filename": "body-wave-long.webp",
+      "description": "Long 26-inch cascading body wave natural black wig",
+      "rel_path": "/images/wigs/curly-wavy/body-wave-long.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/curly-wavy/body-wave-long.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 233082,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Subcategory:body-wave-sub"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-deep-wave-natural",
+      "category_or_slug": "curly-and-wavy-wigs",
+      "filename": "deep-wave-natural-black.webp",
+      "description": "Hydrated deep wave natural black virgin hair wig",
+      "rel_path": "/images/wigs/curly-wavy/deep-wave-natural-black.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/curly-wavy/deep-wave-natural-black.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 200008,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Subcategory:deep-wave-sub"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-30-glass-straight",
+      "category_or_slug": "crownluxe-30-glass-finish-bone-straight-virgin-wig",
+      "filename": "bone-straight-glass-finish.webp",
+      "description": "30-inch glass finish bone straight virgin human hair wig",
+      "rel_path": "/images/wigs/straight/bone-straight-glass-finish.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/straight/bone-straight-glass-finish.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 192892,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-30-glass-finish-bone-straight-virgin-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-28-yaki-straight",
+      "category_or_slug": "crownluxe-28-yaki-straight-textured-blowout-wig",
+      "filename": "yaki-straight-blowout.webp",
+      "description": "28-inch yaki straight textured blowout wig mimicking relaxed hair",
+      "rel_path": "/images/wigs/straight/yaki-straight-blowout.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/straight/yaki-straight-blowout.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 192892,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-28-yaki-straight-textured-blowout-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-24-silky-burmese",
+      "category_or_slug": "crownluxe-24-silky-straight-raw-burmese-donor-wig",
+      "filename": "silky-straight-burmese.webp",
+      "description": "24-inch silky straight raw Burmese single donor wig",
+      "rel_path": "/images/wigs/straight/silky-straight-burmese.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/straight/silky-straight-burmese.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 192892,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-24-silky-straight-raw-burmese-donor-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-kinky-straight-black",
+      "category_or_slug": "straight-wigs",
+      "filename": "kinky-straight-black.webp",
+      "description": "Coarse textured kinky straight natural black wig",
+      "rel_path": "/images/wigs/straight/kinky-straight-black.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/straight/kinky-straight-black.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 192892,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Subcategory:kinky-straight-sub"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-p4-27-piano-balayage",
+      "category_or_slug": "crownluxe-p4-27-piano-honey-blonde-balayage-wig",
+      "filename": "piano-honey-blonde-balayage.webp",
+      "description": "P4/27 piano honey blonde balayage highlight body wave wig",
+      "rel_path": "/images/wigs/colored/piano-honey-blonde-balayage.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/colored/piano-honey-blonde-balayage.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 174818,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-p4-27-piano-honey-blonde-balayage-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-350-ginger-copper",
+      "category_or_slug": "crownluxe-350-spiced-ginger-copper-loose-wave-wig",
+      "filename": "ginger-copper-loose-wave.webp",
+      "description": "350 spiced ginger copper loose wave wig",
+      "rel_path": "/images/wigs/colored/ginger-copper-loose-wave.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/colored/ginger-copper-loose-wave.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 194416,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-350-spiced-ginger-copper-loose-wave-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-99j-burgundy-straight",
+      "category_or_slug": "crownluxe-99j-deep-wine-burgundy-bone-straight-wig",
+      "filename": "burgundy-99j-bone-straight.webp",
+      "description": "99J deep wine burgundy bone straight sleek wig",
+      "rel_path": "/images/wigs/colored/burgundy-99j-bone-straight.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/colored/burgundy-99j-bone-straight.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 134128,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-99j-deep-wine-burgundy-bone-straight-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-613-platinum-blonde",
+      "category_or_slug": "crownluxe-613-russian-virgin-platinum-ice-blonde-wig",
+      "filename": "613-platinum-blonde.webp",
+      "description": "613 Russian virgin platinum ice blonde body wave wig",
+      "rel_path": "/images/wigs/colored/613-platinum-blonde.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/colored/613-platinum-blonde.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 187708,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-613-russian-virgin-platinum-ice-blonde-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-ombre-caramel-honey",
+      "category_or_slug": "crownluxe-ombre-warm-caramel-to-honey-blonde-wave-wig",
+      "filename": "ombre-caramel-honey.webp",
+      "description": "Ombre warm caramel root to honey blonde tips wave wig",
+      "rel_path": "/images/wigs/colored/ombre-caramel-honey.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/colored/ombre-caramel-honey.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 78292,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-ombre-warm-caramel-to-honey-blonde-wave-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-chocolate-brown-silky",
+      "category_or_slug": "crownluxe-rich-chocolate-brown-4-silky-straight-wig",
+      "filename": "chocolate-brown-silky.webp",
+      "description": "Rich chocolate brown #4 silky straight human hair wig",
+      "rel_path": "/images/wigs/colored/chocolate-brown-silky.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/colored/chocolate-brown-silky.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 178690,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-rich-chocolate-brown-4-silky-straight-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-honey-blonde-wave",
+      "category_or_slug": "colored-wigs",
+      "filename": "honey-blonde-wave.webp",
+      "description": "Warm honey blonde defined body wave wig",
+      "rel_path": "/images/wigs/colored/honey-blonde-wave.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/colored/honey-blonde-wave.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 174818,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Subcategory:honey-blonde-sub"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-copper-red-wave",
+      "category_or_slug": "colored-wigs",
+      "filename": "copper-red-wave.webp",
+      "description": "Vibrant copper red loose wave wig with high natural sheen",
+      "rel_path": "/images/wigs/colored/copper-red-wave.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/colored/copper-red-wave.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 194416,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Subcategory:ginger-sub"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-360-full-lace",
+      "category_or_slug": "crownluxe-360-full-lace-high-ponytail-body-wave-wig",
+      "filename": "360-full-lace-body-wave.webp",
+      "description": "360 full lace high ponytail body wave wig with perimeter lace",
+      "rel_path": "/images/wigs/specialty/360-full-lace-body-wave.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/specialty/360-full-lace-body-wave.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 233082,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-360-full-lace-high-ponytail-body-wave-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-headband-deep-wave",
+      "category_or_slug": "crownluxe-headband-slip-on-deep-wave-travel-wig",
+      "filename": "headband-deep-wave.webp",
+      "description": "Headband slip-on deep wave travel wig with attached matte headband",
+      "rel_path": "/images/wigs/specialty/headband-deep-wave.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/specialty/headband-deep-wave.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 200008,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-headband-slip-on-deep-wave-travel-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-pixie-cut-jet-black",
+      "category_or_slug": "crownluxe-pixie-cut-short-tapered-textured-wig",
+      "filename": "pixie-cut-jet-black.webp",
+      "description": "Pixie cut short tapered textured jet black wig",
+      "rel_path": "/images/wigs/specialty/pixie-cut-jet-black.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/specialty/pixie-cut-jet-black.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 165540,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-pixie-cut-short-tapered-textured-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-french-bangs-straight",
+      "category_or_slug": "crownluxe-french-bangs-silky-bone-straight-wig",
+      "filename": "french-bangs-bone-straight.webp",
+      "description": "French bangs silky bone straight human hair wig",
+      "rel_path": "/images/wigs/specialty/french-bangs-bone-straight.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/specialty/french-bangs-bone-straight.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 192892,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-french-bangs-silky-bone-straight-wig"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-full-lace-faceless",
+      "category_or_slug": "specialty-wigs",
+      "filename": "full-lace-wig-faceless-mannequin.webp",
+      "description": "Full lace virgin hair wig displayed on a faceless canvas mannequin head",
+      "rel_path": "/images/wigs/specialty/full-lace-wig-faceless-mannequin.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/specialty/full-lace-wig-faceless-mannequin.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 236226,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Subcategory:full-lace-wigs-sub"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-bundles-body-wave",
+      "category_or_slug": "crownluxe-raw-virgin-hair-bundles-3pack-5x5-hd-closure",
+      "filename": "bundles-body-wave-closure.webp",
+      "description": "Raw virgin hair bundles 3-pack with 5x5 HD closure",
+      "rel_path": "/images/wigs/extensions/bundles-body-wave-closure.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/extensions/bundles-body-wave-closure.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 213806,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-raw-virgin-hair-bundles-3pack-5x5-hd-closure"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-bundles-bone-straight",
+      "category_or_slug": "crownluxe-raw-cuticle-aligned-bone-straight-bundles-3pack",
+      "filename": "bundles-bone-straight.webp",
+      "description": "Raw cuticle aligned bone straight bundles 3-pack with gold ties",
+      "rel_path": "/images/wigs/extensions/bundles-bone-straight.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/extensions/bundles-bone-straight.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 213806,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Product:crownluxe-raw-cuticle-aligned-bone-straight-bundles-3pack"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-clip-in-straight",
+      "category_or_slug": "hair-extensions",
+      "filename": "clip-in-straight.webp",
+      "description": "Straight clip-in extensions with silicone-grip clips",
+      "rel_path": "/images/wigs/extensions/clip-in-straight.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/extensions/clip-in-straight.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 213806,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Category:hair-extensions"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-tape-in-extensions",
+      "category_or_slug": "hair-extensions",
+      "filename": "tape-in-extensions.webp",
+      "description": "Invisible tape-in virgin hair extensions arranged neatly on neutral studio background",
+      "rel_path": "/images/wigs/extensions/tape-in-extensions.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/extensions/tape-in-extensions.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 213806,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Category:hair-extensions"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-curly-extensions",
+      "category_or_slug": "hair-extensions",
+      "filename": "curly-extensions.webp",
+      "description": "Deep curly hair extensions bundles 3-pack",
+      "rel_path": "/images/wigs/extensions/curly-extensions.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/extensions/curly-extensions.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 213806,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Category:hair-extensions"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-closure-piece-hd",
+      "category_or_slug": "hair-extensions",
+      "filename": "closure-piece-hd.webp",
+      "description": "5x5 HD lace closure standalone piece with pre-plucked parting",
+      "rel_path": "/images/wigs/extensions/closure-piece-hd.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/extensions/closure-piece-hd.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 213806,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Subcategory:bundles-and-closures"
+      ],
+      "error": null
+    },
+    {
+      "id": "prod-frontal-piece-hd",
+      "category_or_slug": "hair-extensions",
+      "filename": "frontal-piece-hd-lace.webp",
+      "description": "13x4 ear-to-ear HD frontal piece solo with natural baby hairs",
+      "rel_path": "/images/wigs/extensions/frontal-piece-hd-lace.webp",
+      "absolute_path": "/home/ena/Desktop/Wig_Ecommerce/frontend/public/images/wigs/extensions/frontal-piece-hd-lace.webp",
+      "status": "COMPLETE",
+      "validation": {
+        "valid": true,
+        "width": 900,
+        "height": 1100,
+        "size_bytes": 213806,
+        "format": "WEBP"
+      },
+      "mapped_to": [
+        "Subcategory:frontal-pieces"
+      ],
+      "error": null
+    }
+  ],
+  "completion_percentage": 100.0
+}

@@ -10,15 +10,15 @@ import ProductCard from "@/components/catalog/ProductCard";
 import FilterSidebar from "@/components/catalog/FilterSidebar";
 
 const DEFAULT_CATEGORIES: Category[] = [
-  { id: 1, name: "Lace Front Wigs", slug: "lace-front-wigs", image_url: "/images/categories/hd-lace-front.jpg", description: "Ultra-thin melted invisible HD swiss lace for imperceptible blend.", sort_order: 1 },
-  { id: 2, name: "Closure Wigs", slug: "closure-wigs", image_url: "/images/categories/glueless-wigs.jpg", description: "Low-maintenance HD and Swiss lace closures with realistic natural parting.", sort_order: 2 },
-  { id: 3, name: "Glueless Wigs", slug: "glueless-wigs", image_url: "/images/categories/glueless-wigs.jpg", description: "Pre-cut lace, pre-plucked, zero adhesive needed in 30 seconds.", sort_order: 3 },
-  { id: 4, name: "Bob Wigs", slug: "bob-wigs", image_url: "/images/categories/bob-wigs.jpg", description: "Chic blunt cut, asymmetrical, and timeless bob styles for everyday glam.", sort_order: 4 },
-  { id: 5, name: "Curly and Wavy Wigs", slug: "curly-and-wavy-wigs", image_url: "/images/categories/deep-wave.jpg", description: "Lush bouncy defined curls with high volume and luscious texture.", sort_order: 5 },
-  { id: 6, name: "Straight Wigs", slug: "straight-wigs", image_url: "/images/categories/bone-straight.jpg", description: "Silky, mirror-shine bone straight human hair that stays sleek.", sort_order: 6 },
-  { id: 7, name: "Colored Wigs", slug: "colored-wigs", image_url: "/images/categories/colored-highlights.jpg", description: "Trendy piano highlights, 613 platinum blonde, and 99J burgundy.", sort_order: 7 },
-  { id: 8, name: "Specialty Wigs", slug: "specialty-wigs", image_url: "/images/categories/human-hair.jpg", description: "Headband wigs, full lace, 360 lace, and pixie units.", sort_order: 8 },
-  { id: 9, name: "Hair Extensions", slug: "hair-extensions", image_url: "/images/categories/hair-bundles.jpg", description: "Raw donor virgin hair bundles, closures, and frontals.", sort_order: 9 },
+  { id: 1, name: "Lace Front Wigs", slug: "lace-front-wigs", image_url: "/images/wigs/categories/lace-front-wigs.webp", description: "Ultra-thin melted invisible HD swiss lace for imperceptible blend.", sort_order: 1 },
+  { id: 2, name: "Closure Wigs", slug: "closure-wigs", image_url: "/images/wigs/categories/closure-wigs.webp", description: "Low-maintenance HD and Swiss lace closures with realistic natural parting.", sort_order: 2 },
+  { id: 3, name: "Glueless Wigs", slug: "glueless-wigs", image_url: "/images/wigs/categories/glueless-wigs.webp", description: "Pre-cut lace, pre-plucked, zero adhesive needed in 30 seconds.", sort_order: 3 },
+  { id: 4, name: "Bob Wigs", slug: "bob-wigs", image_url: "/images/wigs/categories/bob-wigs.webp", description: "Chic blunt cut, asymmetrical, and timeless bob styles for everyday glam.", sort_order: 4 },
+  { id: 5, name: "Curly and Wavy Wigs", slug: "curly-and-wavy-wigs", image_url: "/images/wigs/categories/curly-wavy-wigs.webp", description: "Lush bouncy defined curls with high volume and luscious texture.", sort_order: 5 },
+  { id: 6, name: "Straight Wigs", slug: "straight-wigs", image_url: "/images/wigs/categories/straight-wigs.webp", description: "Silky, mirror-shine bone straight human hair that stays sleek.", sort_order: 6 },
+  { id: 7, name: "Colored Wigs", slug: "colored-wigs", image_url: "/images/wigs/categories/colored-wigs.webp", description: "Trendy piano highlights, 613 platinum blonde, and 99J burgundy.", sort_order: 7 },
+  { id: 8, name: "Specialty Wigs", slug: "specialty-wigs", image_url: "/images/wigs/categories/specialty-wigs.webp", description: "Headband wigs, full lace, 360 lace, and pixie units.", sort_order: 8 },
+  { id: 9, name: "Hair Extensions", slug: "hair-extensions", image_url: "/images/wigs/categories/hair-extensions.webp", description: "Raw donor virgin hair bundles, closures, and frontals.", sort_order: 9 },
 ];
 
 function ShopContent() {

@@ -14,7 +14,7 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
   const displayImages = images && images.length > 0 ? images : [
     {
       id: 0,
-      image_url: "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1000&q=85",
+      image_url: "/images/wigs/straight/bone-straight-glass-finish.webp",
       alt_text: productName,
       is_primary: true,
       sort_order: 0,
