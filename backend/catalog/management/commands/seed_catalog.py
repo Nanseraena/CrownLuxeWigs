@@ -9,6 +9,25 @@ from users.models import Profile, Address
 
 User = get_user_model()
 
+# Files that passed the visual audit. Other seeded demo products stay in the
+# database but are unpublished until a matching, faceless product photo exists.
+APPROVED_GALLERY_BY_SLUG = {
+    "crownluxe-13x4-hd-bone-straight-frontal-wig": ["/images/wigs/lace-front/13x4-bone-straight-black.webp", "/images/wigs/details/hd-lace-hairline-detail.webp"],
+    "luxe-deep-wave-13x6-melted-frontal-wig": ["/images/wigs/lace-front/deep-wave-13x6-black.webp", "/images/wigs/details/hair-texture-deep-wave.webp"],
+    "crownluxe-pre-plucked-body-wave-invisible-swiss-lace-frontal": ["/images/wigs/lace-front/pre-plucked-body-wave.webp", "/images/wigs/details/hd-lace-hairline-detail.webp"],
+    "crownluxe-4x4-pre-cut-glueless-silky-straight-closure-wig": ["/images/wigs/closure/4x4-silky-straight-black.webp"],
+    "crownluxe-2x6-deep-middle-part-closure-wig": ["/images/wigs/closure/2x6-bone-straight-black.webp", "/images/wigs/details/hd-lace-hairline-detail.webp"],
+    "crownluxe-3d-dome-cap-wear-go-body-wave-wig": ["/images/wigs/glueless/wear-and-go-body-wave.webp"],
+    "crownluxe-beginner-friendly-30-second-throw-on-bob": ["/images/wigs/glueless/30-second-throw-on-bob.webp"],
+    "crownluxe-10-precision-blunt-cut-sleek-bob": ["/images/wigs/bob/blunt-cut-sleek-bob-black.webp"],
+    "crownluxe-24-loose-wave-mermaid-luster-wig": ["/images/wigs/curly-wavy/loose-wave-mermaid.webp", "/images/wigs/details/hd-lace-hairline-detail.webp"],
+    "crownluxe-30-glass-finish-bone-straight-virgin-wig": ["/images/wigs/straight/bone-straight-glass-finish.webp"],
+    "crownluxe-99j-deep-wine-burgundy-bone-straight-wig": ["/images/wigs/colored/burgundy-99j-bone-straight.webp"],
+    "crownluxe-613-russian-virgin-platinum-ice-blonde-wig": ["/images/wigs/colored/613-platinum-blonde.webp"],
+    "crownluxe-360-full-lace-high-ponytail-body-wave-wig": ["/images/wigs/specialty/360-full-lace-body-wave.webp"],
+    "crownluxe-raw-virgin-hair-bundles-3pack-5x5-hd-closure": ["/images/wigs/extensions/bundles-body-wave-closure.webp"],
+}
+
 class Command(BaseCommand):
     help = "Seeds database with comprehensive CrownLuxe wig catalog (32+ products, subcategories, collections, variants, and reviews)."
 
@@ -74,9 +93,9 @@ class Command(BaseCommand):
 
         # 4. Curated Collections
         collections_data = [
-            ("New Arrivals", "new-arrivals", "Fresh luxury additions straight from our master wig makers.", "/images/wigs/collections/new-arrivals.webp", 1),
+            ("New Arrivals", "new-arrivals", "Fresh luxury additions straight from our master wig makers.", "/images/wigs/lace-front/pre-plucked-body-wave.webp", 1),
             ("Best Sellers", "best-sellers", "Uganda's most-loved virgin hair crowns and viral favorites.", "/images/wigs/collections/best-sellers.webp", 2),
-            ("Trending Now", "trending-now", "Pinterest-viral styles, honey blonde balayage, and glass hair.", "/images/wigs/collections/trending-now.webp", 3),
+            ("Trending Now", "trending-now", "Pinterest-viral styles, honey blonde balayage, and glass hair.", "/images/wigs/colored/613-platinum-blonde.webp", 3),
             ("Premium Collection", "premium-collection", "Raw cuticle-aligned unprocessed hair with undetectable 0.05mm HD film lace.", "/images/wigs/collections/premium-collection.webp", 4),
             ("Everyday Wigs", "everyday-wigs", "Effortless, low maintenance styles made for effortless daily wear.", "/images/wigs/collections/everyday-wigs.webp", 5),
             ("Work & Office Looks", "work-and-office-looks", "Chic blunt bobs and neat sleek silhouettes crafted for business glam.", "/images/wigs/collections/work-office-looks.webp", 6),
@@ -84,7 +103,7 @@ class Command(BaseCommand):
             ("Beginner-Friendly Wigs", "beginner-friendly-wigs", "Zero glue, zero salon installation needed — slip on in 30 seconds.", "/images/wigs/collections/beginner-friendly.webp", 8),
             ("Affordable Finds", "affordable-finds", "High-style luxury crowns designed for smart, budget-conscious queens.", "/images/wigs/collections/affordable-finds.webp", 9),
             ("Long Hair Collection", "long-hair-collection", "Extra length 24\" to 32\" flowing human hair wigs for maximum drama.", "/images/wigs/collections/long-hair.webp", 10),
-            ("Short Hair Collection", "short-hair-collection", "10\" to 14\" precision bobs, pixies, and breezy short glam.", "/images/wigs/collections/short-hair.webp", 11),
+            ("Short Hair Collection", "short-hair-collection", "10\" to 14\" precision bobs, pixies, and breezy short glam.", "/images/wigs/bob/blunt-cut-sleek-bob-black.webp", 11),
         ]
         collection_map = {}
         for cname, cslug, cdesc, cimg, corder in collections_data:
@@ -104,7 +123,7 @@ class Command(BaseCommand):
                 ("Transparent Lace Front", "transparent-lace-front"),
                 ("Pre-plucked Lace Front", "pre-plucked-lace-front"),
             ]),
-            ("Closure Wigs", "closure-wigs", "Low-maintenance HD and Swiss lace closures with realistic natural parting.", "/images/wigs/categories/closure-wigs.webp", 2, [
+            ("Closure Wigs", "closure-wigs", "Low-maintenance HD and Swiss lace closures with realistic natural parting.", "/images/wigs/closure/4x4-silky-straight-black.webp", 2, [
                 ("4x4 Closure", "4x4-closure"),
                 ("5x5 Closure", "5x5-closure"),
                 ("2x6 Closure", "2x6-closure"),
@@ -115,7 +134,7 @@ class Command(BaseCommand):
                 ("Wear-and-Go Wigs", "wear-and-go-wigs"),
                 ("Beginner-Friendly Wigs", "beginner-friendly-category"),
             ]),
-            ("Bob Wigs", "bob-wigs", "Chic blunt cut, asymmetrical, and timeless bob styles for everyday glam.", "/images/wigs/categories/bob-wigs.webp", 4, [
+            ("Bob Wigs", "bob-wigs", "Chic blunt cut, asymmetrical, and timeless bob styles for everyday glam.", "/images/wigs/bob/blunt-cut-sleek-bob-black.webp", 4, [
                 ("Straight Bob", "straight-bob"),
                 ("Curly Bob", "curly-bob"),
                 ("Wavy Bob", "wavy-bob"),
@@ -147,7 +166,7 @@ class Command(BaseCommand):
                 ("Ombre", "ombre-sub"),
                 ("Balayage", "balayage-sub"),
             ]),
-            ("Specialty Wigs", "specialty-wigs", "Headband slip-on wigs, 360 high-ponytail lace, pixie cuts, and fringe bang styles.", "/images/wigs/categories/specialty-wigs.webp", 8, [
+            ("Specialty Wigs", "specialty-wigs", "Headband slip-on wigs, 360 high-ponytail lace, pixie cuts, and fringe bang styles.", "/images/wigs/specialty/360-full-lace-body-wave.webp", 8, [
                 ("Headband Wigs", "headband-wigs-sub"),
                 ("Full Lace Wigs", "full-lace-wigs-sub"),
                 ("360 Lace Wigs", "360-lace-wigs-sub"),
@@ -916,7 +935,7 @@ class Command(BaseCommand):
                     "default_color": pdata["default_color"],
                     "default_lace_type": pdata["default_lace_type"],
                     "description": pdata["description"],
-                    "is_published": True,
+                    "is_published": pdata["slug"] in APPROVED_GALLERY_BY_SLUG,
                     "is_featured": pdata.get("is_featured", False),
                     "is_best_seller": pdata.get("is_best_seller", False),
                     "is_new_arrival": pdata.get("is_new_arrival", False),
@@ -933,14 +952,16 @@ class Command(BaseCommand):
             else:
                 updated_count += 1
 
-            # Seed images
+            active_images = APPROVED_GALLERY_BY_SLUG.get(pdata["slug"], [])
+
+            # Remove unapproved / stale galleries from the active seeded catalog.
             # These URLs belong to this repeatable demo catalog. Remove only stale
             # demo-gallery entries for this product so the generated local assets
             # replace the legacy category/remote placeholders on the next seed.
             ProductImage.objects.filter(product=prod).exclude(
-                image_url__in=pdata["images"]
+                image_url__in=active_images
             ).delete()
-            for idx, img_url in enumerate(pdata["images"]):
+            for idx, img_url in enumerate(active_images):
                 ProductImage.objects.update_or_create(
                     product=prod,
                     image_url=img_url,

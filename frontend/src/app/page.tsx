@@ -10,13 +10,13 @@ import ProductCard from "@/components/catalog/ProductCard";
 
 const DEFAULT_CATEGORIES: Category[] = [
   { id: 1, name: "Lace Front Wigs", slug: "lace-front-wigs", image_url: "/images/wigs/categories/lace-front-wigs.webp", description: "Ultra-thin melted invisible HD swiss lace for imperceptible blend.", sort_order: 1 },
-  { id: 2, name: "Closure Wigs", slug: "closure-wigs", image_url: "/images/wigs/categories/closure-wigs.webp", description: "Low-maintenance HD and Swiss lace closures with realistic natural parting.", sort_order: 2 },
+  { id: 2, name: "Closure Wigs", slug: "closure-wigs", image_url: "/images/wigs/closure/4x4-silky-straight-black.webp", description: "Low-maintenance HD and Swiss lace closures with realistic natural parting.", sort_order: 2 },
   { id: 3, name: "Glueless Wigs", slug: "glueless-wigs", image_url: "/images/wigs/categories/glueless-wigs.webp", description: "Pre-cut lace, pre-plucked, zero adhesive needed in 30 seconds.", sort_order: 3 },
-  { id: 4, name: "Bob Wigs", slug: "bob-wigs", image_url: "/images/wigs/categories/bob-wigs.webp", description: "Chic blunt cut, asymmetrical, and timeless bob styles for everyday glam.", sort_order: 4 },
+  { id: 4, name: "Bob Wigs", slug: "bob-wigs", image_url: "/images/wigs/bob/blunt-cut-sleek-bob-black.webp", description: "Chic blunt cut, asymmetrical, and timeless bob styles for everyday glam.", sort_order: 4 },
   { id: 5, name: "Curly & Wavy Wigs", slug: "curly-and-wavy-wigs", image_url: "/images/wigs/categories/curly-wavy-wigs.webp", description: "Lush bouncy defined curls with high volume and luscious texture.", sort_order: 5 },
   { id: 6, name: "Straight Wigs", slug: "straight-wigs", image_url: "/images/wigs/categories/straight-wigs.webp", description: "Silky, mirror-shine bone straight human hair that stays sleek.", sort_order: 6 },
   { id: 7, name: "Colored Wigs", slug: "colored-wigs", image_url: "/images/wigs/categories/colored-wigs.webp", description: "Trendy piano highlights, 613 platinum blonde, and 99J burgundy.", sort_order: 7 },
-  { id: 8, name: "Specialty Wigs", slug: "specialty-wigs", image_url: "/images/wigs/categories/specialty-wigs.webp", description: "Headband slip-on, 360 lace, and pixie units.", sort_order: 8 },
+  { id: 8, name: "Specialty Wigs", slug: "specialty-wigs", image_url: "/images/wigs/specialty/360-full-lace-body-wave.webp", description: "Headband slip-on, 360 lace, and pixie units.", sort_order: 8 },
   { id: 9, name: "Hair Extensions", slug: "hair-extensions", image_url: "/images/wigs/categories/hair-extensions.webp", description: "Raw donor virgin hair bundles, closures, and frontals.", sort_order: 9 },
 ];
 
@@ -104,12 +104,6 @@ export default function HomePage() {
       tag: "13×4 & 13×6 Frontals",
     },
     {
-      src: "/images/wigs/lace-experience/hd-lace-melt-portrait.webp",
-      label: "The Melt",
-      caption: "Pre-bleached knots and baby hair edges mimic a natural-born hairline with zero adhesive needed.",
-      tag: "Pre-Plucked Hairline",
-    },
-    {
       src: "/images/wigs/lace-experience/lace-mesh-macro.webp",
       label: "Macro Lace Detail",
       caption: "Swiss transparent mesh so fine it's invisible against any complexion — light, medium or deep.",
@@ -120,12 +114,6 @@ export default function HomePage() {
       label: "13×4 vs 13×6",
       caption: "Side-by-side comparison of our two best-selling HD frontals — both pre-plucked and ready to melt.",
       tag: "Frontal Comparison",
-    },
-    {
-      src: "/images/wigs/lace-experience/lace-texture-closeup.webp",
-      label: "Lace Texture",
-      caption: "Diamond-knot hexagonal weave provides breathable ventilation and extreme durability for daily wear.",
-      tag: "Cap Construction",
     },
   ];
 
