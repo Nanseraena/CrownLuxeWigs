@@ -29,8 +29,8 @@ export default function Navbar() {
     { name: "Bone Straight", href: "/shop?texture=Bone+Straight" },
     { name: "Deep Wave & Curly", href: "/shop?texture=Deep+Wave" },
     { name: "Glueless Bobs", href: "/shop?category=bob-wigs" },
-    { name: "Piano Highlights & 613", href: "/shop?category=colored-highlight-wigs" },
-    { name: "Bundles & Extensions", href: "/shop?category=hair-extensions-bundles" },
+    { name: "Piano Highlights & 613", href: "/shop?category=colored-wigs" },
+    { name: "Bundles & Extensions", href: "/shop?category=hair-extensions" },
   ];
 
   return (

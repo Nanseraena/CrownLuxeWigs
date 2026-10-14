@@ -64,13 +64,23 @@ function ShopContent() {
   if (ordering) queryParams.set("ordering", ordering);
 
   // Fetch Products
-  const { data: productsData, isLoading: productsLoading } = useQuery<{ count: number; results: Product[] }>({
+  const {
+    data: productsData,
+    isLoading: productsLoading,
+    isError: productsError,
+    error: productsErrorDetail,
+    refetch: refetchProducts,
+  } = useQuery<{ count: number; results: Product[] }>({
     queryKey: ["products", queryParams.toString()],
     queryFn: () => fetchApi(`/products/?${queryParams.toString()}`),
   });
 
   // Fetch Categories
-  const { data: categoriesData } = useQuery<{ results: Category[] }>({
+  const {
+    data: categoriesData,
+    isError: categoriesError,
+    refetch: refetchCategories,
+  } = useQuery<{ results: Category[] }>({
     queryKey: ["categories"],
     queryFn: () => fetchApi("/categories/"),
   });
@@ -81,10 +91,27 @@ function ShopContent() {
   const products = productsData?.results || [];
   const totalCount = productsData?.count || 0;
 
+  const retryCatalog = () => {
+    void refetchProducts();
+    void refetchCategories();
+  };
+
   const updateParam = (key: string, value: string) => {
     const next = new URLSearchParams(searchParams.toString());
     if (value) next.set(key, value);
     else next.delete(key);
+    router.push(`/shop?${next.toString()}`);
+  };
+
+  // Category and subcategory must change in one navigation; two consecutive
+  // router pushes can race and leave the API query with stale filters.
+  const selectCategory = (slug: string) => {
+    const next = new URLSearchParams(searchParams.toString());
+    if (slug) next.set("category", slug);
+    else next.delete("category");
+    next.delete("category__slug");
+    next.delete("subcategory");
+    next.delete("subcategory__slug");
     router.push(`/shop?${next.toString()}`);
   };
 
@@ -129,9 +156,60 @@ function ShopContent() {
         </p>
       </div>
 
+      {categoriesError && (
+        <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900">
+          Live categories could not be loaded. Showing the local category list while the catalog API reconnects.
+        </div>
+      )}
+
+      {/* Category images use the same API-fetched category data as the filters. */}
+      <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-3 mb-8">
+        {categories.map((cat) => (
+          <button
+            key={cat.id}
+            type="button"
+            onClick={() => selectCategory(cat.slug)}
+            className={`group text-left rounded-xl overflow-hidden border transition focus:outline-none focus:ring-2 focus:ring-brand-500/30 ${
+              category === cat.slug
+                ? "border-brand-600 ring-2 ring-brand-500/20"
+                : "border-neutral-200 hover:border-brand-300"
+            }`}
+          >
+            <div className="aspect-square bg-neutral-100 overflow-hidden">
+              <img
+                src={cat.image_url || "/images/wigs/categories/straight-wigs.webp"}
+                alt={cat.name}
+                className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <span className="block px-2 py-2 text-[11px] font-semibold leading-tight text-neutral-800 line-clamp-2">
+              {cat.name}
+            </span>
+          </button>
+        ))}
+      </div>
+
       {/* Filter Bar & Active Filter Chips */}
       <div className="flex flex-wrap items-center justify-between gap-3 py-3 border-y border-neutral-200 mb-8">
         <div className="flex flex-wrap items-center gap-2">
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              const value = new FormData(event.currentTarget).get("catalog-search");
+              updateParam("search", typeof value === "string" ? value.trim() : "");
+            }}
+            className="relative hidden sm:block"
+          >
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-neutral-400" />
+            <input
+              name="catalog-search"
+              type="search"
+              defaultValue={search}
+              placeholder="Search wigs"
+              className="w-44 rounded-xl border border-neutral-300 bg-white py-2 pl-8 pr-3 text-xs text-neutral-800 outline-none focus:border-brand-500"
+            />
+          </form>
           {/* Mobile Filter Button */}
           <button
             onClick={() => setMobileFilterOpen(true)}
@@ -246,10 +324,7 @@ function ShopContent() {
             selectedHairType={hairType}
             selectedTexture={texture}
             inStockOnly={inStock}
-            onSelectCategory={(val) => {
-              updateParam("category", val);
-              updateParam("subcategory", "");
-            }}
+            onSelectCategory={selectCategory}
             onSelectSubcategory={(val) => updateParam("subcategory", val)}
             onToggleColor={(col) => toggleArrayParam("color", selectedColors, col)}
             onToggleLength={(len) => toggleArrayParam("length_inches", selectedLengths, len)}
@@ -269,6 +344,24 @@ function ShopContent() {
               {[1, 2, 3, 4, 5, 6].map((n) => (
                 <div key={n} className="aspect-[3/4] bg-neutral-100 rounded-2xl animate-pulse" />
               ))}
+            </div>
+          ) : productsError ? (
+            <div className="text-center py-20 bg-rose-50 rounded-3xl p-8 border border-rose-200">
+              <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4 text-rose-700">
+                <Search className="w-8 h-8" />
+              </div>
+              <h3 className="font-serif text-xl font-bold text-neutral-900 mb-2">Catalog unavailable</h3>
+              <p className="text-xs text-neutral-600 max-w-sm mx-auto mb-6">
+                {productsErrorDetail instanceof Error
+                  ? productsErrorDetail.message
+                  : "We could not reach the product catalog. Check that the Django API is running, then try again."}
+              </p>
+              <button
+                onClick={retryCatalog}
+                className="bg-brand-dark text-white text-xs font-semibold px-6 py-3 rounded-full hover:bg-neutral-800 transition"
+              >
+                Try Again
+              </button>
             </div>
           ) : products.length === 0 ? (
             <div className="text-center py-20 bg-neutral-50 rounded-3xl p-8 border border-neutral-200">
@@ -322,8 +415,7 @@ function ShopContent() {
               selectedTexture={texture}
               inStockOnly={inStock}
               onSelectCategory={(val) => {
-                updateParam("category", val);
-                updateParam("subcategory", "");
+                selectCategory(val);
                 setMobileFilterOpen(false);
               }}
               onSelectSubcategory={(val) => {

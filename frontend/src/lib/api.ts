@@ -32,10 +32,15 @@ export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): 
   const authToken = getAuthToken();
 
   const headers: Record<string, string> = {
-    "Content-Type": "application/json",
     Accept: "application/json",
     ...(options.headers as Record<string, string> || {}),
   };
+
+  // A GET has no JSON body. Omitting this non-simple header keeps read-only
+  // catalog calls as small as possible; writes still receive it automatically.
+  if (options.body && !headers["Content-Type"]) {
+    headers["Content-Type"] = "application/json";
+  }
 
   if (cartToken) {
     headers["X-Cart-Token"] = cartToken;

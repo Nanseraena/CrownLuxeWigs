@@ -94,12 +94,12 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">Shop Wigs</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link href="/shop?category=human-hair-wigs" className="hover:text-white transition">Human Hair Wigs</Link></li>
+              <li><Link href="/shop?hair_type=human" className="hover:text-white transition">Human Hair Wigs</Link></li>
               <li><Link href="/shop?texture=Bone+Straight" className="hover:text-white transition">Bone Straight Wigs</Link></li>
               <li><Link href="/shop?texture=Deep+Wave" className="hover:text-white transition">Deep Wave & Curls</Link></li>
               <li><Link href="/shop?category=bob-wigs" className="hover:text-white transition">Glueless Bobs</Link></li>
-              <li><Link href="/shop?category=colored-highlight-wigs" className="hover:text-white transition">Piano Highlights & 613</Link></li>
-              <li><Link href="/shop?category=hair-extensions-bundles" className="hover:text-white transition">Virgin Bundles</Link></li>
+              <li><Link href="/shop?category=colored-wigs" className="hover:text-white transition">Piano Highlights & 613</Link></li>
+              <li><Link href="/shop?category=hair-extensions" className="hover:text-white transition">Virgin Bundles</Link></li>
             </ul>
           </div>
 

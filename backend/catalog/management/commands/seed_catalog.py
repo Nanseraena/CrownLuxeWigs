@@ -934,6 +934,12 @@ class Command(BaseCommand):
                 updated_count += 1
 
             # Seed images
+            # These URLs belong to this repeatable demo catalog. Remove only stale
+            # demo-gallery entries for this product so the generated local assets
+            # replace the legacy category/remote placeholders on the next seed.
+            ProductImage.objects.filter(product=prod).exclude(
+                image_url__in=pdata["images"]
+            ).delete()
             for idx, img_url in enumerate(pdata["images"]):
                 ProductImage.objects.update_or_create(
                     product=prod,

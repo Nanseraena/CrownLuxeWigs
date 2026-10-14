@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
+from corsheaders.defaults import default_headers
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
@@ -63,6 +64,9 @@ SIMPLE_JWT = {
 SPECTACULAR_SETTINGS = {"TITLE": "CrownLuxe Wig Store API", "DESCRIPTION": "REST API for CrownLuxe Wig E-Commerce platform", "VERSION": "1.0.0"}
 CORS_ALLOWED_ORIGINS = [x.strip() for x in os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001").split(",") if x.strip()]
 CORS_ALLOW_CREDENTIALS = True
+# The storefront sends this cart identifier on public catalog requests. It is a
+# non-safelisted request header, so browsers preflight it before GET/POST calls.
+CORS_ALLOW_HEADERS = list(default_headers) + ["x-cart-token"]
 if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
 CSRF_TRUSTED_ORIGINS = [x.strip() for x in os.getenv("CSRF_TRUSTED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001").split(",") if x.strip()]
