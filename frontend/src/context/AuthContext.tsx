@@ -7,7 +7,7 @@ import { fetchApi, getAuthToken, setAuthTokens, clearAuthTokens, getCartToken } 
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  login: (username: string, password: string) => Promise<void>;
+  login: (identifier: string, password: string) => Promise<void>;
   register: (data: any) => Promise<void>;
   logout: () => void;
   refreshUser: () => Promise<void>;
@@ -55,11 +55,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const login = async (username: string, password: string) => {
-    const res = await fetch("http://127.0.0.1:8000/api/token/", {
+  const login = async (identifier: string, password: string) => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api/v1";
+    const tokenUrl = `${apiUrl.replace(/\/api\/v1\/?$/, "")}/api/token/`;
+    const res = await fetch(tokenUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username: identifier, password }),
     });
     if (!res.ok) {
       const err = await res.json();

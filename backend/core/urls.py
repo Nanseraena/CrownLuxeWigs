@@ -21,7 +21,11 @@ from payments.views import (
     InitiatePaymentView, VerifyPaymentView,
     PaymentStatusView, PaymentWebhookView
 )
-from users.views import RegisterView, MeView, AddressViewSet
+from users.views import RegisterView, MeView, AddressViewSet, PasswordResetRequestView, PasswordResetConfirmView
+from users.authentication import EmailOrUsernameTokenSerializer
+
+class CrownLuxeTokenObtainPairView(TokenObtainPairView):
+    serializer_class = EmailOrUsernameTokenSerializer
 
 router = DefaultRouter()
 router.register("categories", CategoryViewSet, basename="category")
@@ -30,6 +34,10 @@ router.register("products", ProductViewSet, basename="product")
 router.register("orders", OrderViewSet, basename="order")
 router.register("delivery-methods", DeliveryMethodViewSet, basename="delivery-method")
 router.register("addresses", AddressViewSet, basename="address")
+
+admin.site.site_header = "CrownLuxe Operations"
+admin.site.site_title = "CrownLuxe Admin"
+admin.site.index_title = "Store operations"
 
 @api_view(["GET"])
 @permission_classes([AllowAny])
@@ -43,7 +51,9 @@ urlpatterns = [
     # Auth endpoints
     path("api/v1/auth/register/", RegisterView.as_view(), name="register"),
     path("api/v1/auth/me/", MeView.as_view(), name="me"),
-    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/v1/auth/password-reset/", PasswordResetRequestView.as_view(), name="password-reset-request"),
+    path("api/v1/auth/password-reset/confirm/", PasswordResetConfirmView.as_view(), name="password-reset-confirm"),
+    path("api/token/", CrownLuxeTokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 
     # Router endpoints (catalog, orders, addresses, delivery-methods)

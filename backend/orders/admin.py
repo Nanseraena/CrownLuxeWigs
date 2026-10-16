@@ -5,6 +5,7 @@ class OrderItemInline(admin.TabularInline):
     model = OrderItem
     extra = 0
     readonly_fields = ["product_name", "sku", "variant_description", "unit_price", "quantity", "line_total"]
+    autocomplete_fields = ("variant",)
 
 @admin.register(DeliveryMethod)
 class DeliveryMethodAdmin(admin.ModelAdmin):
@@ -18,4 +19,14 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ["status", "payment_status", "payment_method", "created_at"]
     search_fields = ["order_number", "customer_name", "email", "phone"]
     inlines = [OrderItemInline]
-    readonly_fields = ["order_number", "created_at", "updated_at"]
+    readonly_fields = ["order_number", "subtotal", "delivery_fee", "discount_amount", "total", "created_at", "updated_at"]
+    list_select_related = ("user", "delivery_method")
+    list_editable = ("status", "payment_status")
+    date_hierarchy = "created_at"
+    autocomplete_fields = ("user", "delivery_method")
+    fieldsets = (
+        ("Order", {"fields": ("order_number", "user", "status", "payment_status", "payment_method", "payment_reference")}),
+        ("Customer & delivery", {"fields": ("customer_name", "email", "phone", "delivery_address", "delivery_method", "tracking_number", "notes")}),
+        ("Totals", {"fields": ("currency", "subtotal", "delivery_fee", "discount_amount", "coupon_code", "total")}),
+        ("Audit", {"fields": ("created_at", "updated_at"), "classes": ("collapse",)}),
+    )

@@ -24,7 +24,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware", "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 ROOT_URLCONF = "core.urls"
-TEMPLATES = [{"BACKEND": "django.template.backends.django.DjangoTemplates", "DIRS": [], "APP_DIRS": True,
+TEMPLATES = [{"BACKEND": "django.template.backends.django.DjangoTemplates", "DIRS": [BASE_DIR / "templates"], "APP_DIRS": True,
     "OPTIONS": {"context_processors": ["django.template.context_processors.debug", "django.template.context_processors.request",
     "django.contrib.auth.context_processors.auth", "django.contrib.messages.context_processors.messages"]}}]
 WSGI_APPLICATION = "core.wsgi.application"
@@ -42,6 +42,7 @@ USE_I18N = True
 USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -61,7 +62,28 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
     "ROTATE_REFRESH_TOKENS": True,
 }
-SPECTACULAR_SETTINGS = {"TITLE": "CrownLuxe Wig Store API", "DESCRIPTION": "REST API for CrownLuxe Wig E-Commerce platform", "VERSION": "1.0.0"}
+SPECTACULAR_SETTINGS = {
+    "TITLE": "CrownLuxe Wigs API",
+    "DESCRIPTION": "Public storefront and authenticated operations API for the CrownLuxe wig catalogue.",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "COMPONENT_SPLIT_REQUEST": True,
+    "TAGS": [
+        {"name": "Catalog", "description": "Categories, collections, products, variants and reviews."},
+        {"name": "Cart & Wishlist", "description": "Guest cart-token and authenticated wishlist operations."},
+        {"name": "Orders & Delivery", "description": "Checkout, order tracking and delivery methods."},
+        {"name": "Payments", "description": "Payment initiation, verification, status and provider callbacks."},
+        {"name": "Account", "description": "Registration, authentication and saved addresses."},
+        {"name": "Promotions", "description": "Active coupons and coupon validation."},
+    ],
+    "SECURITY": [{"BearerAuth": []}],
+    "APPEND_COMPONENTS": {
+        "securitySchemes": {
+            "BearerAuth": {"type": "http", "scheme": "bearer", "bearerFormat": "JWT"},
+            "CartToken": {"type": "apiKey", "in": "header", "name": "X-Cart-Token"},
+        },
+    },
+}
 CORS_ALLOWED_ORIGINS = [x.strip() for x in os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001").split(",") if x.strip()]
 CORS_ALLOW_CREDENTIALS = True
 # The storefront sends this cart identifier on public catalog requests. It is a
@@ -71,6 +93,14 @@ if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
 CSRF_TRUSTED_ORIGINS = [x.strip() for x in os.getenv("CSRF_TRUSTED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001").split(",") if x.strip()]
 DEFAULT_CURRENCY = os.getenv("DEFAULT_CURRENCY", "UGX")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000").rstrip("/")
+EMAIL_BACKEND = os.getenv("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend" if DEBUG else "django.core.mail.backends.smtp.EmailBackend")
+EMAIL_HOST = os.getenv("EMAIL_HOST", "")
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", "587"))
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "True").lower() == "true"
+EMAIL_HOST_USER = os.getenv("RESPONSE_EMAIL", "")
+EMAIL_HOST_PASSWORD = os.getenv("RESPONSE_EMAIL_PASSWORD", "")
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", EMAIL_HOST_USER or "noreply@crownluxe.ug")
 if not DEBUG:
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SESSION_COOKIE_SECURE = True

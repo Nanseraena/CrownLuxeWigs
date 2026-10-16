@@ -72,7 +72,7 @@ export default function AdminPortalPage() {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-neutral-200">
         <div>
-          <span className="text-[11px] font-bold uppercase tracking-wider text-brand-600">Store Manager</span>
+          
           <h1 className="font-serif text-2xl sm:text-3xl font-bold text-neutral-900 mt-0.5">
             Admin Analytics & Fulfillment Portal
           </h1>
