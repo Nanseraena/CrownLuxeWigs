@@ -15,6 +15,9 @@ export interface FilterSidebarProps {
   selectedOrigins: string[];
   selectedHairType: string;
   selectedTexture: string;
+  selectedProductType: string;
+  selectedStyle: string;
+  selectedConstruction: string;
   inStockOnly: boolean;
   onSelectCategory: (slug: string) => void;
   onSelectSubcategory?: (slug: string) => void;
@@ -24,6 +27,9 @@ export interface FilterSidebarProps {
   onToggleOrigin: (origin: string) => void;
   onSelectHairType: (type: string) => void;
   onSelectTexture: (texture: string) => void;
+  onSelectProductType: (type: string) => void;
+  onSelectStyle: (style: string) => void;
+  onSelectConstruction: (construction: string) => void;
   onToggleInStock: (val: boolean) => void;
   onResetFilters: () => void;
 }
@@ -85,6 +91,9 @@ export default function FilterSidebar({
   selectedOrigins,
   selectedHairType,
   selectedTexture,
+  selectedProductType,
+  selectedStyle,
+  selectedConstruction,
   inStockOnly,
   onSelectCategory,
   onSelectSubcategory,
@@ -94,6 +103,9 @@ export default function FilterSidebar({
   onToggleOrigin,
   onSelectHairType,
   onSelectTexture,
+  onSelectProductType,
+  onSelectStyle,
+  onSelectConstruction,
   onToggleInStock,
   onResetFilters,
 }: FilterSidebarProps) {
@@ -362,6 +374,34 @@ export default function FilterSidebar({
               </button>
             );
           })}
+        </div>
+      </div>
+
+      {/* 6. HAIR MATERIAL */}
+      <div>
+        <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-900 mb-2.5">Product Type</h4>
+        <div className="flex flex-wrap gap-1.5">
+          {[['wig', 'Complete Wigs'], ['bundles', 'Hair Bundles'], ['clip_in', 'Clip-In Extensions'], ['tape_in', 'Tape-In Extensions'], ['closure_piece', 'Closures'], ['frontal_piece', 'Frontals']].map(([value, label]) => (
+            <button key={value} type="button" onClick={() => onSelectProductType(selectedProductType === value ? "" : value)} className={`text-[11px] px-2.5 py-1.5 rounded-lg border ${selectedProductType === value ? "border-brand-600 bg-brand-50 text-brand-800 font-bold" : "border-neutral-200 text-neutral-600"}`}>{label}</button>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-900 mb-2.5">Wig Style</h4>
+        <div className="flex flex-wrap gap-1.5">
+          {[['bob', 'Bob'], ['long', 'Long'], ['layered', 'Layered'], ['bangs', 'Bangs'], ['asymmetrical', 'Asymmetrical'], ['pixie', 'Pixie']].map(([value, label]) => (
+            <button key={value} type="button" onClick={() => onSelectStyle(selectedStyle === value ? "" : value)} className={`text-[11px] px-2.5 py-1.5 rounded-lg border ${selectedStyle === value ? "border-brand-600 bg-brand-50 text-brand-800 font-bold" : "border-neutral-200 text-neutral-600"}`}>{label}</button>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-900 mb-2.5">Construction</h4>
+        <div className="flex flex-wrap gap-1.5">
+          {[['lace_front', 'Lace Front'], ['closure', 'Closure'], ['glueless', 'Glueless'], ['full_lace', 'Full Lace'], ['headband', 'Headband']].map(([value, label]) => (
+            <button key={value} type="button" onClick={() => onSelectConstruction(selectedConstruction === value ? "" : value)} className={`text-[11px] px-2.5 py-1.5 rounded-lg border ${selectedConstruction === value ? "border-brand-600 bg-brand-50 text-brand-800 font-bold" : "border-neutral-200 text-neutral-600"}`}>{label}</button>
+          ))}
         </div>
       </div>
 

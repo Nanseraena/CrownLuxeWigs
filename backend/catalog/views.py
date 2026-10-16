@@ -6,6 +6,11 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django.db.models import Exists, OuterRef, Min, Max, Q, Count, Avg
 from .models import Category, Collection, Product, ProductVariant, Review
+from .taxonomy import (
+    CANONICAL_TEXTURES, TEXTURE_MAP,
+    resolve_colors, resolve_constructions, resolve_product_types,
+    resolve_styles, resolve_textures,
+)
 from .serializers import (
     CategorySerializer, CollectionSerializer,
     ProductListSerializer, ProductDetailSerializer, ReviewSerializer
@@ -36,6 +41,24 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     ordering_fields = ["created_at", "name", "price_order", "is_best_seller"]
     ordering = ["-created_at"]
 
+    def finalize_response(self, request, response, *args, **kwargs):
+        response = super().finalize_response(request, response, *args, **kwargs)
+        # Catalog data and its image paths are public storefront metadata.
+        # Use short shared caching because image URLs are mutable, rather than
+        # incorrectly declaring them immutable.
+        if response.status_code == 200:
+            response["Cache-Control"] = "public, max-age=60"
+        return response
+
+    @staticmethod
+    def _values(params, *names):
+        """Read repeated or comma-separated values without silently widening a filter."""
+        values = []
+        for name in names:
+            for raw in params.getlist(name):
+                values.extend(value.strip() for value in raw.split(",") if value.strip())
+        return values
+
     def get_queryset(self):
         qs = Product.objects.filter(is_published=True, category__is_active=True)\
             .select_related("category", "subcategory")\
@@ -43,6 +66,17 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
             .annotate(price_order=Min("variants__price"))
 
         params = self.request.query_params
+
+        # DRF's generic SearchFilter is intentionally broad (it searches
+        # descriptions too). When a search term is a supported texture, make
+        # it a semantic texture constraint as well so prose mentioning
+        # "bone straight" cannot surface an unrelated curl pattern.
+        search_term = params.get("search", "").strip()
+        normalized_search = search_term.lower()
+        if normalized_search in TEXTURE_MAP or any(
+            normalized_search == texture.lower() for texture in CANONICAL_TEXTURES
+        ):
+            qs = qs.filter(texture__in=resolve_textures([search_term]))
 
         # 1. Category and Subcategory
         cat_slug = params.get("category__slug") or params.get("category")
@@ -71,50 +105,47 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
             qs = qs.filter(is_best_seller=True)
 
         # 4. Hair Origin (multi-select supported)
-        origins = params.getlist("hair_origin")
-        if not origins and params.get("hair_origin"):
-            origins = [o.strip().lower() for o in params["hair_origin"].split(",") if o.strip()]
+        origins = [value.lower() for value in self._values(params, "hair_origin")]
         if origins:
             qs = qs.filter(hair_origin__in=origins)
 
         # 5. Hair Material / Type
-        materials = params.getlist("hair_material") or params.getlist("hair_type")
-        if not materials and (params.get("hair_material") or params.get("hair_type")):
-            raw = params.get("hair_material") or params.get("hair_type")
-            materials = [m.strip().lower() for m in raw.split(",") if m.strip()]
+        materials = [value.lower() for value in self._values(params, "hair_material", "hair_type")]
         if materials:
             qs = qs.filter(hair_type__in=materials)
 
         # 6. Texture
-        textures = params.getlist("texture")
-        if not textures and params.get("texture"):
-            textures = [t.strip() for t in params["texture"].split(",") if t.strip()]
+        textures = resolve_textures(self._values(params, "texture"))
         if textures:
-            q_tex = Q()
-            for t in textures:
-                q_tex |= Q(texture__icontains=t)
-            qs = qs.filter(q_tex)
+            qs = qs.filter(texture__in=textures)
+
+        # These are independent dimensions. Repeated values are ORed within a
+        # dimension while each dimension narrows the queryset (AND semantics).
+        product_types = resolve_product_types(self._values(params, "product_type", "type"))
+        if product_types:
+            qs = qs.filter(product_type__in=product_types)
+
+        styles = resolve_styles(self._values(params, "style"))
+        if styles:
+            qs = qs.filter(style__in=styles)
+
+        constructions = resolve_constructions(self._values(params, "construction"))
+        if constructions:
+            qs = qs.filter(construction__in=constructions)
 
         # 7. Color (Multi-select matched against active variants)
-        colors = params.getlist("color")
-        if not colors and params.get("color"):
-            colors = [c.strip() for c in params["color"].split(",") if c.strip()]
+        colors = resolve_colors(self._values(params, "color"))
         if colors:
-            color_q = Q()
-            for c in colors:
-                clean_c = c.replace("-", " ").replace("_", " ").strip()
-                color_q |= Q(color__icontains=clean_c) | Q(color__icontains=c.strip())
             qs = qs.annotate(
                 _has_matching_color=Exists(
-                    ProductVariant.objects.filter(product_id=OuterRef("pk"), is_active=True).filter(color_q)
+                    ProductVariant.objects.filter(
+                        product_id=OuterRef("pk"), is_active=True, color__in=colors
+                    )
                 )
             ).filter(_has_matching_color=True)
 
         # 8. Length in Inches (Multi-select matched against active variants)
-        lengths = params.getlist("length_inches") or params.getlist("length")
-        if not lengths and (params.get("length_inches") or params.get("length")):
-            raw_len = params.get("length_inches") or params.get("length")
-            lengths = [l.strip() for l in raw_len.split(",") if l.strip()]
+        lengths = self._values(params, "length_inches", "length")
 
         length_q = Q()
         if lengths:
@@ -126,6 +157,8 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
                     pass
             if int_lengths:
                 length_q |= Q(length_inches__in=int_lengths)
+            else:
+                return qs.none()
 
         # Length quick groups: short (10-14), medium (16-20), long (22-26), extra_long (28-36)
         len_group = params.get("length_group")
@@ -137,6 +170,8 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
             length_q |= Q(length_inches__gte=22, length_inches__lte=26)
         elif len_group == "extra_long":
             length_q |= Q(length_inches__gte=28, length_inches__lte=36)
+        elif len_group:
+            return qs.none()
 
         if length_q:
             qs = qs.annotate(
@@ -146,30 +181,24 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
             ).filter(_has_matching_length=True)
 
         # 9. Lace Type Filter
-        lace_types = params.getlist("lace_type")
-        if not lace_types and params.get("lace_type"):
-            lace_types = [lt.strip() for lt in params["lace_type"].split(",") if lt.strip()]
+        lace_types = self._values(params, "lace_type")
         if lace_types:
-            lace_q = Q()
-            for lt in lace_types:
-                lace_q |= Q(lace_type__icontains=lt) | Q(default_lace_type__icontains=lt)
             qs = qs.annotate(
                 _has_matching_lace=Exists(
-                    ProductVariant.objects.filter(product_id=OuterRef("pk"), is_active=True).filter(lace_q)
+                    ProductVariant.objects.filter(
+                        product_id=OuterRef("pk"), is_active=True, lace_type__in=lace_types
+                    )
                 )
-            ).filter(Q(_has_matching_lace=True) | lace_q)
+            ).filter(_has_matching_lace=True)
 
         # 10. Density Filter
-        densities = params.getlist("density")
-        if not densities and params.get("density"):
-            densities = [d.strip() for d in params["density"].split(",") if d.strip()]
+        densities = self._values(params, "density")
         if densities:
-            dense_q = Q()
-            for d in densities:
-                dense_q |= Q(density__icontains=d)
             qs = qs.annotate(
                 _has_matching_density=Exists(
-                    ProductVariant.objects.filter(product_id=OuterRef("pk"), is_active=True).filter(dense_q)
+                    ProductVariant.objects.filter(
+                        product_id=OuterRef("pk"), is_active=True, density__in=densities
+                    )
                 )
             ).filter(_has_matching_density=True)
 

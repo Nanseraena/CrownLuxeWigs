@@ -24,6 +24,18 @@ class OrderSerializer(serializers.ModelSerializer):
             "payment_reference", "tracking_number", "notes", "created_at", "updated_at", "items"
         ]
 
+
+class PublicOrderTrackingSerializer(serializers.ModelSerializer):
+    """Deliberately minimal status payload for the unauthenticated tracking URL."""
+    delivery_method = DeliveryMethodSerializer(read_only=True)
+
+    class Meta:
+        model = Order
+        fields = [
+            "order_number", "delivery_method", "status", "payment_status",
+            "tracking_number", "created_at", "updated_at",
+        ]
+
 class CheckoutSerializer(serializers.Serializer):
     customer_name = serializers.CharField(max_length=180)
     email = serializers.EmailField()

@@ -83,6 +83,9 @@ export interface Product {
   collections?: Collection[];
   hair_type: "human" | "synthetic" | "blend";
   hair_origin: HairOrigin;
+  product_type: "wig" | "bundles" | "clip_in" | "tape_in" | "closure_piece" | "frontal_piece";
+  style: "bob" | "long" | "pixie" | "bangs" | "layered" | "asymmetrical" | "standard";
+  construction: "lace_front" | "closure" | "glueless" | "full_lace" | "headband" | "weft" | "clip_in" | "tape_in";
   texture: string;
   default_length_inches: number | null;
   default_color: string;

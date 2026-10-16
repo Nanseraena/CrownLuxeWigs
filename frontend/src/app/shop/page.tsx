@@ -34,6 +34,9 @@ function ShopContent() {
   const collection = searchParams.get("collection") || "";
   const hairType = searchParams.get("hair_type") || searchParams.get("hair_material") || "";
   const texture = searchParams.get("texture") || "";
+  const productType = searchParams.get("product_type") || "";
+  const style = searchParams.get("style") || "";
+  const construction = searchParams.get("construction") || "";
   const inStock = searchParams.get("in_stock") === "true";
   const ordering = searchParams.get("ordering") || "-created_at";
   const lengthGroup = searchParams.get("length_group") || "";
@@ -56,6 +59,9 @@ function ShopContent() {
   if (collection) queryParams.set("collection", collection);
   if (hairType) queryParams.set("hair_material", hairType);
   if (texture) queryParams.set("texture", texture);
+  if (productType) queryParams.set("product_type", productType);
+  if (style) queryParams.set("style", style);
+  if (construction) queryParams.set("construction", construction);
   if (rawColors) queryParams.set("color", rawColors);
   if (rawLengths) queryParams.set("length_inches", rawLengths);
   if (lengthGroup) queryParams.set("length_group", lengthGroup);
@@ -133,7 +139,7 @@ function ShopContent() {
   };
 
   const hasActiveFilters = Boolean(
-    search || category || subcategory || collection || hairType || texture ||
+    search || category || subcategory || collection || hairType || texture || productType || style || construction ||
     selectedColors.length > 0 || selectedLengths.length > 0 || lengthGroup ||
     selectedOrigins.length > 0 || inStock
   );
@@ -177,7 +183,7 @@ function ShopContent() {
           >
             <div className="aspect-square bg-neutral-100 overflow-hidden">
               <img
-                src={cat.image_url || "/images/wigs/categories/straight-wigs.webp"}
+                src={cat.image_url || "/images/wigs/catalog-placeholder.svg"}
                 alt={cat.name}
                 className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 loading="lazy"
@@ -274,6 +280,24 @@ function ShopContent() {
               <button onClick={() => updateParam("texture", "")}><X className="w-3 h-3 text-brand-600" /></button>
             </span>
           )}
+          {productType && (
+            <span className="inline-flex items-center gap-1 bg-brand-50 text-brand-900 border border-brand-200 px-2.5 py-1 rounded-full text-xs font-medium">
+              Type: {productType.replace("_", " ")}
+              <button onClick={() => updateParam("product_type", "")}><X className="w-3 h-3 text-brand-600" /></button>
+            </span>
+          )}
+          {style && (
+            <span className="inline-flex items-center gap-1 bg-brand-50 text-brand-900 border border-brand-200 px-2.5 py-1 rounded-full text-xs font-medium">
+              Style: {style}
+              <button onClick={() => updateParam("style", "")}><X className="w-3 h-3 text-brand-600" /></button>
+            </span>
+          )}
+          {construction && (
+            <span className="inline-flex items-center gap-1 bg-brand-50 text-brand-900 border border-brand-200 px-2.5 py-1 rounded-full text-xs font-medium">
+              Construction: {construction.replace("_", " ")}
+              <button onClick={() => updateParam("construction", "")}><X className="w-3 h-3 text-brand-600" /></button>
+            </span>
+          )}
           {inStock && (
             <span className="inline-flex items-center gap-1 bg-emerald-50 text-emerald-900 border border-emerald-200 px-2.5 py-1 rounded-full text-xs font-medium">
               In Stock Only
@@ -323,6 +347,9 @@ function ShopContent() {
             selectedOrigins={selectedOrigins}
             selectedHairType={hairType}
             selectedTexture={texture}
+            selectedProductType={productType}
+            selectedStyle={style}
+            selectedConstruction={construction}
             inStockOnly={inStock}
             onSelectCategory={selectCategory}
             onSelectSubcategory={(val) => updateParam("subcategory", val)}
@@ -332,6 +359,9 @@ function ShopContent() {
             onToggleOrigin={(orig) => toggleArrayParam("hair_origin", selectedOrigins, orig)}
             onSelectHairType={(val) => updateParam("hair_type", val)}
             onSelectTexture={(val) => updateParam("texture", val)}
+            onSelectProductType={(val) => updateParam("product_type", val)}
+            onSelectStyle={(val) => updateParam("style", val)}
+            onSelectConstruction={(val) => updateParam("construction", val)}
             onToggleInStock={(val) => updateParam("in_stock", val ? "true" : "")}
             onResetFilters={resetAllFilters}
           />
@@ -413,6 +443,9 @@ function ShopContent() {
               selectedOrigins={selectedOrigins}
               selectedHairType={hairType}
               selectedTexture={texture}
+              selectedProductType={productType}
+              selectedStyle={style}
+              selectedConstruction={construction}
               inStockOnly={inStock}
               onSelectCategory={(val) => {
                 selectCategory(val);
@@ -437,6 +470,9 @@ function ShopContent() {
                 updateParam("texture", val);
                 setMobileFilterOpen(false);
               }}
+              onSelectProductType={(val) => { updateParam("product_type", val); setMobileFilterOpen(false); }}
+              onSelectStyle={(val) => { updateParam("style", val); setMobileFilterOpen(false); }}
+              onSelectConstruction={(val) => { updateParam("construction", val); setMobileFilterOpen(false); }}
               onToggleInStock={(val) => {
                 updateParam("in_stock", val ? "true" : "");
                 setMobileFilterOpen(false);

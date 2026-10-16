@@ -66,6 +66,34 @@ class Product(models.Model):
         ("unspecified", "Unspecified"),
     ]
 
+    PRODUCT_TYPE_CHOICES = [
+        ("wig", "Complete Wig"),
+        ("bundles", "Hair Bundles"),
+        ("clip_in", "Clip-in Extensions"),
+        ("tape_in", "Tape-in Extensions"),
+        ("closure_piece", "Lace Closure Piece"),
+        ("frontal_piece", "Lace Frontal Piece"),
+    ]
+    STYLE_CHOICES = [
+        ("bob", "Bob"),
+        ("long", "Long"),
+        ("pixie", "Pixie"),
+        ("bangs", "Bangs & Fringe"),
+        ("layered", "Layered"),
+        ("asymmetrical", "Asymmetrical"),
+        ("standard", "Standard / Classic"),
+    ]
+    CONSTRUCTION_CHOICES = [
+        ("lace_front", "Lace Front"),
+        ("closure", "Closure"),
+        ("glueless", "Glueless"),
+        ("full_lace", "Full Lace / 360"),
+        ("headband", "Headband"),
+        ("weft", "Hair Weft / Bundles"),
+        ("clip_in", "Clip-In Track"),
+        ("tape_in", "Tape-In Tab"),
+    ]
+
     name = models.CharField(max_length=220)
     slug = models.SlugField(max_length=240, unique=True, blank=True)
     sku = models.CharField(max_length=80, blank=True, db_index=True)
@@ -75,6 +103,9 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     hair_type = models.CharField(max_length=20, choices=HAIR_TYPES, default="human")
     hair_origin = models.CharField(max_length=40, choices=HAIR_ORIGIN_CHOICES, default="unspecified", db_index=True)
+    product_type = models.CharField(max_length=30, choices=PRODUCT_TYPE_CHOICES, default="wig", db_index=True)
+    style = models.CharField(max_length=40, choices=STYLE_CHOICES, default="standard", db_index=True)
+    construction = models.CharField(max_length=40, choices=CONSTRUCTION_CHOICES, default="lace_front", db_index=True)
     texture = models.CharField(max_length=80, blank=True, db_index=True)
     default_length_inches = models.PositiveSmallIntegerField(null=True, blank=True)
     default_color = models.CharField(max_length=60, blank=True)
@@ -92,6 +123,9 @@ class Product(models.Model):
             models.Index(fields=["is_published", "category"]),
             models.Index(fields=["is_published", "hair_type"]),
             models.Index(fields=["is_published", "hair_origin"]),
+            models.Index(fields=["is_published", "product_type"]),
+            models.Index(fields=["is_published", "texture"]),
+            models.Index(fields=["is_published", "style"]),
         ]
 
     def save(self, *args, **kwargs):

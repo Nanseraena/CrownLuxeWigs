@@ -242,7 +242,7 @@ export default function HomePage() {
             >
               <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 border-2 border-brand-200 group-hover:border-brand-600 transition-all duration-300 overflow-hidden shadow-sm">
                 <img
-                  src={cat.image_url || "/images/wigs/categories/straight-wigs.webp"}
+                  src={cat.image_url || "/images/wigs/catalog-placeholder.svg"}
                   alt={cat.name}
                   className="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500"
                 />

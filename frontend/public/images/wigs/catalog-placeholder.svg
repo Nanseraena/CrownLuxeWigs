@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-label="Product image unavailable">
+  <rect width="900" height="1100" fill="#f5f3f0"/>
+  <path d="M270 430c0-100 81-181 180-181s180 81 180 181v85c0 100-81 181-180 181s-180-81-180-181z" fill="#ddd6cf"/>
+  <path d="M285 471c19-148 103-234 165-234s146 86 165 234c-42-54-96-82-165-82s-123 28-165 82z" fill="#aa8a72"/>
+  <text x="450" y="820" text-anchor="middle" fill="#76655a" font-family="Arial, sans-serif" font-size="28">IMAGE COMING SOON</text>
+</svg>

@@ -15,18 +15,85 @@ APPROVED_GALLERY_BY_SLUG = {
     "crownluxe-13x4-hd-bone-straight-frontal-wig": ["/images/wigs/lace-front/13x4-bone-straight-black.webp", "/images/wigs/details/hd-lace-hairline-detail.webp"],
     "luxe-deep-wave-13x6-melted-frontal-wig": ["/images/wigs/lace-front/deep-wave-13x6-black.webp", "/images/wigs/details/hair-texture-deep-wave.webp"],
     "crownluxe-pre-plucked-body-wave-invisible-swiss-lace-frontal": ["/images/wigs/lace-front/pre-plucked-body-wave.webp", "/images/wigs/details/hd-lace-hairline-detail.webp"],
-    "crownluxe-4x4-pre-cut-glueless-silky-straight-closure-wig": ["/images/wigs/closure/4x4-silky-straight-black.webp"],
+    "crownluxe-transparent-13x4-kinky-straight-frontal-wig": ["/images/wigs/lace-front/kinky-straight-transparent.webp", "/images/wigs/details/hair-texture-bone-straight.webp"],
+    "crownluxe-5x5-hd-closure-water-wave-wig": ["/images/wigs/closure/5x5-water-wave-black.webp", "/images/wigs/details/hd-lace-hairline-detail.webp"],
+    "crownluxe-4x4-pre-cut-glueless-silky-straight-closure-wig": ["/images/wigs/closure/4x4-silky-straight-black.webp", "/images/wigs/details/cap-construction.webp"],
     "crownluxe-2x6-deep-middle-part-closure-wig": ["/images/wigs/closure/2x6-bone-straight-black.webp", "/images/wigs/details/hd-lace-hairline-detail.webp"],
-    "crownluxe-3d-dome-cap-wear-go-body-wave-wig": ["/images/wigs/glueless/wear-and-go-body-wave.webp"],
-    "crownluxe-beginner-friendly-30-second-throw-on-bob": ["/images/wigs/glueless/30-second-throw-on-bob.webp"],
-    "crownluxe-10-precision-blunt-cut-sleek-bob": ["/images/wigs/bob/blunt-cut-sleek-bob-black.webp"],
+    "crownluxe-3d-dome-cap-wear-go-body-wave-wig": ["/images/wigs/glueless/wear-and-go-body-wave.webp", "/images/wigs/details/cap-construction.webp"],
+    "crownluxe-bye-bye-knots-glueless-straight-wig": ["/images/wigs/glueless/bye-bye-knots-straight.webp", "/images/wigs/details/glueless-elastic-band-detail.webp"],
+    "crownluxe-beginner-friendly-30-second-throw-on-bob": ["/images/wigs/glueless/30-second-throw-on-bob.webp", "/images/wigs/details/cap-construction.webp"],
+    "crownluxe-10-precision-blunt-cut-sleek-bob": ["/images/wigs/bob/blunt-cut-sleek-bob-black.webp", "/images/wigs/details/hair-texture-bone-straight.webp"],
+    "crownluxe-12-asymmetrical-chic-bone-straight-bob": ["/images/wigs/bob/asymmetrical-bob-black.webp", "/images/wigs/details/hair-texture-bone-straight.webp"],
+    "crownluxe-14-deep-wave-curly-bob-with-fringe-bangs": ["/images/wigs/bob/deep-wave-curly-bob-bangs.webp", "/images/wigs/details/hair-texture-deep-wave.webp"],
+    "crownluxe-10-layered-side-part-bob-in-chocolate-brown": ["/images/wigs/bob/layered-chocolate-bob.webp", "/images/wigs/details/hd-lace-hairline-detail.webp"],
+    "crownluxe-28-water-wave-high-definition-curls": ["/images/wigs/curly-wavy/water-wave-long.webp", "/images/wigs/details/hair-texture-deep-wave.webp"],
     "crownluxe-24-loose-wave-mermaid-luster-wig": ["/images/wigs/curly-wavy/loose-wave-mermaid.webp", "/images/wigs/details/hd-lace-hairline-detail.webp"],
-    "crownluxe-30-glass-finish-bone-straight-virgin-wig": ["/images/wigs/straight/bone-straight-glass-finish.webp"],
-    "crownluxe-99j-deep-wine-burgundy-bone-straight-wig": ["/images/wigs/colored/burgundy-99j-bone-straight.webp"],
-    "crownluxe-613-russian-virgin-platinum-ice-blonde-wig": ["/images/wigs/colored/613-platinum-blonde.webp"],
-    "crownluxe-360-full-lace-high-ponytail-body-wave-wig": ["/images/wigs/specialty/360-full-lace-body-wave.webp"],
-    "crownluxe-raw-virgin-hair-bundles-3pack-5x5-hd-closure": ["/images/wigs/extensions/bundles-body-wave-closure.webp"],
+    "crownluxe-22-kinky-curly-4c-scalp-blended-natural-wig": ["/images/wigs/curly-wavy/kinky-curly-natural.webp", "/images/wigs/details/hair-texture-kinky-curly.webp"],
+    "crownluxe-26-raw-cambodian-deep-curly-wig": ["/images/wigs/curly-wavy/raw-cambodian-deep-curly.webp", "/images/wigs/details/hair-texture-deep-wave.webp"],
+    "crownluxe-30-glass-finish-bone-straight-virgin-wig": ["/images/wigs/straight/bone-straight-glass-finish.webp", "/images/wigs/details/hair-texture-bone-straight.webp"],
+    "crownluxe-28-yaki-straight-textured-blowout-wig": ["/images/wigs/straight/yaki-straight-blowout.webp", "/images/wigs/details/hair-texture-bone-straight.webp"],
+    "crownluxe-24-silky-straight-raw-burmese-donor-wig": ["/images/wigs/straight/silky-straight-burmese.webp", "/images/wigs/details/hair-texture-bone-straight.webp"],
+    "crownluxe-p4-27-piano-honey-blonde-balayage-wig": ["/images/wigs/colored/piano-honey-blonde-balayage.webp", "/images/wigs/details/hd-lace-hairline-detail.webp"],
+    "crownluxe-350-spiced-ginger-copper-loose-wave-wig": ["/images/wigs/colored/ginger-copper-loose-wave.webp", "/images/wigs/details/hd-lace-hairline-detail.webp"],
+    "crownluxe-99j-deep-wine-burgundy-bone-straight-wig": ["/images/wigs/colored/burgundy-99j-bone-straight.webp", "/images/wigs/details/hair-texture-bone-straight.webp"],
+    "crownluxe-613-russian-virgin-platinum-ice-blonde-wig": ["/images/wigs/colored/613-platinum-blonde.webp", "/images/wigs/details/hd-lace-hairline-detail.webp"],
+    "crownluxe-ombre-warm-caramel-to-honey-blonde-wave-wig": ["/images/wigs/colored/ombre-caramel-honey.webp", "/images/wigs/details/hd-lace-hairline-detail.webp"],
+    "crownluxe-rich-chocolate-brown-4-silky-straight-wig": ["/images/wigs/colored/chocolate-brown-silky.webp", "/images/wigs/details/hair-texture-bone-straight.webp"],
+    "crownluxe-360-full-lace-high-ponytail-body-wave-wig": ["/images/wigs/specialty/360-full-lace-body-wave.webp", "/images/wigs/details/cap-construction.webp"],
+    "crownluxe-headband-slip-on-deep-wave-travel-wig": ["/images/wigs/specialty/headband-deep-wave.webp", "/images/wigs/details/hair-texture-deep-wave.webp"],
+    "crownluxe-pixie-cut-short-tapered-textured-wig": ["/images/wigs/specialty/pixie-cut-jet-black.webp", "/images/wigs/details/hair-texture-bone-straight.webp"],
+    "crownluxe-french-bangs-silky-bone-straight-wig": ["/images/wigs/specialty/french-bangs-bone-straight.webp", "/images/wigs/details/hair-texture-bone-straight.webp"],
+    "crownluxe-raw-virgin-hair-bundles-3pack-5x5-hd-closure": ["/images/wigs/extensions/bundles-body-wave-closure.webp", "/images/wigs/extensions/closure-piece-hd.webp"],
+    "crownluxe-raw-cuticle-aligned-bone-straight-bundles-3pack": ["/images/wigs/extensions/bundles-bone-straight.webp", "/images/wigs/details/hair-texture-bone-straight.webp"],
+    "crownluxe-13x4-ear-to-ear-hd-frontal-piece-solo": ["/images/wigs/extensions/frontal-piece-hd-lace.webp", "/images/wigs/details/hd-lace-hairline-detail.webp"],
 }
+
+
+def classification_for_seed(product):
+    """Return controlled fields from the curated category/subcategory metadata.
+
+    This deliberately does not infer texture or colour from names/images. Those
+    values are editorial fields in ``products_data``. The relationships below
+    are part of the catalog's declared taxonomy and make a seed rerun a safe
+    correction for the old default values introduced with migration 0003.
+    """
+    category = product["category"]
+    subcategory = product.get("subcategory", "")
+    name = product["name"].lower()
+    product_type, style, construction = "wig", "standard", "lace_front"
+
+    if category == "hair-extensions":
+        if subcategory == "frontal-pieces":
+            product_type, construction = "frontal_piece", "lace_front"
+        elif "closure" in name and "bundle" not in name:
+            product_type, construction = "closure_piece", "closure"
+        else:
+            product_type, construction = "bundles", "weft"
+    elif category == "closure-wigs":
+        construction = "closure"
+    elif category == "glueless-wigs":
+        construction = "glueless"
+    elif category == "specialty-wigs":
+        if "360" in name or "full lace" in name:
+            construction = "full_lace"
+        elif "headband" in name:
+            construction = "headband"
+        else:
+            construction = "glueless"
+
+    if category == "bob-wigs" or " bob" in name:
+        style = "bob"
+    if "pixie" in name:
+        style = "pixie"
+    elif "bang" in name or "fringe" in name:
+        style = "bangs"
+    elif "asymmetrical" in name:
+        style = "asymmetrical"
+    elif "layered" in name:
+        style = "layered"
+    elif product["default_length_inches"] >= 20 and product_type == "wig":
+        style = "long"
+    return {"product_type": product_type, "style": style, "construction": construction}
 
 class Command(BaseCommand):
     help = "Seeds database with comprehensive CrownLuxe wig catalog (32+ products, subcategories, collections, variants, and reviews)."
@@ -401,7 +468,7 @@ class Command(BaseCommand):
                 "slug": "crownluxe-beginner-friendly-30-second-throw-on-bob",
                 "category": "glueless-wigs", "subcategory": "beginner-friendly-category",
                 "hair_type": "human", "hair_origin": "brazilian",
-                "texture": "Straight Bob", "default_length_inches": 12,
+                "texture": "Silky Straight", "default_length_inches": 12,
                 "default_color": "Natural Black", "default_lace_type": "4x4 Pre-Cut Glueless Lace",
                 "description": "The easiest wig you will ever own. A chic 12-inch bob cut with pre-customized hairline. Just shake, slip on, and go.",
                 "is_featured": False, "is_best_seller": True, "is_new_arrival": False,
@@ -423,7 +490,7 @@ class Command(BaseCommand):
                 "slug": "crownluxe-10-precision-blunt-cut-sleek-bob",
                 "category": "bob-wigs", "subcategory": "straight-bob",
                 "hair_type": "human", "hair_origin": "brazilian",
-                "texture": "Straight Bob", "default_length_inches": 10,
+                "texture": "Silky Straight", "default_length_inches": 10,
                 "default_color": "Natural Brown", "default_lace_type": "5x5 Pre-Cut HD Closure Lace",
                 "description": "Razor-sharp blunt cut precision bob in rich chocolate espresso tone. Lightweight, breezy around the neck, with razor-sharp ends.",
                 "is_featured": True, "is_best_seller": True, "is_new_arrival": False,
@@ -484,7 +551,7 @@ class Command(BaseCommand):
                 "slug": "crownluxe-10-layered-side-part-bob-in-chocolate-brown",
                 "category": "bob-wigs", "subcategory": "layered-bob",
                 "hair_type": "human", "hair_origin": "indian",
-                "texture": "Straight Bob", "default_length_inches": 10,
+                "texture": "Silky Straight", "default_length_inches": 10,
                 "default_color": "Chocolate Brown", "default_lace_type": "5x5 HD Closure",
                 "description": "Rich mocha #4 chocolate brown with soft feather layers that swoop elegantly behind the ears.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": True,
@@ -815,7 +882,7 @@ class Command(BaseCommand):
                 "slug": "crownluxe-pixie-cut-short-tapered-textured-wig",
                 "category": "specialty-wigs", "subcategory": "pixie-wigs-sub",
                 "hair_type": "human", "hair_origin": "unspecified",
-                "texture": "Straight Bob", "default_length_inches": 10,
+                "texture": "Silky Straight", "default_length_inches": 10,
                 "default_color": "Jet Black", "default_lace_type": "Machine Made Stretch Cap with Tapered Nape",
                 "description": "Sophisticated short cropped pixie cut with feathered crown layers and tapered neck edge. Chic statement style.",
                 "is_featured": False, "is_best_seller": False, "is_new_arrival": True,
@@ -930,6 +997,7 @@ class Command(BaseCommand):
                     "subcategory": subcat,
                     "hair_type": pdata["hair_type"],
                     "hair_origin": pdata.get("hair_origin", "unspecified"),
+                    **classification_for_seed(pdata),
                     "texture": pdata["texture"],
                     "default_length_inches": pdata["default_length_inches"],
                     "default_color": pdata["default_color"],

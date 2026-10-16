@@ -17,7 +17,9 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [adding, setAdding] = useState(false);
 
   const discountPercent = calculateDiscountPercent(product.compare_at_price, product.min_price);
-  const imageUrl = product.primary_image?.image_url || "/images/wigs/straight/bone-straight-glass-finish.webp";
+  // Never substitute another product's photo: a missing image must remain
+  // visibly unavailable instead of making a curl or extension look straight.
+  const imageUrl = product.primary_image?.image_url || "/images/wigs/catalog-placeholder.svg";
 
   const handleQuickAdd = async (e: React.MouseEvent) => {
     e.preventDefault();

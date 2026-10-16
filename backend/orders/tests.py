@@ -3,6 +3,7 @@ from rest_framework.test import APIClient
 from catalog.models import Category, Product, ProductVariant
 from cart.models import Cart, CartItem
 from .models import Order
+from django.contrib.auth import get_user_model
 
 class CheckoutTests(TestCase):
     def setUp(self):
@@ -23,3 +24,16 @@ class CheckoutTests(TestCase):
         self.variant.refresh_from_db()
         self.assertEqual(self.variant.stock_quantity, 1)
         self.assertEqual(CartItem.objects.count(), 0)
+
+    def test_public_tracking_hides_customer_pii_and_dashboard_requires_admin(self):
+        order = Order.objects.create(customer_name="Private Customer", email="private@example.com", phone="0700000000", delivery_address="Private address")
+        tracking = self.client.get(f"/api/v1/orders/track/{order.order_number}/")
+        self.assertEqual(tracking.status_code, 200)
+        self.assertNotIn("email", tracking.data)
+        self.assertNotIn("phone", tracking.data)
+        self.assertNotIn("delivery_address", tracking.data)
+        self.assertEqual(self.client.get("/api/v1/admin/dashboard-stats/").status_code, 401)
+
+        admin = get_user_model().objects.create_superuser("admin", "admin@example.com", "safe-password-123")
+        self.client.force_authenticate(admin)
+        self.assertEqual(self.client.get("/api/v1/admin/dashboard-stats/").status_code, 200)

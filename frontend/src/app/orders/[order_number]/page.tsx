@@ -80,12 +80,9 @@ export default function OrderDetailPage() {
           <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800">
             Order Confirmed • {order.order_number}
           </span>
-          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-emerald-950">
-            Thank You, {order.customer_name}!
-          </h1>
+          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-emerald-950">Thank You!</h1>
           <p className="text-xs text-emerald-800 leading-relaxed">
-            Your order has been received. We have sent a confirmation receipt to <strong>{order.email}</strong>.
-            Our team will contact you on <strong>{order.phone}</strong> for delivery coordination.
+            Your order has been received. Check your confirmation email for delivery contact details.
           </p>
         </div>
       </div>

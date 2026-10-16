@@ -54,9 +54,9 @@ class ProductListSerializer(serializers.ModelSerializer):
         model = Product
         fields = [
             "id", "name", "slug", "sku", "description", "category", "subcategory", "collections",
-            "hair_type", "hair_origin", "texture", "default_length_inches", "default_color",
-            "default_lace_type", "min_price", "compare_at_price", "primary_image",
-            "average_rating", "review_count", "available_colors", "available_lengths",
+            "hair_type", "hair_origin", "product_type", "style", "construction", "texture",
+            "default_length_inches", "default_color", "default_lace_type", "min_price", "compare_at_price",
+            "primary_image", "average_rating", "review_count", "available_colors", "available_lengths",
             "available_densities", "available_lace_types", "is_featured", "is_new_arrival",
             "is_best_seller", "created_at"
         ]

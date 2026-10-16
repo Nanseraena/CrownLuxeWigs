@@ -1,6 +1,7 @@
 import uuid
 from decimal import Decimal
 from django.test import TestCase
+from django.contrib.auth import get_user_model
 from rest_framework.test import APIClient
 from catalog.models import Category, Product, ProductVariant
 from cart.models import Cart, CartItem
@@ -105,8 +106,9 @@ class FullCustomerJourneyE2ETest(TestCase):
         self.assertEqual(resp_catalog.status_code, 200)
         self.assertGreaterEqual(resp_catalog.data["count"], 1)
 
-        # Step 2: Search for curly human-hair wig
-        resp_search = self.client.get("/api/v1/products/?search=curly&hair_type=human")
+        # Step 2: Search for the product's declared texture. "Curly" is not
+        # a catch-all alias for Deep Wave in the controlled taxonomy.
+        resp_search = self.client.get("/api/v1/products/?search=deep+wave&hair_type=human")
         self.assertEqual(resp_search.status_code, 200)
         self.assertTrue(any(p["slug"] == self.product.slug for p in resp_search.data["results"]))
 
@@ -208,9 +210,11 @@ class FullCustomerJourneyE2ETest(TestCase):
         self.assertEqual(resp_track.status_code, 200)
         self.assertEqual(resp_track.data["payment_status"], "paid")
         self.assertEqual(resp_track.data["status"], "processing")
-        self.assertEqual(resp_track.data["payment_reference"], pay_ref)
+        self.assertNotIn("payment_reference", resp_track.data)
 
         # Step 15: Admin Dashboard Stats check
+        admin = get_user_model().objects.create_superuser("admin", "admin@example.com", "safe-password-123")
+        self.client.force_authenticate(admin)
         resp_admin = self.client.get("/api/v1/admin/dashboard-stats/")
         self.assertEqual(resp_admin.status_code, 200)
         self.assertEqual(resp_admin.data["total_orders"], 1)

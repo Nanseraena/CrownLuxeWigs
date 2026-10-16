@@ -12,7 +12,7 @@ from cart.services import get_existing_cart
 from catalog.models import ProductVariant, Product
 from promotions.models import Coupon
 from .models import Order, OrderItem, DeliveryMethod
-from .serializers import CheckoutSerializer, OrderSerializer, DeliveryMethodSerializer
+from .serializers import CheckoutSerializer, OrderSerializer, DeliveryMethodSerializer, PublicOrderTrackingSerializer
 
 class DeliveryMethodViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [AllowAny]
@@ -146,12 +146,16 @@ class OrderTrackView(APIView):
     def get(self, request, order_number):
         try:
             order = Order.objects.prefetch_related("items", "delivery_method").get(order_number__iexact=order_number)
-            return Response(OrderSerializer(order).data)
+            # A tracking URL is intentionally public for guest checkout, but
+            # it must never reveal delivery addresses, contact data, notes, or
+            # payment references. Authenticated customers use /orders/ for
+            # their complete order record.
+            return Response(PublicOrderTrackingSerializer(order).data)
         except Order.DoesNotExist:
             raise NotFound("Order not found with that order number.")
 
 class AdminDashboardStatsView(APIView):
-    permission_classes = [AllowAny]  # For local admin portal access
+    permission_classes = [IsAdminUser]
 
     def get(self, request):
         total_orders = Order.objects.count()

@@ -14,7 +14,7 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
   const displayImages = images && images.length > 0 ? images : [
     {
       id: 0,
-      image_url: "/images/wigs/straight/bone-straight-glass-finish.webp",
+      image_url: "/images/wigs/catalog-placeholder.svg",
       alt_text: productName,
       is_primary: true,
       sort_order: 0,

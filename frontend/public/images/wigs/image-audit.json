@@ -1,0 +1,815 @@
+{
+  "total_verified_images": 81,
+  "catalog_standard": "Pinterest-inspired luxury beauty photography on beige canvas salon mannequins and commercial flat-lays",
+  "prohibited": "Human models wearing wigs, visible human faces, cartoon illustrations",
+  "audit_entries": [
+    {
+      "file_path": "/images/archive/rejected-wig-images/human_hair_wig_model.jpg",
+      "category": "ARCHIVED",
+      "description": "Human model wearing wig - archived per CrownLuxe headless mannequin guidelines",
+      "source": "human_hair_wig_1791889191615.jpg",
+      "status": "ARCHIVED_REJECTED",
+      "has_human_face": true
+    },
+    {
+      "file_path": "/images/wigs/extensions/bundles-body-wave-closure.webp",
+      "category": "extensions",
+      "description": "3 Raw virgin hair bundles with satin ribbons alongside matching 5x5 HD closure",
+      "source": "luxury_hair_bundles_closure",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/extensions/bundles-bone-straight.webp",
+      "category": "extensions",
+      "description": "3 Raw virgin hair bundles neatly tied with gold satin ribbon",
+      "source": "luxury_hair_bundles_closure",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/extensions/clip-in-straight.webp",
+      "category": "extensions",
+      "description": "7-Piece silky straight virgin clip-in hair extension set with sturdy metal snap clips on tracks",
+      "source": "clip_in_hair_extensions",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/extensions/tape-in-extensions.webp",
+      "category": "extensions",
+      "description": "10-Piece silky straight tape-in hair extensions with transparent adhesive tabs on linen",
+      "source": "tape_in_hair_extensions_10pcs",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/extensions/closure-piece-hd.webp",
+      "category": "extensions",
+      "description": "Standalone 5x5 HD Swiss lace closure piece alone showing fine square mesh, natural middle part",
+      "source": "hd_lace_closure_5x5",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/extensions/frontal-piece-hd-lace.webp",
+      "category": "extensions",
+      "description": "Standalone 13x4 ear-to-ear HD Swiss lace frontal piece alone with pre-plucked hairline and baby hairs",
+      "source": "luxury_13x4_hd_lace_frontal",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/extensions/curly-extensions.webp",
+      "category": "extensions",
+      "description": "Deep curl virgin hair bundles with satin ribbon wrap",
+      "source": "luxury_hair_bundles_closure",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/bob/blunt-cut-sleek-bob-black.webp",
+      "category": "bob",
+      "description": "Short 10-inch precision blunt cut sleek black bob on beige canvas salon mannequin",
+      "source": "blunt_bob_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/bob/deep-wave-curly-bob-bangs.webp",
+      "category": "bob",
+      "description": "Short 12-inch deep wave curly bob wig with fringe bangs on beige canvas mannequin stand",
+      "source": "deep_wave_curly_bob_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/bob/asymmetrical-bob-black.webp",
+      "category": "bob",
+      "description": "Short 12-inch asymmetrical chic razor cut sleek black bob on canvas mannequin",
+      "source": "blunt_bob_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/bob/layered-chocolate-bob.webp",
+      "category": "bob",
+      "description": "Short 10-inch layered side-part bob in rich chocolate brown on canvas mannequin",
+      "source": "blunt_bob_wig_adjusted",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/bob/wavy-bob-black.webp",
+      "category": "bob",
+      "description": "Short wavy textured bob on salon mannequin head",
+      "source": "deep_wave_curly_bob_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/bob/burgundy-bob-bangs.webp",
+      "category": "bob",
+      "description": "Short deep burgundy bob wig with bangs on canvas mannequin",
+      "source": "deep_wave_curly_bob_wig_adjusted",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/straight/bone-straight-glass-finish.webp",
+      "category": "straight",
+      "description": "30-inch glass finish bone straight virgin human hair on beige canvas mannequin",
+      "source": "bone_straight_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/straight/silky-straight-burmese.webp",
+      "category": "straight",
+      "description": "24-inch silky straight raw Burmese donor wig on beige canvas mannequin",
+      "source": "bone_straight_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/straight/kinky-straight-black.webp",
+      "category": "straight",
+      "description": "24-inch coarse textured blowout kinky straight human hair wig on tripod mannequin",
+      "source": "kinky_straight_blowout_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/straight/yaki-straight-blowout.webp",
+      "category": "straight",
+      "description": "28-inch yaki straight textured blowout wig with melted HD lace hairline",
+      "source": "kinky_straight_blowout_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/lace-front/13x4-bone-straight-black.webp",
+      "category": "lace-front",
+      "description": "13x4 HD lace bone straight frontal wig in natural black on canvas mannequin",
+      "source": "bone_straight_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/lace-front/13x6-body-wave-black.webp",
+      "category": "lace-front",
+      "description": "13x6 HD Swiss lace body wave frontal wig on canvas salon mannequin",
+      "source": "hd_lace_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/lace-front/deep-wave-13x6-black.webp",
+      "category": "lace-front",
+      "description": "Deep wave 13x6 melted frontal wig with high definition curls on canvas stand",
+      "source": "deep_wave_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/lace-front/pre-plucked-body-wave.webp",
+      "category": "lace-front",
+      "description": "Pre-plucked body wave invisible Swiss lace frontal on mannequin",
+      "source": "glueless_wear_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/lace-front/kinky-straight-transparent.webp",
+      "category": "lace-front",
+      "description": "Kinky straight textured transparent lace frontal wig on tripod mannequin",
+      "source": "kinky_straight_blowout_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/lace-front/loose-wave-lace-front.webp",
+      "category": "lace-front",
+      "description": "Loose wave HD frontal wig on canvas mannequin",
+      "source": "hd_lace_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/closure/5x5-water-wave-black.webp",
+      "category": "closure",
+      "description": "5x5 HD closure water wave wig with defined curls on salon stand",
+      "source": "water_wave_wig_product",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/closure/4x4-silky-straight-black.webp",
+      "category": "closure",
+      "description": "4x4 pre-cut glueless silky straight closure wig on canvas mannequin",
+      "source": "bone_straight_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/closure/2x6-bone-straight-black.webp",
+      "category": "closure",
+      "description": "2x6 deep middle part bone straight closure wig on canvas mannequin",
+      "source": "bone_straight_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/closure/deep-wave-closure.webp",
+      "category": "closure",
+      "description": "Deep wave closure wig with natural parting on mannequin stand",
+      "source": "deep_wave_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/glueless/wear-and-go-body-wave.webp",
+      "category": "glueless",
+      "description": "3D dome cap wear & go body wave glueless wig on canvas mannequin",
+      "source": "glueless_wear_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/glueless/bye-bye-knots-straight.webp",
+      "category": "glueless",
+      "description": "Bye-bye knots glueless silky straight wig on canvas mannequin",
+      "source": "bone_straight_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/glueless/30-second-throw-on-bob.webp",
+      "category": "glueless",
+      "description": "Beginner friendly 30-second throw-on blunt bob on canvas mannequin",
+      "source": "blunt_bob_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/glueless/glueless-curly-wear-go.webp",
+      "category": "glueless",
+      "description": "Wear & go curly glueless wig with elastic band on mannequin",
+      "source": "deep_wave_curly_bob_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/curly-wavy/water-wave-long.webp",
+      "category": "curly-wavy",
+      "description": "28-inch water wave high definition curls on salon mannequin stand",
+      "source": "water_wave_wig_product",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/curly-wavy/loose-wave-mermaid.webp",
+      "category": "curly-wavy",
+      "description": "24-inch loose wave mermaid luster wig on canvas salon mannequin",
+      "source": "hd_lace_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/curly-wavy/kinky-curly-natural.webp",
+      "category": "curly-wavy",
+      "description": "22-inch kinky curly natural texture wig on canvas mannequin stand",
+      "source": "deep_wave_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/curly-wavy/raw-cambodian-deep-curly.webp",
+      "category": "curly-wavy",
+      "description": "26-inch raw Cambodian deep curly virgin hair wig on canvas mannequin",
+      "source": "deep_wave_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/curly-wavy/body-wave-long.webp",
+      "category": "curly-wavy",
+      "description": "Long flowing body wave wig on canvas mannequin",
+      "source": "glueless_wear_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/curly-wavy/deep-wave-natural-black.webp",
+      "category": "curly-wavy",
+      "description": "Deep wave natural black long wig on canvas mannequin stand",
+      "source": "deep_wave_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/colored/piano-honey-blonde-balayage.webp",
+      "category": "colored",
+      "description": "P4/27 piano honey blonde balayage wig on salon mannequin stand",
+      "source": "luxury_honey_blonde_bob_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/colored/ginger-copper-loose-wave.webp",
+      "category": "colored",
+      "description": "350 spiced ginger copper loose wave wig on salon mannequin",
+      "source": "spiced_ginger_loose_wave_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/colored/burgundy-99j-bone-straight.webp",
+      "category": "colored",
+      "description": "99J deep wine burgundy bone straight silky hair on gold salon stand",
+      "source": "wig_99j_burgundy_bone_straight",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/colored/613-platinum-blonde.webp",
+      "category": "colored",
+      "description": "613 Russian virgin platinum ice blonde flowing waves on brass salon stand",
+      "source": "luxury_613_platinum_blonde_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/colored/ombre-caramel-honey.webp",
+      "category": "colored",
+      "description": "Warm caramel ombre to honey blonde bob on salon mannequin bust",
+      "source": "dummy_ombre_bob",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/colored/chocolate-brown-silky.webp",
+      "category": "colored",
+      "description": "Rich chocolate brown #4 silky straight wig on canvas mannequin",
+      "source": "bone_straight_wig_adjusted",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/colored/honey-blonde-wave.webp",
+      "category": "colored",
+      "description": "Honey blonde loose wave wig on salon mannequin",
+      "source": "luxury_honey_blonde_bob_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/colored/copper-red-wave.webp",
+      "category": "colored",
+      "description": "Warm autumnal copper red wave wig on salon mannequin",
+      "source": "spiced_ginger_loose_wave_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/specialty/360-full-lace-body-wave.webp",
+      "category": "specialty",
+      "description": "360 full lace high ponytail body wave wig on canvas mannequin",
+      "source": "glueless_wear_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/specialty/headband-deep-wave.webp",
+      "category": "specialty",
+      "description": "Headband slip-on deep wave travel wig on canvas mannequin",
+      "source": "deep_wave_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/specialty/pixie-cut-jet-black.webp",
+      "category": "specialty",
+      "description": "Pixie cut short tapered textured jet black wig on canvas mannequin",
+      "source": "blunt_bob_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/specialty/french-bangs-bone-straight.webp",
+      "category": "specialty",
+      "description": "French bangs silky bone straight wig on canvas mannequin",
+      "source": "bone_straight_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/specialty/full-lace-wig-faceless-mannequin.webp",
+      "category": "specialty",
+      "description": "Full lace virgin human hair wig on faceless canvas mannequin",
+      "source": "hd_lace_wig",
+      "dimensions": "900x1100",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/categories/lace-front-wigs.webp",
+      "category": "category_icon",
+      "description": "Lace front wigs circle header",
+      "source": "hd_lace_wig",
+      "dimensions": "900x900",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/categories/closure-wigs.webp",
+      "category": "category_icon",
+      "description": "Closure wigs circle header featuring authentic HD closure",
+      "source": "hd_lace_closure_5x5",
+      "dimensions": "900x900",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/categories/glueless-wigs.webp",
+      "category": "category_icon",
+      "description": "Glueless wigs circle header",
+      "source": "glueless_wear_wig",
+      "dimensions": "900x900",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/categories/bob-wigs.webp",
+      "category": "category_icon",
+      "description": "Bob wigs circle header featuring precision blunt bob",
+      "source": "blunt_bob_wig",
+      "dimensions": "900x900",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/categories/curly-wavy-wigs.webp",
+      "category": "category_icon",
+      "description": "Curly and wavy wigs circle header",
+      "source": "deep_wave_wig",
+      "dimensions": "900x900",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/categories/straight-wigs.webp",
+      "category": "category_icon",
+      "description": "Straight wigs circle header",
+      "source": "bone_straight_wig",
+      "dimensions": "900x900",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/categories/colored-wigs.webp",
+      "category": "category_icon",
+      "description": "Colored wigs circle header featuring 99J burgundy",
+      "source": "wig_99j_burgundy_bone_straight",
+      "dimensions": "900x900",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/categories/specialty-wigs.webp",
+      "category": "category_icon",
+      "description": "Specialty wigs circle header",
+      "source": "glueless_wear_wig",
+      "dimensions": "900x900",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/categories/hair-extensions.webp",
+      "category": "category_icon",
+      "description": "Hair extensions circle header featuring bundles and closure",
+      "source": "luxury_hair_bundles_closure",
+      "dimensions": "900x900",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/collections/new-arrivals.webp",
+      "category": "collection_banner",
+      "description": "New arrivals banner",
+      "source": "dummy_ombre_bob",
+      "dimensions": "1400x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/collections/best-sellers.webp",
+      "category": "collection_banner",
+      "description": "Best sellers banner",
+      "source": "bone_straight_wig",
+      "dimensions": "1400x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/collections/trending-now.webp",
+      "category": "collection_banner",
+      "description": "Trending now banner",
+      "source": "luxury_honey_blonde_bob_wig",
+      "dimensions": "1400x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/collections/premium-collection.webp",
+      "category": "collection_banner",
+      "description": "Premium collection banner",
+      "source": "hd_lace_wig",
+      "dimensions": "1400x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/collections/everyday-wigs.webp",
+      "category": "collection_banner",
+      "description": "Everyday wigs banner",
+      "source": "glueless_wear_wig",
+      "dimensions": "1400x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/collections/work-office-looks.webp",
+      "category": "collection_banner",
+      "description": "Work and office looks banner",
+      "source": "blunt_bob_wig",
+      "dimensions": "1400x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/collections/wedding-occasion.webp",
+      "category": "collection_banner",
+      "description": "Wedding & special occasion banner",
+      "source": "luxury_613_platinum_blonde_wig",
+      "dimensions": "1400x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/collections/beginner-friendly.webp",
+      "category": "collection_banner",
+      "description": "Beginner friendly wigs banner",
+      "source": "glueless_wear_wig",
+      "dimensions": "1400x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/collections/affordable-finds.webp",
+      "category": "collection_banner",
+      "description": "Affordable finds banner",
+      "source": "blunt_bob_wig",
+      "dimensions": "1400x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/collections/long-hair.webp",
+      "category": "collection_banner",
+      "description": "Long hair collection banner",
+      "source": "deep_wave_wig",
+      "dimensions": "1400x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/collections/short-hair.webp",
+      "category": "collection_banner",
+      "description": "Short hair collection banner",
+      "source": "blunt_bob_wig",
+      "dimensions": "1400x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/details/hd-lace-hairline-detail.webp",
+      "category": "detail",
+      "description": "Macro close-up of melted transparent HD swiss lace hairline",
+      "source": "hd_lace_wig_crop",
+      "dimensions": "1000x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/details/cap-construction.webp",
+      "category": "detail",
+      "description": "Detailed view of breathable swiss lace mesh and cap craftsmanship",
+      "source": "luxury_13x4_hd_lace_frontal",
+      "dimensions": "1000x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/details/glueless-elastic-band-detail.webp",
+      "category": "detail",
+      "description": "Removable piano-grip adjustable elastic strap for glueless hold",
+      "source": "glueless_wear_wig",
+      "dimensions": "1000x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/details/hair-texture-bone-straight.webp",
+      "category": "detail",
+      "description": "Macro texture of silky glass finish bone straight human hair",
+      "source": "bone_straight_wig",
+      "dimensions": "1000x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/details/hair-texture-deep-wave.webp",
+      "category": "detail",
+      "description": "Macro texture of defined deep wave spiral curls",
+      "source": "deep_wave_wig",
+      "dimensions": "1000x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/details/hair-texture-kinky-curly.webp",
+      "category": "detail",
+      "description": "Macro texture of coarse textured yaki blowout straight hair",
+      "source": "kinky_straight_blowout_wig",
+      "dimensions": "1000x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/lace-experience/hd-lace-hero.webp",
+      "category": "lace-experience",
+      "description": "Ultra-thin Swiss transparent lace frontal wig on canvas mannequin",
+      "source": "hd_lace_wig",
+      "dimensions": "1600x900",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/lace-experience/lace-mesh-macro.webp",
+      "category": "lace-experience",
+      "description": "Macro mesh texture of standalone 13x4 HD lace frontal piece",
+      "source": "luxury_13x4_hd_lace_frontal",
+      "dimensions": "1200x800",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/lace-experience/pre-plucked-comparison.webp",
+      "category": "lace-experience",
+      "description": "Side-by-side comparison of pre-plucked natural hair lines",
+      "source": "glueless_wear_wig",
+      "dimensions": "1400x900",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    },
+    {
+      "file_path": "/images/wigs/lace-experience/hd-lace-melt-portrait.webp",
+      "category": "lace-experience",
+      "description": "Melted HD lace hairline portrait on salon bust mannequin",
+      "source": "dummy_ombre_bob",
+      "dimensions": "900x1200",
+      "format": "WEBP",
+      "status": "VERIFIED_ACTIVE",
+      "has_human_face": false
+    }
+  ]
+}
