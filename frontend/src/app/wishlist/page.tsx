@@ -1,21 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import { Heart, ShoppingBag, Trash2, ArrowRight } from "lucide-react";
-import { Product } from "@/types";
+import { Heart } from "lucide-react";
+import { WishlistItem } from "@/types";
 import { fetchApi } from "@/lib/api";
 import ProductCard from "@/components/catalog/ProductCard";
+import { useAuth } from "@/context/AuthContext";
 
 export default function WishlistPage() {
-  // Fetch products to show saved / trending picks
-  const { data: productsData, isLoading } = useQuery<{ results: Product[] }>({
-    queryKey: ["wishlist-picks"],
-    queryFn: () => fetchApi("/products/?is_featured=true"),
+  const { user, loading: authLoading } = useAuth();
+  const { data: wishlist = [], isLoading } = useQuery<WishlistItem[]>({
+    queryKey: ["wishlist"],
+    queryFn: () => fetchApi("/wishlist/"),
+    enabled: Boolean(user),
   });
-
-  const products = productsData?.results || [];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
@@ -29,13 +29,19 @@ export default function WishlistPage() {
         </div>
       </div>
 
-      {isLoading ? (
+      {!authLoading && !user ? (
+        <div className="text-center py-20 bg-neutral-50 rounded-3xl border border-neutral-200">
+          <h2 className="font-serif text-xl font-bold text-neutral-900 mb-1">Sign in to see your saved wigs</h2>
+          <p className="text-xs text-neutral-600 mb-6">Your wishlist is saved securely to your account.</p>
+          <Link href="/account/login?next=/wishlist" className="bg-brand-dark text-white text-xs font-semibold px-6 py-3 rounded-full">Sign In</Link>
+        </div>
+      ) : isLoading || authLoading ? (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {[1, 2, 3, 4].map((n) => (
             <div key={n} className="aspect-[3/4] bg-neutral-100 rounded-2xl animate-pulse" />
           ))}
         </div>
-      ) : products.length === 0 ? (
+      ) : wishlist.length === 0 ? (
         <div className="text-center py-20 bg-neutral-50 rounded-3xl border border-neutral-200">
           <Heart className="w-12 h-12 text-neutral-400 mx-auto mb-3" />
           <h2 className="font-serif text-xl font-bold text-neutral-900 mb-1">Your Wishlist is Empty</h2>
@@ -46,8 +52,8 @@ export default function WishlistPage() {
         </div>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {wishlist.map((item) => (
+            <ProductCard key={item.id} product={item.product_details} />
           ))}
         </div>
       )}

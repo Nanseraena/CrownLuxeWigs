@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from catalog.models import ProductVariant
-from catalog.serializers import ProductImageSerializer
+from catalog.serializers import ProductImageSerializer, ProductListSerializer
 from .models import Cart, CartItem, WishlistItem
 
 class CartItemSerializer(serializers.ModelSerializer):
@@ -53,7 +53,8 @@ class UpdateCartItemSerializer(serializers.Serializer):
 class WishlistItemSerializer(serializers.ModelSerializer):
     product_name = serializers.CharField(source="product.name", read_only=True)
     product_slug = serializers.CharField(source="product.slug", read_only=True)
+    product_details = ProductListSerializer(source="product", read_only=True)
     class Meta:
         model = WishlistItem
-        fields = ["id", "product", "product_name", "product_slug", "created_at"]
+        fields = ["id", "product", "product_name", "product_slug", "product_details", "created_at"]
         read_only_fields = ["id", "product_name", "product_slug", "created_at"]

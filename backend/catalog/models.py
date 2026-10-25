@@ -155,9 +155,9 @@ class Product(models.Model):
     def average_rating(self):
         approved = self.reviews.filter(is_approved=True)
         if not approved.exists():
-            return 5.0
+            return None
         avg = approved.aggregate(models.Avg("rating"))["rating__avg"]
-        return round(float(avg), 1) if avg else 5.0
+        return round(float(avg), 1) if avg else None
 
     @property
     def review_count(self):
@@ -243,7 +243,7 @@ class Review(models.Model):
     rating = models.PositiveSmallIntegerField(default=5)
     title = models.CharField(max_length=200, blank=True)
     comment = models.TextField()
-    is_verified_purchase = models.BooleanField(default=True)
+    is_verified_purchase = models.BooleanField(default=False)
     is_approved = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 

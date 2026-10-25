@@ -43,7 +43,7 @@ class ProductListSerializer(serializers.ModelSerializer):
     min_price = serializers.DecimalField(max_digits=12, decimal_places=2, read_only=True, allow_null=True)
     compare_at_price = serializers.DecimalField(max_digits=12, decimal_places=2, read_only=True, allow_null=True)
     primary_image = serializers.SerializerMethodField()
-    average_rating = serializers.FloatField(read_only=True)
+    average_rating = serializers.FloatField(read_only=True, allow_null=True)
     review_count = serializers.IntegerField(read_only=True)
     available_colors = serializers.ReadOnlyField()
     available_lengths = serializers.ReadOnlyField()

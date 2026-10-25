@@ -93,7 +93,7 @@ export interface Product {
   min_price: string | null;
   compare_at_price: string | null;
   primary_image: ProductImage | null;
-  average_rating: number;
+  average_rating: number | null;
   review_count: number;
   available_colors?: string[];
   available_lengths?: number[];
@@ -150,6 +150,15 @@ export interface Cart {
   subtotal: string;
   created_at: string;
   updated_at: string;
+}
+
+export interface WishlistItem {
+  id: number;
+  product: number;
+  product_name: string;
+  product_slug: string;
+  product_details: Product;
+  created_at: string;
 }
 
 export interface DeliveryMethod {

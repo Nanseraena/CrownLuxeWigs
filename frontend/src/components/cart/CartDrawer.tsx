@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight, Sparkles } from "lucide-react";
@@ -9,6 +9,17 @@ import { formatPrice } from "@/lib/formatters";
 
 export default function CartDrawer() {
   const { cart, isDrawerOpen, setIsDrawerOpen, updateQuantity, removeItem, itemCount } = useCart();
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!isDrawerOpen) return;
+    closeButtonRef.current?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsDrawerOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isDrawerOpen, setIsDrawerOpen]);
 
   if (!isDrawerOpen) return null;
 
@@ -25,17 +36,23 @@ export default function CartDrawer() {
         onClick={() => setIsDrawerOpen(false)}
       />
 
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
+      <div
+        className="fixed inset-y-0 right-0 max-w-full flex pl-10"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="shopping-bag-title"
+      >
         <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col">
           {/* Header */}
           <div className="p-4 sm:p-5 border-b border-neutral-100 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <ShoppingBag className="w-5 h-5 text-brand-dark" />
-              <h2 className="font-semibold text-base sm:text-lg text-neutral-900">
+              <h2 id="shopping-bag-title" className="font-semibold text-base sm:text-lg text-neutral-900">
                 Shopping Bag ({itemCount})
               </h2>
             </div>
             <button
+              ref={closeButtonRef}
               onClick={() => setIsDrawerOpen(false)}
               className="p-1.5 text-neutral-400 hover:text-black rounded-full hover:bg-neutral-100 transition"
               aria-label="Close bag drawer"
@@ -76,12 +93,13 @@ export default function CartDrawer() {
                 <p className="text-xs text-neutral-500 max-w-xs mb-6">
                   Explore our luxury HD lace frontals, bone straight wigs, and effortless glueless bobs.
                 </p>
-                <button
+                <Link
+                  href="/shop"
                   onClick={() => setIsDrawerOpen(false)}
                   className="bg-brand-dark text-white text-xs font-semibold px-6 py-3 rounded-full hover:bg-neutral-800 transition"
                 >
-                  <Link href="/shop">Start Shopping</Link>
-                </button>
+                  Start Shopping
+                </Link>
               </div>
             ) : (
               cart.items.map((item) => (
@@ -89,7 +107,7 @@ export default function CartDrawer() {
                   {/* Product Image */}
                   <div className="w-20 h-24 bg-neutral-100 rounded-lg overflow-hidden shrink-0 relative">
                     <img
-                      src={item.image?.image_url || "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=300&q=80"}
+                      src={item.image?.image_url || "/images/wigs/catalog-placeholder.svg"}
                       alt={item.product_name}
                       className="w-full h-full object-cover"
                     />
@@ -105,7 +123,7 @@ export default function CartDrawer() {
                         <button
                           onClick={() => removeItem(item.id)}
                           className="text-neutral-400 hover:text-red-600 transition p-1"
-                          title="Remove item"
+                          aria-label={`Remove ${item.product_name} from bag`}
                         >
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>

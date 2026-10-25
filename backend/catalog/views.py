@@ -1,7 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny, IsAdminUser
+from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django.db.models import Exists, OuterRef, Min, Max, Q, Count, Avg
@@ -273,15 +273,26 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
             }
         })
 
-    @action(detail=True, methods=["post"], permission_classes=[AllowAny], url_path="reviews")
+    @action(detail=True, methods=["post"], permission_classes=[IsAuthenticated], url_path="reviews")
     def add_review(self, request, slug=None):
+        from orders.models import OrderItem
+
         product = self.get_object()
         data = request.data.copy()
-        reviewer_name = data.get("reviewer_name")
-        if not reviewer_name and request.user.is_authenticated:
-            reviewer_name = request.user.get_full_name() or request.user.username
-        if not reviewer_name:
-            reviewer_name = "Verified Customer"
+        reviewer_name = request.user.get_full_name() or request.user.username
+
+        has_verified_purchase = OrderItem.objects.filter(
+            order__user=request.user,
+            variant__product=product,
+        ).filter(
+            Q(order__payment_status="paid") | Q(order__status="delivered")
+        ).exists()
+
+        if Review.objects.filter(product=product, user=request.user).exists():
+            return Response(
+                {"detail": "You have already reviewed this product."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
         rating = int(data.get("rating", 5))
         if rating < 1 or rating > 5:
@@ -289,13 +300,13 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
 
         review = Review.objects.create(
             product=product,
-            user=request.user if request.user.is_authenticated else None,
+            user=request.user,
             reviewer_name=reviewer_name,
             rating=rating,
             title=data.get("title", ""),
             comment=data.get("comment", ""),
-            is_verified_purchase=True,
-            is_approved=True
+            is_verified_purchase=has_verified_purchase,
+            is_approved=False,
         )
         return Response(ReviewSerializer(review).data, status=status.HTTP_201_CREATED)
 

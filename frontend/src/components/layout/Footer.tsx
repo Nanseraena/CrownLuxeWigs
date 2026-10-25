@@ -81,11 +81,11 @@ export default function Footer() {
               </p>
               <p className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-brand-500 shrink-0" />
-                +256 700 112 233 / +256 772 987 654
+                <a href="tel:+256700112233" className="hover:text-white">+256 700 112 233</a> / <a href="tel:+256772987654" className="hover:text-white">+256 772 987 654</a>
               </p>
               <p className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-brand-500 shrink-0" />
-                orders@crownluxe.ug
+                <a href="mailto:orders@crownluxe.ug" className="hover:text-white">orders@crownluxe.ug</a>
               </p>
             </div>
           </div>
@@ -125,7 +125,9 @@ export default function Footer() {
               <p className="text-xs text-brand-gold font-medium">✨ Thank you for subscribing!</p>
             ) : (
               <form onSubmit={handleSubscribe} className="space-y-2">
+                <label htmlFor="newsletter-email" className="sr-only">Email address</label>
                 <input
+                  id="newsletter-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}

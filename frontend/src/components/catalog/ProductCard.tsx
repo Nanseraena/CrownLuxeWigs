@@ -2,10 +2,14 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Heart, Star, ShoppingBag, Eye } from "lucide-react";
-import { Product } from "@/types";
+import { useRouter } from "next/navigation";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Heart, Star, ShoppingBag } from "lucide-react";
+import { Product, WishlistItem } from "@/types";
 import { formatPrice, calculateDiscountPercent } from "@/lib/formatters";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
+import { fetchApi } from "@/lib/api";
 
 interface ProductCardProps {
   product: Product;
@@ -13,8 +17,39 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { addItem } = useCart();
-  const [isWishlisted, setIsWishlisted] = useState(false);
+  const { user } = useAuth();
+  const router = useRouter();
+  const queryClient = useQueryClient();
   const [adding, setAdding] = useState(false);
+
+  const { data: wishlist = [] } = useQuery<WishlistItem[]>({
+    queryKey: ["wishlist"],
+    queryFn: () => fetchApi("/wishlist/"),
+    enabled: Boolean(user),
+  });
+  const wishlistItem = wishlist.find((item) => item.product === product.id);
+  const isWishlisted = Boolean(wishlistItem);
+
+  const wishlistMutation = useMutation({
+    mutationFn: async () => {
+      if (!user) {
+        router.push("/account/login?next=/wishlist");
+        return null;
+      }
+      if (wishlistItem) {
+        await fetchApi(`/wishlist/items/${product.id}/`, { method: "DELETE" });
+        return false;
+      }
+      await fetchApi("/wishlist/items/", {
+        method: "POST",
+        body: JSON.stringify({ product_id: product.id }),
+      });
+      return true;
+    },
+    onSuccess: (changed) => {
+      if (changed !== null) queryClient.invalidateQueries({ queryKey: ["wishlist"] });
+    },
+  });
 
   const discountPercent = calculateDiscountPercent(product.compare_at_price, product.min_price);
   // Never substitute another product's photo: a missing image must remain
@@ -24,20 +59,22 @@ export default function ProductCard({ product }: ProductCardProps) {
   const handleQuickAdd = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (product.variants && product.variants.length > 0) {
+    if (product.variants && product.variants.length === 1) {
       setAdding(true);
       try {
         await addItem(product.variants[0].id, 1);
       } finally {
         setAdding(false);
       }
+    } else {
+      router.push(`/products/${product.slug}`);
     }
   };
 
   const toggleWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsWishlisted(!isWishlisted);
+    wishlistMutation.mutate();
   };
 
   return (
@@ -83,7 +120,8 @@ export default function ProductCard({ product }: ProductCardProps) {
               ? "bg-rose-50 text-rose-600 shadow"
               : "bg-white/80 text-neutral-600 hover:text-rose-600 hover:bg-white shadow-sm"
           }`}
-          aria-label="Save to wishlist"
+          aria-label={isWishlisted ? "Remove from wishlist" : "Save to wishlist"}
+          aria-pressed={isWishlisted}
         >
           <Heart className={`w-4 h-4 ${isWishlisted ? "fill-rose-600" : ""}`} />
         </button>
@@ -96,7 +134,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             className="flex-1 bg-white/95 hover:bg-brand-dark hover:text-white text-neutral-900 text-xs font-semibold py-2.5 rounded-xl shadow-lg transition flex items-center justify-center gap-1.5"
           >
             <ShoppingBag className="w-3.5 h-3.5" />
-            <span>{adding ? "Adding..." : "Quick Add"}</span>
+            <span>{adding ? "Adding..." : product.variants?.length === 1 ? "Quick Add" : "Choose options"}</span>
           </button>
         </div>
       </Link>
@@ -125,8 +163,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className="flex items-center justify-between gap-2 mt-2">
             <div className="flex items-center gap-1 text-amber-400">
               <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-              <span className="text-[11px] font-bold text-neutral-800">{product.average_rating || "5.0"}</span>
-              <span className="text-[10px] text-neutral-400">({product.review_count || 12})</span>
+              {product.review_count > 0 && product.average_rating !== null ? (
+                <>
+                  <span className="text-[11px] font-bold text-neutral-800">{product.average_rating.toFixed(1)}</span>
+                  <span className="text-[10px] text-neutral-500">({product.review_count})</span>
+                </>
+              ) : (
+                <span className="text-[10px] text-neutral-600">No reviews yet</span>
+              )}
             </div>
 
             {product.available_colors && product.available_colors.length > 1 && (

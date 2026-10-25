@@ -208,8 +208,9 @@ export default function CheckoutPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
               <div>
-                <label className="block font-semibold text-neutral-700 mb-1">Full Name *</label>
+                <label htmlFor="customer-name" className="block font-semibold text-neutral-700 mb-1">Full Name *</label>
                 <input
+                  id="customer-name"
                   type="text"
                   required
                   value={customerName}
@@ -220,8 +221,9 @@ export default function CheckoutPage() {
               </div>
 
               <div>
-                <label className="block font-semibold text-neutral-700 mb-1">Email Address (for Receipt) *</label>
+                <label htmlFor="customer-email" className="block font-semibold text-neutral-700 mb-1">Email Address (for Receipt) *</label>
                 <input
+                  id="customer-email"
                   type="email"
                   required
                   value={email}
@@ -232,8 +234,9 @@ export default function CheckoutPage() {
               </div>
 
               <div className="sm:col-span-2">
-                <label className="block font-semibold text-neutral-700 mb-1">Mobile Telephone Number *</label>
+                <label htmlFor="customer-phone" className="block font-semibold text-neutral-700 mb-1">Mobile Telephone Number *</label>
                 <input
+                  id="customer-phone"
                   type="tel"
                   required
                   value={phone}
@@ -257,8 +260,9 @@ export default function CheckoutPage() {
 
             <div className="space-y-4 text-xs">
               <div>
-                <label className="block font-semibold text-neutral-700 mb-1">Physical Address / Street / Landmark *</label>
+                <label htmlFor="delivery-address" className="block font-semibold text-neutral-700 mb-1">Physical Address / Street / Landmark *</label>
                 <textarea
+                  id="delivery-address"
                   rows={2}
                   required
                   value={streetAddress}
@@ -303,8 +307,9 @@ export default function CheckoutPage() {
               </div>
 
               <div>
-                <label className="block font-semibold text-neutral-700 mb-1">Special Delivery Instructions (Optional)</label>
+                <label htmlFor="delivery-notes" className="block font-semibold text-neutral-700 mb-1">Special Delivery Instructions (Optional)</label>
                 <input
+                  id="delivery-notes"
                   type="text"
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
@@ -414,10 +419,11 @@ export default function CheckoutPage() {
 
             {(paymentMethod === "mtn_momo" || paymentMethod === "airtel_money") && (
               <div className="pt-2 text-xs">
-                <label className="block font-semibold text-neutral-700 mb-1">
+                <label htmlFor="payment-phone" className="block font-semibold text-neutral-700 mb-1">
                   {paymentMethod === "mtn_momo" ? "MTN" : "Airtel"} Phone Number to Prompt *
                 </label>
                 <input
+                  id="payment-phone"
                   type="tel"
                   required
                   value={paymentPhone}
@@ -441,7 +447,7 @@ export default function CheckoutPage() {
                 <div key={item.id} className="pt-3 flex gap-3 text-xs">
                   <div className="w-12 h-16 bg-neutral-200 rounded-lg overflow-hidden shrink-0">
                     <img
-                      src={item.image?.image_url || "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=300&q=80"}
+                      src={item.image?.image_url || "/images/wigs/catalog-placeholder.svg"}
                       alt={item.product_name}
                       className="w-full h-full object-cover"
                     />
@@ -488,7 +494,9 @@ export default function CheckoutPage() {
 
             {/* Coupon Code Inline Input */}
             <div className="flex gap-2 text-xs">
+              <label htmlFor="coupon-code" className="sr-only">Promo code</label>
               <input
+                id="coupon-code"
                 type="text"
                 value={couponCode}
                 onChange={(e) => setCouponCode(e.target.value.toUpperCase())}

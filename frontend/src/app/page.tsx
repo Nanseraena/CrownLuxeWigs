@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, Sparkles, Star, Flame, Tag, Clock, CheckCircle2, Scissors, ShieldCheck, Heart } from "lucide-react";
 import { Product, Category, Coupon, Collection } from "@/types";
@@ -162,9 +163,12 @@ export default function HomePage() {
       <section className="relative bg-neutral-900 text-white overflow-hidden min-h-[520px] sm:min-h-[640px] flex items-center">
         {/* Keep the campaign image crisp; the left-side gradient preserves copy contrast. */}
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src="/images/wigs/lace-experience/hd-lace-hero.webp"
             alt="CrownLuxe Luxury Wigs Campaign"
+            fill
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/55 to-neutral-950/10" />
@@ -244,6 +248,7 @@ export default function HomePage() {
                 <img
                   src={cat.image_url || "/images/wigs/catalog-placeholder.svg"}
                   alt={cat.name}
+                  loading="lazy"
                   className="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
@@ -312,9 +317,12 @@ export default function HomePage() {
               className="group block rounded-2xl overflow-hidden bg-neutral-50 border border-neutral-200/80 hover:shadow-lg transition duration-300"
             >
               <div className="aspect-[4/3] overflow-hidden bg-neutral-200">
-                <img
+                <Image
                   src={lcard.img}
                   alt={lcard.title}
+                  width={480}
+                  height={360}
+                  sizes="(max-width: 768px) 50vw, 25vw"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>

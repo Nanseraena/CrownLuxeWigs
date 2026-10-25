@@ -2,19 +2,20 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
 import {
   Star, Heart, ShoppingBag, Truck, ShieldCheck, CheckCircle2,
   ChevronRight, ArrowRight, Sparkles, Plus, Minus, MessageSquare, Send
 } from "lucide-react";
-import { Product, ProductVariant, Review } from "@/types";
+import { Product, ProductVariant, WishlistItem } from "@/types";
 import { fetchApi } from "@/lib/api";
 import { formatPrice, calculateDiscountPercent, formatDate } from "@/lib/formatters";
 import { useCart } from "@/context/CartContext";
 import ImageGallery from "@/components/catalog/ImageGallery";
 import VariantSelector from "@/components/catalog/VariantSelector";
 import ProductCard from "@/components/catalog/ProductCard";
+import { useAuth } from "@/context/AuthContext";
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -22,14 +23,14 @@ export default function ProductDetailPage() {
   const slug = params?.slug as string;
 
   const { addItem, setIsDrawerOpen } = useCart();
+  const { user } = useAuth();
+  const queryClient = useQueryClient();
 
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null);
   const [quantity, setQuantity] = useState(1);
-  const [isWishlisted, setIsWishlisted] = useState(false);
   const [addingToCart, setAddingToCart] = useState(false);
 
   // Review Form State
-  const [reviewName, setReviewName] = useState("");
   const [reviewRating, setReviewRating] = useState(5);
   const [reviewComment, setReviewComment] = useState("");
   const [submittingReview, setSubmittingReview] = useState(false);
@@ -47,6 +48,12 @@ export default function ProductDetailPage() {
     queryKey: ["related-products", product?.category?.slug],
     queryFn: () => fetchApi(`/products/?category__slug=${product?.category?.slug}`),
     enabled: !!product?.category?.slug,
+  });
+
+  const { data: wishlist = [] } = useQuery<WishlistItem[]>({
+    queryKey: ["wishlist"],
+    queryFn: () => fetchApi("/wishlist/"),
+    enabled: Boolean(user),
   });
 
   // Default to first variant
@@ -69,6 +76,25 @@ export default function ProductDetailPage() {
   const comparePrice = selectedVariant?.compare_at_price || product.compare_at_price;
   const discountPercent = calculateDiscountPercent(comparePrice, currentPrice);
   const maxStock = selectedVariant?.stock_quantity || 1;
+  const wishlistItem = wishlist.find((item) => item.product === product.id);
+  const isWishlisted = Boolean(wishlistItem);
+  const wishlistMutation = useMutation({
+    mutationFn: async () => {
+      if (!user) {
+        router.push(`/account/login?next=/products/${product.slug}`);
+        return null;
+      }
+      if (wishlistItem) {
+        await fetchApi(`/wishlist/items/${product.id}/`, { method: "DELETE" });
+        return false;
+      }
+      await fetchApi("/wishlist/items/", { method: "POST", body: JSON.stringify({ product_id: product.id }) });
+      return true;
+    },
+    onSuccess: (changed) => {
+      if (changed !== null) queryClient.invalidateQueries({ queryKey: ["wishlist"] });
+    },
+  });
 
   const handleAddToCart = async () => {
     if (!selectedVariant) return;
@@ -99,7 +125,6 @@ export default function ProductDetailPage() {
       await fetchApi(`/products/${slug}/reviews/`, {
         method: "POST",
         body: JSON.stringify({
-          reviewer_name: reviewName.trim() || "Verified Buyer",
           rating: reviewRating,
           comment: reviewComment.trim(),
         }),
@@ -144,11 +169,12 @@ export default function ProductDetailPage() {
                 {product.category.name}
               </span>
               <button
-                onClick={() => setIsWishlisted(!isWishlisted)}
+                onClick={() => wishlistMutation.mutate()}
                 className={`p-2 rounded-full border transition ${
                   isWishlisted ? "bg-rose-50 text-rose-600 border-rose-200" : "bg-white text-neutral-500 border-neutral-200 hover:text-rose-600"
                 }`}
-                title="Save to wishlist"
+                aria-label={isWishlisted ? "Remove from wishlist" : "Save to wishlist"}
+                aria-pressed={isWishlisted}
               >
                 <Heart className={`w-4 h-4 ${isWishlisted ? "fill-rose-600" : ""}`} />
               </button>
@@ -159,18 +185,20 @@ export default function ProductDetailPage() {
             </h1>
 
             {/* Ratings Summary */}
+            {product.review_count > 0 && product.average_rating !== null ? (
             <div className="flex items-center gap-2 mt-2">
               <div className="flex items-center text-amber-400">
                 {[1, 2, 3, 4, 5].map((s) => (
-                  <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  <Star key={s} className={`w-4 h-4 text-amber-400 ${s <= Math.round(product.average_rating || 0) ? "fill-amber-400" : "fill-transparent"}`} />
                 ))}
               </div>
-              <span className="text-xs font-bold text-neutral-900">{product.average_rating || 5.0}</span>
-              <span className="text-xs text-neutral-400">•</span>
+              <span className="text-xs font-bold text-neutral-900">{product.average_rating.toFixed(1)}</span>
+              <span className="text-xs text-neutral-500">•</span>
               <a href="#reviews" className="text-xs text-brand-600 hover:underline font-medium">
-                {product.review_count || 12} Verified Reviews
+                {product.review_count} {product.review_count === 1 ? "review" : "reviews"}
               </a>
             </div>
+            ) : <p className="text-xs text-neutral-600 mt-2">No customer reviews yet</p>}
           </div>
 
           {/* Pricing Box */}
@@ -341,7 +369,7 @@ export default function ProductDetailPage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-brand-600">Client Feedback</span>
-            <h2 className="font-serif text-2xl font-bold text-neutral-900 mt-1">Verified Customer Reviews</h2>
+            <h2 className="font-serif text-2xl font-bold text-neutral-900 mt-1">Customer Reviews</h2>
           </div>
         </div>
 
@@ -354,9 +382,7 @@ export default function ProductDetailPage() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span className="font-bold text-xs text-neutral-900">{rev.reviewer_name}</span>
-                      <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">
-                        Verified Purchase
-                      </span>
+                      {rev.is_verified_purchase && <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Verified Purchase</span>}
                     </div>
                     <span className="text-[11px] text-neutral-400">{formatDate(rev.created_at)}</span>
                   </div>
@@ -368,6 +394,8 @@ export default function ProductDetailPage() {
                   <p className="text-xs text-neutral-700 leading-relaxed">{rev.comment}</p>
                 </div>
               ))
+            ) : !user ? (
+              <p className="text-xs text-neutral-600 py-4">Sign in after your purchase to leave a review.</p>
             ) : (
               <p className="text-xs text-neutral-500 py-4">No reviews submitted yet. Be the first to review!</p>
             )}
@@ -382,21 +410,15 @@ export default function ProductDetailPage() {
 
             {reviewSuccess ? (
               <div className="p-3 bg-emerald-50 text-emerald-800 text-xs rounded-xl border border-emerald-200">
-                ✨ Thank you! Your review has been submitted successfully.
+                ✨ Thank you! Your review has been submitted for approval.
               </div>
             ) : (
-              <form onSubmit={handleSubmitReview} className="space-y-3">
-                <div>
-                  <label className="block text-[11px] font-semibold text-neutral-700 mb-1">Your Name</label>
-                  <input
-                    type="text"
-                    value={reviewName}
-                    onChange={(e) => setReviewName(e.target.value)}
-                    placeholder="e.g. Sharon K."
-                    className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-3 py-2 text-xs text-neutral-900 focus:outline-none focus:border-brand-500"
-                  />
+              !user ? (
+                <div className="space-y-3 text-xs text-neutral-600">
+                  <p>Reviews are linked to customer accounts to protect their authenticity.</p>
+                  <Link href={`/account/login?next=/products/${product.slug}`} className="inline-flex bg-brand-dark text-white font-semibold px-4 py-2.5 rounded-xl">Sign in to review</Link>
                 </div>
-
+              ) : <form onSubmit={handleSubmitReview} className="space-y-3">
                 <div>
                   <label className="block text-[11px] font-semibold text-neutral-700 mb-1">Star Rating</label>
                   <div className="flex items-center gap-2">
@@ -406,6 +428,8 @@ export default function ProductDetailPage() {
                         type="button"
                         onClick={() => setReviewRating(star)}
                         className="text-amber-400 p-0.5"
+                        aria-label={`${star} star${star === 1 ? "" : "s"}`}
+                        aria-pressed={star === reviewRating}
                       >
                         <Star className={`w-5 h-5 ${star <= reviewRating ? "fill-amber-400" : "text-neutral-300"}`} />
                       </button>
