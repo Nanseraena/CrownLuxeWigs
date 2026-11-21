@@ -1,4 +1,6 @@
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api/v1";
+let csrfTokenFromApi: string | null = null;
+let csrfRequest: Promise<string | null> | null = null;
 
 export function getCartToken(): string {
   if (typeof window === "undefined") return "";
@@ -10,26 +12,38 @@ export function getCartToken(): string {
   return token;
 }
 
-export function getAuthToken(): string | null {
-  if (typeof window === "undefined") return null;
-  return localStorage.getItem("crownluxe_access_token");
+function csrfToken(): string | undefined {
+  if (typeof document === "undefined") return undefined;
+  return document.cookie.split("; ").find((value) => value.startsWith("csrftoken="))?.split("=")[1];
 }
 
-export function setAuthTokens(access: string, refresh: string) {
-  if (typeof window === "undefined") return;
-  localStorage.setItem("crownluxe_access_token", access);
-  localStorage.setItem("crownluxe_refresh_token", refresh);
-}
-
-export function clearAuthTokens() {
-  if (typeof window === "undefined") return;
-  localStorage.removeItem("crownluxe_access_token");
-  localStorage.removeItem("crownluxe_refresh_token");
+/**
+ * Works both same-origin and with local development hosts such as
+ * localhost:3000 -> 127.0.0.1:8000, where JavaScript cannot read the API
+ * host's cookie. Django still validates the matching cookie server-side.
+ */
+export async function ensureCsrfToken(): Promise<string | null> {
+  if (csrfTokenFromApi) return csrfTokenFromApi;
+  const fromCookie = csrfToken();
+  if (fromCookie) return decodeURIComponent(fromCookie);
+  if (!csrfRequest) {
+    csrfRequest = fetch(`${API_BASE}/auth/csrf/`, {
+      credentials: "include",
+      headers: { Accept: "application/json" },
+    })
+      .then(async (response) => {
+        if (!response.ok) return null;
+        const payload = await response.json();
+        csrfTokenFromApi = payload.csrfToken || null;
+        return csrfTokenFromApi;
+      })
+      .finally(() => { csrfRequest = null; });
+  }
+  return csrfRequest;
 }
 
 export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const cartToken = getCartToken();
-  const authToken = getAuthToken();
 
   const headers: Record<string, string> = {
     Accept: "application/json",
@@ -46,8 +60,9 @@ export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): 
     headers["X-Cart-Token"] = cartToken;
   }
 
-  if (authToken) {
-    headers["Authorization"] = `Bearer ${authToken}`;
+  if (!["GET", "HEAD", "OPTIONS"].includes((options.method || "GET").toUpperCase())) {
+    const csrf = await ensureCsrfToken();
+    if (csrf) headers["X-CSRFToken"] = csrf;
   }
 
   const url = endpoint.startsWith("http") ? endpoint : `${API_BASE}${endpoint}`;
@@ -55,6 +70,7 @@ export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): 
   const res = await fetch(url, {
     ...options,
     headers,
+    credentials: "include",
   });
 
   if (!res.ok) {

@@ -1,8 +1,44 @@
 from django.db import transaction
+from django.core.cache import cache
 import uuid
 from rest_framework.exceptions import ValidationError, NotFound
 from catalog.models import ProductVariant
 from .models import Cart, CartItem
+
+
+def cart_cache_key(cart):
+    return f"cart:{'user:' + str(cart.user_id) if cart.user_id else 'guest:' + str(cart.token)}"
+
+
+def invalidate_cart_cache(cart):
+    """Best-effort cache invalidation; PostgreSQL remains the source of truth."""
+    try:
+        cache.delete(cart_cache_key(cart))
+    except Exception:
+        pass
+
+
+def cache_cart_payload(cart, payload):
+    try:
+        from django.conf import settings
+        cache.set(cart_cache_key(cart), payload, timeout=settings.CART_CACHE_TTL)
+    except Exception:
+        pass
+
+
+def cached_cart_payload(cart):
+    """Cache-aside cart response. Cached prices are display-only and never checked out."""
+    try:
+        cached = cache.get(cart_cache_key(cart))
+        if cached is not None:
+            return cached
+    except Exception:
+        pass
+    from .serializers import CartSerializer
+    hydrated = Cart.objects.prefetch_related("items__variant__product__images").get(pk=cart.pk)
+    payload = CartSerializer(hydrated).data
+    cache_cart_payload(cart, payload)
+    return payload
 
 def get_or_create_cart(request):
     """Account carts are user-owned; guests pass a UUID in X-Cart-Token."""
@@ -51,6 +87,8 @@ def add_variant(cart, variant_id, quantity):
         item.save(update_fields=["quantity", "updated_at"])
     else:
         item = CartItem.objects.create(cart=cart, variant=variant, quantity=quantity)
+    cart.save(update_fields=["updated_at"])
+    transaction.on_commit(lambda: invalidate_cart_cache(cart))
     return item
 
 @transaction.atomic
@@ -64,6 +102,8 @@ def update_item_quantity(cart, item_id, quantity):
         raise ValidationError({"quantity": f"Only {item.variant.stock_quantity} unit(s) are currently available."})
     item.quantity = quantity
     item.save(update_fields=["quantity", "updated_at"])
+    cart.save(update_fields=["updated_at"])
+    transaction.on_commit(lambda: invalidate_cart_cache(cart))
     return item
 
 @transaction.atomic
@@ -71,7 +111,7 @@ def merge_guest_cart(user_cart, guest_token):
     """Safely merges guest cart items into authenticated user cart."""
     try:
         parsed_token = uuid.UUID(str(guest_token))
-        guest_cart = Cart.objects.filter(token=parsed_token, user__isnull=True).prefetch_related("items__variant").first()
+        guest_cart = Cart.objects.select_for_update().filter(token=parsed_token, user__isnull=True).prefetch_related("items__variant").first()
     except (ValueError, TypeError):
         return user_cart
 
@@ -95,5 +135,7 @@ def merge_guest_cart(user_cart, guest_token):
 
     guest_cart.items.all().delete()
     guest_cart.delete()
+    transaction.on_commit(lambda: invalidate_cart_cache(user_cart))
+    transaction.on_commit(lambda: invalidate_cart_cache(guest_cart))
     user_cart.refresh_from_db()
     return user_cart

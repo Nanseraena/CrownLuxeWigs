@@ -2,14 +2,15 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { User } from "@/types";
-import { fetchApi, getAuthToken, setAuthTokens, clearAuthTokens, getCartToken } from "@/lib/api";
+import { ensureCsrfToken, fetchApi, getCartToken } from "@/lib/api";
 
 interface AuthContextType {
   user: User | null;
   loading: boolean;
   login: (identifier: string, password: string) => Promise<void>;
   register: (data: any) => Promise<void>;
-  logout: () => void;
+  googleLogin: (credential: string) => Promise<void>;
+  logout: () => Promise<void>;
   refreshUser: () => Promise<void>;
 }
 
@@ -20,17 +21,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   const refreshUser = async () => {
-    const token = getAuthToken();
-    if (!token) {
-      setUser(null);
-      setLoading(false);
-      return;
-    }
     try {
       const data = await fetchApi<User>("/auth/me/");
       setUser(data);
     } catch (err) {
-      clearAuthTokens();
       setUser(null);
     } finally {
       setLoading(false);
@@ -38,7 +32,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    refreshUser();
+    // Sets the CSRF cookie before any state-changing cross-origin request.
+    ensureCsrfToken().catch(() => undefined).finally(refreshUser);
   }, []);
 
   const mergeGuestCart = async () => {
@@ -56,19 +51,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const login = async (identifier: string, password: string) => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api/v1";
-    const tokenUrl = `${apiUrl.replace(/\/api\/v1\/?$/, "")}/api/token/`;
-    const res = await fetch(tokenUrl, {
+    await fetchApi("/auth/login/", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username: identifier, password }),
+      body: JSON.stringify({ identifier, password }),
     });
-    if (!res.ok) {
-      const err = await res.json();
-      throw new Error(err.detail || "Invalid username or password.");
-    }
-    const data = await res.json();
-    setAuthTokens(data.access, data.refresh);
     await refreshUser();
     await mergeGuestCart();
   };
@@ -78,21 +64,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       method: "POST",
       body: JSON.stringify(formData),
     });
-    if (data.tokens) {
-      setAuthTokens(data.tokens.access, data.tokens.refresh);
-      setUser(data.user);
-      await mergeGuestCart();
-    }
+    setUser(data.user);
+    await mergeGuestCart();
   };
 
-  const logout = () => {
-    clearAuthTokens();
+  const googleLogin = async (credential: string) => {
+    await fetchApi("/auth/google/", { method: "POST", body: JSON.stringify({ credential }) });
+    await refreshUser();
+    await mergeGuestCart();
+  };
+
+  const logout = async () => {
+    try { await fetchApi("/auth/logout/", { method: "POST" }); } catch { /* local UI still signs out */ }
     setUser(null);
-    window.location.href = "/";
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout, refreshUser }}>
+    <AuthContext.Provider value={{ user, loading, login, register, googleLogin, logout, refreshUser }}>
       {children}
     </AuthContext.Provider>
   );

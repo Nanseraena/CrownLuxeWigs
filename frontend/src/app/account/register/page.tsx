@@ -5,11 +5,12 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { AlertCircle, Eye, EyeOff, Loader2 } from "lucide-react";
+import GoogleSignInButton from "@/components/auth/GoogleSignInButton";
 
 function RegisterForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { register } = useAuth();
+  const { register, googleLogin } = useAuth();
 
   const [formData, setFormData] = useState({
     username: "",
@@ -140,6 +141,9 @@ function RegisterForm() {
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <span>Create Account</span>}
           </button>
         </form>
+
+        <div className="flex items-center gap-3 text-[10px] text-neutral-400"><span className="h-px flex-1 bg-neutral-200" />OR<span className="h-px flex-1 bg-neutral-200" /></div>
+        <GoogleSignInButton onCredential={async (credential) => { setLoading(true); setError(null); try { await googleLogin(credential); router.replace(destination); } finally { setLoading(false); } }} onError={setError} />
 
         <div className="pt-4 border-t border-neutral-100 text-center text-xs text-neutral-500">
           Already have an account?{" "}

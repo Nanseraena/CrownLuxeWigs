@@ -11,6 +11,18 @@ class Profile(models.Model):
     def __str__(self):
         return f"Profile of {self.user.username}"
 
+
+class GoogleIdentity(models.Model):
+    """A verified Google subject, deliberately separate from an email address."""
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name="google_identity", on_delete=models.CASCADE)
+    subject = models.CharField(max_length=255, unique=True, db_index=True)
+    email_at_link_time = models.EmailField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Google identity for {self.user_id}"
+
 class Address(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="addresses", on_delete=models.CASCADE)
     full_name = models.CharField(max_length=180)

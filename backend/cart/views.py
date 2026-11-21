@@ -6,14 +6,13 @@ from rest_framework.exceptions import ValidationError
 from catalog.models import Product
 from .models import Cart, CartItem, WishlistItem
 from .serializers import CartSerializer, AddCartItemSerializer, UpdateCartItemSerializer, WishlistItemSerializer
-from .services import get_or_create_cart, get_existing_cart, add_variant, update_item_quantity, merge_guest_cart
+from .services import get_or_create_cart, get_existing_cart, add_variant, update_item_quantity, merge_guest_cart, cached_cart_payload, invalidate_cart_cache
 
 class CartView(APIView):
     permission_classes = [AllowAny]
     def get(self, request):
         cart = get_existing_cart(request)
-        cart = type(cart).objects.prefetch_related("items__variant__product__images").get(pk=cart.pk)
-        return Response(CartSerializer(cart).data)
+        return Response(cached_cart_payload(cart))
 
 class CartItemView(APIView):
     permission_classes = [AllowAny]
@@ -22,8 +21,7 @@ class CartItemView(APIView):
         serializer.is_valid(raise_exception=True)
         cart = get_or_create_cart(request)
         item = add_variant(cart, serializer.validated_data["variant_id"], serializer.validated_data["quantity"])
-        cart.refresh_from_db()
-        return Response({"message": "Item added to cart.", "cart": CartSerializer(cart).data, "item_id": item.id}, status=status.HTTP_201_CREATED)
+        return Response({"message": "Item added to cart.", "cart": cached_cart_payload(cart), "item_id": item.id}, status=status.HTTP_201_CREATED)
 
 class CartItemDetailView(APIView):
     permission_classes = [AllowAny]
@@ -32,22 +30,24 @@ class CartItemDetailView(APIView):
         serializer = UpdateCartItemSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         update_item_quantity(cart, item_id, serializer.validated_data["quantity"])
-        cart.refresh_from_db()
-        return Response(CartSerializer(cart).data)
+        return Response(cached_cart_payload(cart))
 
     def delete(self, request, item_id):
         cart = get_existing_cart(request)
         deleted, _ = CartItem.objects.filter(cart=cart, pk=item_id).delete()
         if not deleted: return Response({"detail": "Cart item not found."}, status=status.HTTP_404_NOT_FOUND)
-        cart.refresh_from_db()
-        return Response(CartSerializer(cart).data)
+        cart.save(update_fields=["updated_at"])
+        invalidate_cart_cache(cart)
+        return Response(cached_cart_payload(cart))
 
 class CartClearView(APIView):
     permission_classes = [AllowAny]
     def delete(self, request):
         cart = get_existing_cart(request)
         cart.items.all().delete()
-        return Response(CartSerializer(cart).data)
+        cart.save(update_fields=["updated_at"])
+        invalidate_cart_cache(cart)
+        return Response(cached_cart_payload(cart))
 
 class MergeCartView(APIView):
     permission_classes = [IsAuthenticated]
@@ -59,7 +59,7 @@ class MergeCartView(APIView):
         merged_cart = merge_guest_cart(user_cart, guest_token)
         return Response({
             "message": "Cart merged successfully.",
-            "cart": CartSerializer(merged_cart).data
+            "cart": cached_cart_payload(merged_cart)
         })
 
 class WishlistView(APIView):

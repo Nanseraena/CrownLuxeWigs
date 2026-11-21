@@ -21,7 +21,7 @@ from payments.views import (
     InitiatePaymentView, VerifyPaymentView,
     PaymentStatusView, PaymentWebhookView
 )
-from users.views import RegisterView, MeView, AddressViewSet, PasswordResetRequestView, PasswordResetConfirmView
+from users.views import RegisterView, MeView, AddressViewSet, PasswordResetRequestView, PasswordResetConfirmView, GoogleLoginView, PasswordLoginView, LogoutView, CsrfView
 from users.authentication import EmailOrUsernameTokenSerializer
 
 class CrownLuxeTokenObtainPairView(TokenObtainPairView):
@@ -50,6 +50,10 @@ urlpatterns = [
     
     # Auth endpoints
     path("api/v1/auth/register/", RegisterView.as_view(), name="register"),
+    path("api/v1/auth/google/", GoogleLoginView.as_view(), name="google-login"),
+    path("api/v1/auth/login/", PasswordLoginView.as_view(), name="password-login"),
+    path("api/v1/auth/logout/", LogoutView.as_view(), name="logout"),
+    path("api/v1/auth/csrf/", CsrfView.as_view(), name="csrf"),
     path("api/v1/auth/me/", MeView.as_view(), name="me"),
     path("api/v1/auth/password-reset/", PasswordResetRequestView.as_view(), name="password-reset-request"),
     path("api/v1/auth/password-reset/confirm/", PasswordResetConfirmView.as_view(), name="password-reset-confirm"),

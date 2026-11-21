@@ -8,7 +8,7 @@ from rest_framework import status, viewsets
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from rest_framework.exceptions import ValidationError, NotFound
 
-from cart.services import get_existing_cart
+from cart.services import get_existing_cart, invalidate_cart_cache
 from catalog.models import ProductVariant, Product
 from promotions.models import Coupon
 from .models import Order, OrderItem, DeliveryMethod
@@ -120,6 +120,7 @@ class CheckoutView(APIView):
             )
 
         cart.items.all().delete()
+        transaction.on_commit(lambda: invalidate_cart_cache(cart))
         return Response({
             "message": "Order created successfully.",
             "order": OrderSerializer(order).data
