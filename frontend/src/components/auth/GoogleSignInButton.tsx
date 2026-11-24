@@ -11,6 +11,28 @@ declare global {
 
 type Props = { onCredential: (credential: string) => Promise<void>; onError: (message: string) => void };
 
+let googleSdkPromise: Promise<void> | null = null;
+
+function loadGoogleSdk(): Promise<void> {
+  if (window.google) return Promise.resolve();
+  if (!googleSdkPromise) {
+    googleSdkPromise = new Promise((resolve, reject) => {
+      const existing = document.querySelector<HTMLScriptElement>('script[src="https://accounts.google.com/gsi/client"]');
+      const script = existing || document.createElement("script");
+      const onLoad = () => resolve();
+      const onError = () => reject(new Error("Google sign-in could not be loaded."));
+      script.addEventListener("load", onLoad, { once: true });
+      script.addEventListener("error", onError, { once: true });
+      if (!existing) {
+        script.src = "https://accounts.google.com/gsi/client";
+        script.async = true;
+        document.head.appendChild(script);
+      }
+    });
+  }
+  return googleSdkPromise;
+}
+
 /** Official Google Identity Services button. Only the signed ID token reaches the API. */
 export default function GoogleSignInButton({ onCredential, onError }: Props) {
   const target = useRef<HTMLDivElement>(null);
@@ -19,8 +41,9 @@ export default function GoogleSignInButton({ onCredential, onError }: Props) {
 
   useEffect(() => {
     if (!clientId || !target.current) return;
-    const initialize = () => {
-      if (!window.google || !target.current) return;
+    let cancelled = false;
+    loadGoogleSdk().then(() => {
+      if (cancelled || !window.google || !target.current) return;
       window.google.accounts.id.initialize({
         client_id: clientId,
         callback: async ({ credential }: { credential?: string }) => {
@@ -31,15 +54,8 @@ export default function GoogleSignInButton({ onCredential, onError }: Props) {
       target.current.innerHTML = "";
       window.google.accounts.id.renderButton(target.current, { theme: "outline", size: "large", text: "continue_with", width: target.current.clientWidth || 320, shape: "pill" });
       setReady(true);
-    };
-    const existing = document.querySelector('script[src="https://accounts.google.com/gsi/client"]');
-    if (existing) { initialize(); return; }
-    const script = document.createElement("script");
-    script.src = "https://accounts.google.com/gsi/client";
-    script.async = true;
-    script.onload = initialize;
-    script.onerror = () => onError("Google sign-in could not be loaded. Please use email and password.");
-    document.head.appendChild(script);
+    }).catch(() => onError("Google sign-in could not be loaded. Please use email and password."));
+    return () => { cancelled = true; };
   }, [clientId, onCredential, onError]);
 
   if (!clientId) return null;
