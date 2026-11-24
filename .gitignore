@@ -16,6 +16,7 @@ __pycache__/
 
 # Environment variables and secrets
 .env
+.env.local
 .env.*
 !.env.example
 
@@ -28,3 +29,5 @@ staticfiles/
 
 # Logs
 *.log
+#backups
+sqlite-backup.json
