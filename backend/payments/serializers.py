@@ -17,7 +17,9 @@ class InitiatePaymentSerializer(serializers.Serializer):
     order_number = serializers.CharField(max_length=40)
     provider = serializers.ChoiceField(choices=Payment.PROVIDER_CHOICES)
     phone_number = serializers.CharField(max_length=40, required=False, allow_blank=True)
+    payment_access_token = serializers.UUIDField(required=False)
 
 class VerifyPaymentSerializer(serializers.Serializer):
     transaction_reference = serializers.CharField(max_length=120)
     simulated_pin = serializers.CharField(max_length=10, required=False, allow_blank=True)
+    payment_access_token = serializers.UUIDField(required=False)

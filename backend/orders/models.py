@@ -40,6 +40,7 @@ class Order(models.Model):
     ]
 
     order_number = models.CharField(max_length=24, unique=True, editable=False, db_index=True)
+    payment_access_token = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="wig_orders", on_delete=models.SET_NULL, null=True, blank=True)
     customer_name = models.CharField(max_length=180)
     email = models.EmailField()

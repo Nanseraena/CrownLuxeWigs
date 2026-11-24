@@ -1,5 +1,6 @@
 import os
 import sys
+from datetime import timedelta
 from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
@@ -54,6 +55,8 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
+    "DEFAULT_THROTTLE_CLASSES": ["rest_framework.throttling.AnonRateThrottle", "rest_framework.throttling.UserRateThrottle"],
+    "DEFAULT_THROTTLE_RATES": {"anon": "100/hour", "user": "1000/hour", "auth": "10/minute", "payment": "30/hour"},
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 20,
@@ -78,12 +81,14 @@ SESSION_SAVE_EVERY_REQUEST = False
 CSRF_COOKIE_SAMESITE = os.getenv("CSRF_COOKIE_SAMESITE", "Lax")
 GOOGLE_OAUTH_CLIENT_ID = os.getenv("GOOGLE_OAUTH_CLIENT_ID", os.getenv("GOOGLE_CLIENT_ID", ""))
 CART_CACHE_TTL = int(os.getenv("CART_CACHE_TTL", str(60 * 60 * 24 * 7)))
-from datetime import timedelta
+PAYMENT_SIMULATION_ENABLED = os.getenv("PAYMENT_SIMULATION_ENABLED", str(DEBUG)).lower() == "true"
+PAYMENT_WEBHOOK_SECRET = os.getenv("PAYMENT_WEBHOOK_SECRET", "")
 SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
     "ACCESS_TOKEN_LIFETIME": timedelta(days=7),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
     "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
 }
 SPECTACULAR_SETTINGS = {
     "TITLE": "CrownLuxe Wigs API",
@@ -129,5 +134,8 @@ if not DEBUG:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_REFERRER_POLICY = "same-origin"
+    SECURE_HSTS_SECONDS = int(os.getenv("SECURE_HSTS_SECONDS", "31536000"))
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = os.getenv("SECURE_HSTS_INCLUDE_SUBDOMAINS", "True").lower() == "true"
+    X_FRAME_OPTIONS = "DENY"
     # The Django test client is HTTP-only; production still enforces HTTPS.
     SECURE_SSL_REDIRECT = "test" not in sys.argv and os.getenv("SECURE_SSL_REDIRECT", "True").lower() == "true"

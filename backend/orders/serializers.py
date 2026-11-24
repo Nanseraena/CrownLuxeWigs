@@ -18,11 +18,12 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = [
-            "id", "order_number", "customer_name", "email", "phone", "delivery_address",
+            "id", "order_number", "payment_access_token", "customer_name", "email", "phone", "delivery_address",
             "delivery_method", "currency", "subtotal", "delivery_fee", "discount_amount",
             "coupon_code", "total", "status", "payment_method", "payment_status",
             "payment_reference", "tracking_number", "notes", "created_at", "updated_at", "items"
         ]
+        read_only_fields = ["payment_access_token"]
 
 
 class PublicOrderTrackingSerializer(serializers.ModelSerializer):

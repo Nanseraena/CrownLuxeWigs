@@ -14,6 +14,7 @@ from rest_framework import status, viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.throttling import ScopedRateThrottle
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Address, Profile, GoogleIdentity
 from .serializers import RegisterSerializer, UserSerializer, AddressSerializer
@@ -44,6 +45,8 @@ class CsrfView(APIView):
 class GoogleLoginView(APIView):
     """Exchange a GIS ID token for a rotated, persistent Django session."""
     permission_classes = [AllowAny]
+    throttle_classes = [ScopedRateThrottle]
+    throttle_scope = "auth"
 
     def post(self, request):
         credential = str(request.data.get("credential", ""))
@@ -83,6 +86,8 @@ class GoogleLoginView(APIView):
 @method_decorator(csrf_protect, name="dispatch")
 class PasswordLoginView(APIView):
     permission_classes = [AllowAny]
+    throttle_classes = [ScopedRateThrottle]
+    throttle_scope = "auth"
 
     def post(self, request):
         identifier = str(request.data.get("identifier", request.data.get("username", ""))).strip()
@@ -108,6 +113,8 @@ class LogoutView(APIView):
 @method_decorator(csrf_protect, name="dispatch")
 class RegisterView(APIView):
     permission_classes = [AllowAny]
+    throttle_classes = [ScopedRateThrottle]
+    throttle_scope = "auth"
 
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
@@ -128,6 +135,8 @@ class RegisterView(APIView):
 
 class PasswordResetRequestView(APIView):
     permission_classes = [AllowAny]
+    throttle_classes = [ScopedRateThrottle]
+    throttle_scope = "auth"
 
     def post(self, request):
         email = str(request.data.get("email", "")).strip().lower()
@@ -143,6 +152,8 @@ class PasswordResetRequestView(APIView):
 
 class PasswordResetConfirmView(APIView):
     permission_classes = [AllowAny]
+    throttle_classes = [ScopedRateThrottle]
+    throttle_scope = "auth"
 
     def post(self, request):
         uid = request.data.get("uid", "")

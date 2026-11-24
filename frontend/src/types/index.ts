@@ -184,6 +184,7 @@ export interface OrderItem {
 export interface Order {
   id: number;
   order_number: string;
+  payment_access_token?: string;
   customer_name: string;
   email: string;
   phone: string;

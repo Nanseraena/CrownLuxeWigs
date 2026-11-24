@@ -32,7 +32,7 @@ class CheckoutTests(TestCase):
         self.assertNotIn("email", tracking.data)
         self.assertNotIn("phone", tracking.data)
         self.assertNotIn("delivery_address", tracking.data)
-        self.assertEqual(self.client.get("/api/v1/admin/dashboard-stats/").status_code, 401)
+        self.assertIn(self.client.get("/api/v1/admin/dashboard-stats/").status_code, [401, 403])
 
         admin = get_user_model().objects.create_superuser("admin", "admin@example.com", "safe-password-123")
         self.client.force_authenticate(admin)

@@ -38,6 +38,7 @@ export default function CheckoutPage() {
   const [paymentModalOpen, setPaymentModalOpen] = useState(false);
   const [activeOrderNumber, setActiveOrderNumber] = useState<string | null>(null);
   const [activePaymentRef, setActivePaymentRef] = useState<string | null>(null);
+  const [paymentAccessToken, setPaymentAccessToken] = useState<string | null>(null);
   const [verifyingPayment, setVerifyingPayment] = useState(false);
   const [simulatedPin, setSimulatedPin] = useState("1234");
 
@@ -116,7 +117,9 @@ export default function CheckoutPage() {
       });
 
       const orderNumber = orderRes.order.order_number;
+      const accessToken = orderRes.order.payment_access_token;
       setActiveOrderNumber(orderNumber);
+      setPaymentAccessToken(accessToken);
 
       // 2. Initiate Payment
       const payRes = await fetchApi<any>("/payments/initiate/", {
@@ -125,6 +128,7 @@ export default function CheckoutPage() {
           order_number: orderNumber,
           provider: paymentMethod,
           phone_number: paymentPhone || phone,
+          payment_access_token: accessToken,
         }),
       });
 
@@ -145,7 +149,7 @@ export default function CheckoutPage() {
   };
 
   const handleSimulatePaymentApproval = async () => {
-    if (!activePaymentRef || !activeOrderNumber) return;
+    if (!activePaymentRef || !activeOrderNumber || !paymentAccessToken) return;
     setVerifyingPayment(true);
     try {
       await fetchApi("/payments/verify/", {
@@ -153,6 +157,7 @@ export default function CheckoutPage() {
         body: JSON.stringify({
           transaction_reference: activePaymentRef,
           simulated_pin: simulatedPin,
+          payment_access_token: paymentAccessToken,
         }),
       });
 
