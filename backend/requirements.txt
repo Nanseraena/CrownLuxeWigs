@@ -13,6 +13,7 @@ djangorestframework==3.16.1
 djangorestframework_simplejwt==5.5.1
 drf-spectacular==0.28.0
 google-auth==2.63.0
+gunicorn==27.0.1
 idna==3.20
 inflection==0.5.1
 jsonschema==4.26.0
@@ -34,3 +35,4 @@ sqlparse==0.6.0
 typing_extensions==4.16.0
 uritemplate==4.2.0
 urllib3==2.8.0
+whitenoise==6.12.0
