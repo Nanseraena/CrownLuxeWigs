@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>CrownLuxe Wigs &amp; Hair</title>
+  <defs>
+    <linearGradient id="gold" x1="14" y1="10" x2="51" y2="54" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE4A3"/>
+      <stop offset=".46" stop-color="#D6A54A"/>
+      <stop offset="1" stop-color="#9E681B"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="#3B1220"/>
+  <path d="M47.5 21.7c-3.2-3.7-7.5-5.5-12.6-5.5-9.7 0-16.4 6.8-16.4 15.8 0 9.1 6.7 15.8 16.4 15.8 5.2 0 9.6-1.9 12.7-5.7l-4.3-4.1c-2.1 2.4-4.8 3.7-8.1 3.7-5.9 0-10.1-4.1-10.1-9.7 0-5.5 4.2-9.7 10.1-9.7 3.2 0 5.9 1.3 8 3.7l4.3-4.3Z" fill="url(#gold)"/>
+  <path d="M17 13.7c2.9-2.7 6.6-4.1 10.4-3.9 3 .1 5.6 1.1 7.8 2.9" fill="none" stroke="#F5CB73" stroke-linecap="round" stroke-width="2.25"/>
+  <path d="M17.2 49.8c4.5-5.1 9.1-3.4 13.2.3 4.3 3.8 8.6 5.1 15.4.4" fill="none" stroke="#F5CB73" stroke-linecap="round" stroke-width="2.2"/>
+</svg>
