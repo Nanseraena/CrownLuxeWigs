@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run typecheck",
+    "verify": "npm run test && npm run build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

@@ -1,4 +1,7 @@
 from decimal import Decimal
+import hashlib
+import hmac
+import json
 from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 from orders.models import Order
@@ -67,3 +70,47 @@ class PaymentTests(TestCase):
         self.assertIn(response.status_code, [403, 503])
         self.order.refresh_from_db()
         self.assertEqual(self.order.payment_status, "pending")
+
+    def test_payment_status_requires_the_correct_guest_access_token(self):
+        payment = Payment.objects.create(order=self.order, provider="mtn_momo", amount=self.order.total)
+        endpoint = f"/api/v1/payments/status/{payment.transaction_reference}/"
+
+        self.assertEqual(self.client.get(endpoint).status_code, 403)
+        self.assertEqual(self.client.get(endpoint, {"payment_access_token": "00000000-0000-0000-0000-000000000000"}).status_code, 403)
+        self.assertEqual(
+            self.client.get(endpoint, {"payment_access_token": str(self.order.payment_access_token)}).status_code,
+            200,
+        )
+
+    @override_settings(PAYMENT_WEBHOOK_SECRET="test-webhook-secret")
+    def test_webhook_signature_prevents_tampering_and_replays_are_idempotent(self):
+        payment = Payment.objects.create(order=self.order, provider="mtn_momo", amount=self.order.total)
+        payload = {"transaction_reference": payment.transaction_reference, "status": "paid"}
+        body = json.dumps(payload).encode("utf-8")
+        signature = hmac.new(b"test-webhook-secret", body, hashlib.sha256).hexdigest()
+
+        tampered = self.client.post(
+            "/api/v1/payments/webhook/",
+            data=json.dumps({"transaction_reference": payment.transaction_reference, "status": "failed"}),
+            content_type="application/json",
+            HTTP_X_PAYMENT_SIGNATURE=signature,
+        )
+        self.assertEqual(tampered.status_code, 403)
+        self.order.refresh_from_db()
+        self.assertEqual(self.order.payment_status, "pending")
+
+        first = self.client.post(
+            "/api/v1/payments/webhook/", data=body, content_type="application/json",
+            HTTP_X_PAYMENT_SIGNATURE=signature,
+        )
+        second = self.client.post(
+            "/api/v1/payments/webhook/", data=body, content_type="application/json",
+            HTTP_X_PAYMENT_SIGNATURE=signature,
+        )
+        self.assertEqual(first.status_code, 200)
+        self.assertEqual(second.status_code, 200)
+        payment.refresh_from_db()
+        self.order.refresh_from_db()
+        self.assertEqual(payment.status, "successful")
+        self.assertEqual(self.order.payment_status, "paid")
+        self.assertEqual(self.order.payment_reference, payment.transaction_reference)

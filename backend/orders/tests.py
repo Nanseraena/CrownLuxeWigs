@@ -25,6 +25,16 @@ class CheckoutTests(TestCase):
         self.assertEqual(self.variant.stock_quantity, 1)
         self.assertEqual(CartItem.objects.count(), 0)
 
+    def test_checkout_ignores_client_supplied_totals(self):
+        response = self.client.post("/api/v1/checkout/", {
+            "customer_name": "Test Customer", "email": "test@example.com", "phone": "0700000000",
+            "delivery_address": "Kampala", "total": "1.00", "subtotal": "1.00", "discount_amount": "999999.00",
+        }, format="json")
+        self.assertEqual(response.status_code, 201, response.data)
+        order = Order.objects.get()
+        self.assertEqual(order.subtotal, 200000)
+        self.assertEqual(order.total, 200000)
+
     def test_public_tracking_hides_customer_pii_and_dashboard_requires_admin(self):
         order = Order.objects.create(customer_name="Private Customer", email="private@example.com", phone="0700000000", delivery_address="Private address")
         tracking = self.client.get(f"/api/v1/orders/track/{order.order_number}/")
@@ -37,3 +47,17 @@ class CheckoutTests(TestCase):
         admin = get_user_model().objects.create_superuser("admin", "admin@example.com", "safe-password-123")
         self.client.force_authenticate(admin)
         self.assertEqual(self.client.get("/api/v1/admin/dashboard-stats/").status_code, 200)
+
+    def test_customer_cannot_access_another_customers_order(self):
+        user_a = get_user_model().objects.create_user("customer_a", "a@example.com", "safe-password-123")
+        user_b = get_user_model().objects.create_user("customer_b", "b@example.com", "safe-password-123")
+        order = Order.objects.create(
+            user=user_a, customer_name="Customer A", email="a@example.com", phone="0700000000", delivery_address="Private address",
+        )
+        self.client.force_authenticate(user_b)
+
+        listing = self.client.get("/api/v1/orders/")
+        detail = self.client.get(f"/api/v1/orders/{order.order_number}/")
+        self.assertEqual(listing.status_code, 200)
+        self.assertEqual(listing.data["count"], 0)
+        self.assertEqual(detail.status_code, 404)
