@@ -3,7 +3,10 @@ from django.contrib.auth import get_user_model
 from rest_framework.test import APIClient
 from django.test import override_settings
 from unittest.mock import patch
-from .models import GoogleIdentity
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
+from .models import Address, GoogleIdentity
 
 User = get_user_model()
 
@@ -76,3 +79,69 @@ class UserAuthTests(TestCase):
         response = self.client.post("/api/v1/auth/google/", {"credential": "signed-token"}, format="json")
         self.assertEqual(response.status_code, 409, response.data)
         self.assertEqual(GoogleIdentity.objects.count(), 0)
+
+    @override_settings(GOOGLE_OAUTH_CLIENT_ID="test-google-client")
+    @patch("users.views.id_token.verify_oauth2_token")
+    def test_google_login_rejects_a_token_from_an_untrusted_issuer(self, verify):
+        verify.return_value = {
+            "sub": "untrusted-subject", "email": "attacker@example.com", "email_verified": True,
+            "iss": "https://malicious.example",
+        }
+        response = self.client.post("/api/v1/auth/google/", {"credential": "invalid-token"}, format="json")
+        self.assertEqual(response.status_code, 401)
+        self.assertEqual(GoogleIdentity.objects.count(), 0)
+
+    def test_session_authenticated_write_requires_a_csrf_token(self):
+        user = User.objects.create_user(username="csrfuser", email="csrf@example.com", password="StrongPassword123!")
+        csrf_client = APIClient(enforce_csrf_checks=True)
+        csrf_client.force_login(user)
+
+        blocked = csrf_client.patch("/api/v1/auth/me/", {"first_name": "Changed"}, format="json")
+        self.assertEqual(blocked.status_code, 403)
+
+        csrf_client.get("/api/v1/auth/csrf/")
+        csrf_client.credentials(HTTP_X_CSRFTOKEN=csrf_client.cookies["csrftoken"].value)
+        allowed = csrf_client.patch("/api/v1/auth/me/", {"first_name": "Changed"}, format="json")
+        self.assertEqual(allowed.status_code, 200)
+        user.refresh_from_db()
+        self.assertEqual(user.first_name, "Changed")
+
+    @patch("users.views.send_password_reset_email")
+    def test_password_reset_does_not_disclose_whether_an_email_exists(self, send_reset):
+        User.objects.create_user(username="resetuser", email="reset@example.com", password="StrongPassword123!")
+        known = self.client.post("/api/v1/auth/password-reset/", {"email": "reset@example.com"}, format="json")
+        unknown = self.client.post("/api/v1/auth/password-reset/", {"email": "unknown@example.com"}, format="json")
+
+        self.assertEqual(known.status_code, 200)
+        self.assertEqual(unknown.status_code, 200)
+        self.assertEqual(known.data, unknown.data)
+        self.assertEqual(send_reset.call_count, 1)
+
+    def test_password_reset_token_is_single_use(self):
+        user = User.objects.create_user(username="singleuse", email="singleuse@example.com", password="StrongPassword123!")
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
+        token = default_token_generator.make_token(user)
+        payload = {"uid": uid, "token": token, "password": "AnotherStrongPassword123!"}
+
+        first = self.client.post("/api/v1/auth/password-reset/confirm/", payload, format="json")
+        second = self.client.post("/api/v1/auth/password-reset/confirm/", payload, format="json")
+
+        self.assertEqual(first.status_code, 200)
+        self.assertEqual(second.status_code, 400)
+
+    def test_user_cannot_read_or_modify_another_users_address(self):
+        owner = User.objects.create_user(username="owner", email="owner@example.com", password="StrongPassword123!")
+        other = User.objects.create_user(username="other", email="other@example.com", password="StrongPassword123!")
+        address = Address.objects.create(
+            user=owner, full_name="Owner", phone="0700000000",
+            street_address="Private Road", city_or_zone="Kampala",
+        )
+        self.client.force_authenticate(other)
+
+        self.assertEqual(self.client.get(f"/api/v1/addresses/{address.pk}/").status_code, 404)
+        self.assertEqual(
+            self.client.patch(f"/api/v1/addresses/{address.pk}/", {"city_or_zone": "Changed"}, format="json").status_code,
+            404,
+        )
+        address.refresh_from_db()
+        self.assertEqual(address.city_or_zone, "Kampala")

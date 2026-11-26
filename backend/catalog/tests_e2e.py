@@ -173,6 +173,7 @@ class FullCustomerJourneyE2ETest(TestCase):
         self.assertEqual(resp_checkout.status_code, 201)
         order_data = resp_checkout.data["order"]
         order_number = order_data["order_number"]
+        payment_access_token = order_data["payment_access_token"]
         self.assertEqual(Decimal(str(order_data["subtotal"])), Decimal("1080000.00"))
         self.assertEqual(Decimal(str(order_data["delivery_fee"])), Decimal("10000.00"))
         self.assertEqual(Decimal(str(order_data["discount_amount"])), expected_discount)
@@ -192,7 +193,8 @@ class FullCustomerJourneyE2ETest(TestCase):
         resp_init_pay = self.client.post("/api/v1/payments/initiate/", {
             "order_number": order_number,
             "provider": "mtn_momo",
-            "phone_number": "+256782112233"
+            "phone_number": "+256782112233",
+            "payment_access_token": payment_access_token,
         }, format="json")
         self.assertEqual(resp_init_pay.status_code, 200)
         pay_ref = resp_init_pay.data["transaction_reference"]
@@ -200,7 +202,8 @@ class FullCustomerJourneyE2ETest(TestCase):
         # Step 13: Verify/Simulate MoMo Payment Confirmation
         resp_verify_pay = self.client.post("/api/v1/payments/verify/", {
             "transaction_reference": pay_ref,
-            "simulated_pin": "1234"
+            "simulated_pin": "1234",
+            "payment_access_token": payment_access_token,
         }, format="json")
         self.assertEqual(resp_verify_pay.status_code, 200)
         self.assertEqual(resp_verify_pay.data["payment_status"], "paid")
